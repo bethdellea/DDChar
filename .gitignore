@@ -1,4 +1,14 @@
+<<<<<<< Updated upstream
 *.suo
 *.sdf
+<<<<<<< HEAD
 *.sdf
 *.sdf
+=======
+=======
+
+*.xcuserstate
+>>>>>>> Stashed changes
+
+*.xcuserstate
+>>>>>>> eb2d508d9b438aaea33da37e1ab9faaa8118f1f4
