@@ -1,2 +1,7 @@
+<<<<<<< Updated upstream
 *.suo
 *.sdf
+=======
+
+*.xcuserstate
+>>>>>>> Stashed changes
