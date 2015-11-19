@@ -20,7 +20,7 @@ Inventory::Inventory(const Inventory& inventoryIn) {
 
 }
 
-void Inventory::addItem(Item* itemToAdd) {
+void Inventory::addItem(ItemADT* itemToAdd) {
 	if (firstItem == nullptr) {
 		firstItem = itemToAdd;
 	}
@@ -35,8 +35,8 @@ void Inventory::addItem(Item* itemToAdd) {
 		}
 		else {
 			int itemIndx = getIndex(itemToAdd->getName());
-			Item* curr = firstItem;
-			Item* temp = nullptr;
+			ItemADT* curr = firstItem;
+			ItemADT* temp = nullptr;
 			for (int i = 0; i < itemIndx; i++) {
 				temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 				curr = curr->getNext();		//if that one was wrong, so is this.
@@ -48,8 +48,8 @@ void Inventory::addItem(Item* itemToAdd) {
 void Inventory::sellItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
 	//loop through items for that index value
-	Item* curr = firstItem;
-	Item* temp = nullptr; //holds the pointer to the previous Item object
+	ItemADT* curr = firstItem;
+	ItemADT* temp = nullptr; //holds the pointer to the previous Item object
 	for (int i = 0; i < itemIndx; i++) {
 		temp = curr;
 		curr = curr->getNext();
@@ -66,16 +66,16 @@ void Inventory::sellItem(std::string itemName) {
 }
 
 //removes all of the item rn, sorry not sorry
-Item* Inventory::removeItem(std::string itemName) {
+ItemADT* Inventory::removeItem(std::string itemName) {
 	int itemIndex = getIndex(itemName);
-	Item* curr = firstItem;
-	Item* temp = nullptr;
+	ItemADT* curr = firstItem;
+	ItemADT* temp = nullptr;
 	for (int i = 0; i < itemIndex; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 		curr = curr->getNext();		//if that one was wrong, so is this.
 	}
 	temp->setNext(curr->getNext());
-	Item* returnable = new Item(*curr);//makes a copy for returning purposes
+	ItemADT* returnable = new ItemADT(*curr);//makes a copy for returning purposes
 	delete (curr);
 	return returnable; //user should delete this, yo!
 }
@@ -103,10 +103,10 @@ void Inventory::removeGold(int withdrawal) {
 }
 
 //returns a copy of the item we're looking for
-Item* Inventory::getItem(std::string itemName) {
+ItemADT* Inventory::getItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
-	Item* curr = firstItem;
-	Item* temp = nullptr;
+	ItemADT* curr = firstItem;
+	ItemADT* temp = nullptr;
 	for (int i = 0; i < itemIndx; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 		curr = curr->getNext();		//if that one was wrong, so is this.
@@ -116,7 +116,7 @@ Item* Inventory::getItem(std::string itemName) {
 
 //returns the index position of the item by its name
 int Inventory::getIndex(std::string itemName) {
-	Item* curr = firstItem;
+	ItemADT* curr = firstItem;
 	int indx = 0;
 	//traverse the list until the name matches
 	while (curr->getName()!= itemName) {
@@ -127,7 +127,7 @@ int Inventory::getIndex(std::string itemName) {
 }
 
 bool Inventory::isInInventory(std::string itemName) {
-	Item* curr = firstItem;
+	ItemADT* curr = firstItem;
 
 	while (curr !=nullptr) {
 		if (curr->getName == itemName) {
@@ -141,8 +141,8 @@ bool Inventory::isInInventory(std::string itemName) {
 
 //deletes this beautiful linked list of Items
 Inventory::~Inventory() {
-	Item* curr = firstItem;
-	Item* next  = nullptr;
+	ItemADT* curr = firstItem;
+	ItemADT* next  = nullptr;
 	while (curr != nullptr) {
 		next = curr->getNext();
 		delete curr;
