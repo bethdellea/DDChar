@@ -19,9 +19,12 @@ private:
 
 public:
 	// constructor
-	Item(std::string itemName, int itemWorth, int quantity, std::string itemType);
+	Item(std::string itemName, int itemWorth, int numAdding, std::string itemType);
 	//copy constructor
 	Item(const Item& itemToCopy);
+
+	int getQuantity();
+	int changeQuantity(int changeVal);
 
 	//returns the item's value
 	int getWorth();
@@ -32,6 +35,9 @@ public:
 
 	Item* getNext();
 
+	void setNext(Item* upcomingItem);
+
+	std::string getName();
 };
 
 #endif /* defined(__Item__) */

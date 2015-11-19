@@ -30,6 +30,27 @@
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassADT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dwarf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Elf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Human.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RaceADT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
