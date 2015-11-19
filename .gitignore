@@ -12,3 +12,9 @@
 
 *.xcuserstate
 >>>>>>> eb2d508d9b438aaea33da37e1ab9faaa8118f1f4
+DnDCharCode/DnDChar/DnDChar.vcxproj
+*.vcxproj
+*.suo
+DnDCharCode/DnDChar.sdf
+*.vcxproj
+DnDCharCode/DnDChar/DnDChar.vcxproj.filters
