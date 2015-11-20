@@ -54,19 +54,24 @@ void Inventory::sellItem(std::string itemName) {
 		temp = curr;
 		curr = curr->getNext();
 	}
-	if (curr->getQuantity > 1) {
+	if (curr->getQuantity() > 1) {
 		curr->changeQuantity(-1);
 	}
 	else {
 		//assuming that loop got us where we want to be... requires testing
 		temp->setNext(curr->getNext());
-		addGold(curr->getSellPrice); //no haggling here, unfortunately
+		addGold(curr->getSellPrice()); //no haggling here, unfortunately
 		delete(curr);
 	}
 }
 
+
+//CAPS SO THIS COMMENT STANDS OUT. Had to comment this function out because it instantiates an ItemADT in line 83, but ItemADT's can't be instantiated.
+
+
+
 //removes all of the item rn, sorry not sorry
-ItemADT* Inventory::removeItem(std::string itemName) {
+/*ItemADT* Inventory::removeItem(std::string itemName) {
 	int itemIndex = getIndex(itemName);
 	ItemADT* curr = firstItem;
 	ItemADT* temp = nullptr;
@@ -78,12 +83,20 @@ ItemADT* Inventory::removeItem(std::string itemName) {
 	ItemADT* returnable = new ItemADT(*curr);//makes a copy for returning purposes
 	delete (curr);
 	return returnable; //user should delete this, yo!
-}
+}*/
+
+
+
+
+
+
+
 
 std::string Inventory::listItems() {
 	//try out that stringstream thing, yeah?
-
+	return "";
 }
+
 //returns the amount of gold the character possesses
 int Inventory::getGold() {
 	return numGold;
@@ -130,7 +143,7 @@ bool Inventory::isInInventory(std::string itemName) {
 	ItemADT* curr = firstItem;
 
 	while (curr !=nullptr) {
-		if (curr->getName == itemName) {
+		if (curr->getName() == itemName) {
 			return true;
 		}
 		curr = curr->getNext();

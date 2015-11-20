@@ -24,7 +24,7 @@ ItemWeapon::ItemWeapon(const ItemWeapon& ItemToCopy) {}
 int ItemWeapon::getQuantity() {
 	return quantity;
 }
-int ItemWeapon::changeQuantity(int changeVal) {
+void ItemWeapon::changeQuantity(int changeVal) {
 	quantity += changeVal; //if decreasing, make sure changeVal is negative!!
 }
 

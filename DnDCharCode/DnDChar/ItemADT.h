@@ -1,9 +1,11 @@
 //		ItemADT.h
 //	Author: Beth Dellea
 //  Date created: 11/16/2015
-#ifndef __Item__
-#define __Item___
+#ifndef __ItemADT__
+#define __ItemADT__
+
 #include <string>
+
 class ItemADT {
 	
 private:
@@ -20,7 +22,7 @@ private:
 public:
 	
 	virtual int getQuantity() = 0;
-	virtual int changeQuantity(int changeVal) = 0;
+	virtual void changeQuantity(int changeVal) = 0;
 
 	//returns the item's value
 	virtual int getWorth() = 0;

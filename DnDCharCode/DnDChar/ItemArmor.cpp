@@ -23,7 +23,7 @@ ItemArmor::ItemArmor(const ItemArmor& ItemToCopy) {}
 int ItemArmor::getQuantity() {
 	return quantity;
 }
-int ItemArmor::changeQuantity(int changeVal) {
+void ItemArmor::changeQuantity(int changeVal) {
 	quantity += changeVal; //if decreasing, make sure changeVal is negative!!
 }
 

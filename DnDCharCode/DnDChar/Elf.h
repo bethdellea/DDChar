@@ -14,7 +14,7 @@
 #include <iostream>
 #include <stdio.h>
 
-Class Elf: public RaceADT {
+class Elf: public RaceADT {
     int speed;
     std::string* knownLanguages;
     std::string* vision;
@@ -24,7 +24,7 @@ public:
     /* Creates a new Elf; sets initial base speed, known languages and adds natural weapon proficiencies*/
     Elf();
     //Create a deep copy of a Elf parameter
-    Elf(const &Elf elfToCopy);
+    Elf(const Elf& elfToCopy);
     //Destructor
     ~Elf();
     //Get speed of character

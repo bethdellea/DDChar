@@ -9,7 +9,7 @@
 #ifndef D_D_RaceADT_h
 #define D_D_RaceADT_h
 
-Class RaceADT {
+class RaceADT {
 public:
     //returns the total number of bytes of memory this object is using
     virtual int calcMemUsage()=0;

@@ -1,11 +1,11 @@
-#pragma once
 //		ItemWeapon.h
 //	Author: Beth Dellea
 //  Date created: 11/19/2015
-#ifndef __Item__
-#define __Item___
-#include <string>
+#ifndef __ItemWeapon__
+#define __ItemWeapon__
+
 #include "ItemADT.h"
+
 class ItemWeapon : public ItemADT {
 
 private:
@@ -24,7 +24,7 @@ public:
 	ItemWeapon(const ItemWeapon& itemToCopy);
 
 	int getQuantity();
-	int changeQuantity(int changeVal);
+	void changeQuantity(int changeVal);
 
 	//returns the item's value
 	int getWorth();

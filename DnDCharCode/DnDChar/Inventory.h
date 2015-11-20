@@ -5,6 +5,9 @@
 
 #ifndef __Inventory__
 #define __Inventory__
+
+#include "ItemWeapon.h"
+#include "ItemArmor.h"
 #include "ItemADT.h"
 #include <string>
 
@@ -18,10 +21,7 @@ private:
 	ItemADT* firstItem; //let's do this linked list thing
 	ItemADT* lastItem;
 
-	//fcns that alter the actual list should not be public, probably
-	//adds an item to the list of Items
-		//if duplicate item, increase quantity
-	void addItem(ItemADT* itemToAdd);
+
 	//removes the desired item from the list, adds the resale price to the character's gold
 	//could have it sell by index value or by item name or whatever we like
 	void sellItem(std::string itemName);
@@ -37,6 +37,11 @@ public:
 
 	//our beautiful class's toString function, gives all items in inventory
 	std::string listItems();
+
+	//adds an item to the list of Items
+	//if duplicate item, increase quantity
+	void addItem(ItemADT* itemToAdd);
+
 	//returns the amount of gold the character possesses
 	int getGold();
 
@@ -55,7 +60,7 @@ public:
 	bool isInInventory(std::string itemName);
 
 	//deletes this beautiful linked list of Items
-	~Inventory() {};
+	~Inventory();
 };
 
 #endif /* defined(__Inventory__) */

@@ -1,10 +1,13 @@
 //		ItemArmor.h
 //	Author: Beth Dellea
 //  Date created: 11/19/2015
-#ifndef __Item__
-#define __Item___
-#include <string>
+#ifndef __ItemArmor__
+#define __ItemArmor__
+
 #include "ItemADT.h"
+#include "ItemWeapon.h"
+#include "Inventory.h"
+
 class ItemArmor : public ItemADT {
 
 private:
@@ -22,7 +25,7 @@ public:
 	ItemArmor(const ItemArmor& itemToCopy);
 
 	int getQuantity();
-	int changeQuantity(int changeVal);
+	void changeQuantity(int changeVal);
 
 	//returns the item's value
 	int getWorth();

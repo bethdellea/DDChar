@@ -14,7 +14,7 @@
 #include <iostream>
 #include <stdio.h>
 
-Class Human : public RaceADT {
+class Human : public RaceADT {
     int speed;
     std::string* knownLanguages;
     std::string* vision;

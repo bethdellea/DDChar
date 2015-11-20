@@ -14,7 +14,7 @@
 #include <iostream>
 #include <stdio.h>
 
-Class Dwarf : public RaceADT {
+class Dwarf : public RaceADT {
     int speed;
     std::string* knownLanguages;
     std::string* vision;
