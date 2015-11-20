@@ -6,13 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F48E1D9A1BFD3EB100F9D1C9 /* DnDChar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48E1D991BFD3EB100F9D1C9 /* DnDChar.cpp */; };
-		F48E1D9F1BFD3EC100F9D1C9 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48E1D9B1BFD3EC100F9D1C9 /* Inventory.cpp */; };
-		F48E1DA01BFD3EC100F9D1C9 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48E1D9D1BFD3EC100F9D1C9 /* Item.cpp */; };
-		F4FB47EC1BFA984E00F47265 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FB47EB1BFA984E00F47265 /* main.cpp */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		F4FB47E61BFA984E00F47265 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -26,18 +19,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F48E1D991BFD3EB100F9D1C9 /* DnDChar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DnDChar.cpp; sourceTree = SOURCE_ROOT; };
-		F48E1D9B1BFD3EC100F9D1C9 /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = SOURCE_ROOT; };
-		F48E1D9C1BFD3EC100F9D1C9 /* Inventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inventory.h; sourceTree = SOURCE_ROOT; };
-		F48E1D9D1BFD3EC100F9D1C9 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = SOURCE_ROOT; };
-		F48E1D9E1BFD3EC100F9D1C9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = SOURCE_ROOT; };
-		F48E1DA11BFD40DB00F9D1C9 /* D&D */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "D&D"; sourceTree = "<group>"; };
-		F48E1DA21BFD410C00F9D1C9 /* Dwarf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dwarf.h; sourceTree = "<group>"; };
-		F48E1DA31BFD410D00F9D1C9 /* Elf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elf.h; sourceTree = "<group>"; };
-		F48E1DA41BFD410D00F9D1C9 /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
-		F48E1DA51BFD412200F9D1C9 /* RaceADT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceADT.h; sourceTree = "<group>"; };
+		F48E1DA11BFD40DB00F9D1C9 /* D&D */ = {isa = PBXFileReference; lastKnownFileType = text; name = "D&D"; sourceTree = "<group>"; };
 		F4FB47E81BFA984E00F47265 /* D&D */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "D&D"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4FB47EB1BFA984E00F47265 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +37,6 @@
 		F4FB47DF1BFA984E00F47265 = {
 			isa = PBXGroup;
 			children = (
-				F48E1DA11BFD40DB00F9D1C9 /* D&D */,
 				F4FB47EA1BFA984E00F47265 /* D&D */,
 				F4FB47E91BFA984E00F47265 /* Products */,
 			);
@@ -71,16 +53,7 @@
 		F4FB47EA1BFA984E00F47265 /* D&D */ = {
 			isa = PBXGroup;
 			children = (
-				F4FB47EB1BFA984E00F47265 /* main.cpp */,
-				F48E1D9B1BFD3EC100F9D1C9 /* Inventory.cpp */,
-				F48E1D9C1BFD3EC100F9D1C9 /* Inventory.h */,
-				F48E1D9D1BFD3EC100F9D1C9 /* Item.cpp */,
-				F48E1D9E1BFD3EC100F9D1C9 /* Item.h */,
-				F48E1D991BFD3EB100F9D1C9 /* DnDChar.cpp */,
-				F48E1DA51BFD412200F9D1C9 /* RaceADT.h */,
-				F48E1DA21BFD410C00F9D1C9 /* Dwarf.h */,
-				F48E1DA31BFD410D00F9D1C9 /* Elf.h */,
-				F48E1DA41BFD410D00F9D1C9 /* Human.h */,
+				F48E1DA11BFD40DB00F9D1C9 /* D&D */,
 			);
 			path = "D&D";
 			sourceTree = "<group>";
@@ -141,10 +114,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F48E1DA01BFD3EC100F9D1C9 /* Item.cpp in Sources */,
-				F48E1D9A1BFD3EB100F9D1C9 /* DnDChar.cpp in Sources */,
-				F48E1D9F1BFD3EC100F9D1C9 /* Inventory.cpp in Sources */,
-				F4FB47EC1BFA984E00F47265 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
