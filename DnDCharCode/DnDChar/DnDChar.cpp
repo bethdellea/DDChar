@@ -12,6 +12,15 @@ using namespace std;
 
 int main()
 {
+	Inventory* demo = new Inventory();
+	ItemADT* item1 = new ItemArmor("my chestplate", 500, 2);
+	demo->addItem(item1);
+	cout << demo->listItems();
+	demo->addItem(item1);
+	cout << demo->listItems();
+
+
+	/*
 	//Opening welcome
 	cout << "Welcome to the D&D Character Maker demo!" << endl;
 	cout << "For this demo, you will be making an item for your character's inventory." << endl;
@@ -156,8 +165,9 @@ int main()
 			ItemADT* item = new ItemArmor(itemName, worth, numItem);
 			demo->addItem(item);
 			cout << demo->listItems();
-
-	}
+			}
+			*/
+	
 
     return 0;
 }
