@@ -6,6 +6,7 @@
 #include "stdafx.h"
 #include "Inventory.h"
 #include <stdio.h>
+#include <iostream>
 #include <string>
 
 Inventory::Inventory() {
@@ -28,6 +29,7 @@ void Inventory::addItem(ItemADT* itemToAdd) {
 		if (!isInInventory(itemToAdd->getName())) {
 			if (lastItem == nullptr) {
 				lastItem = itemToAdd;
+				firstItem->setNext(itemToAdd);
 			}
 			else {
 				lastItem->setNext(itemToAdd);
@@ -84,10 +86,6 @@ void Inventory::sellItem(std::string itemName) {
 	delete (curr);
 	return returnable; //user should delete this, yo!
 }*/
-
-
-
-
 
 
 
