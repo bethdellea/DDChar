@@ -6,7 +6,8 @@
 #include "stdafx.h"
 #include "Inventory.h"
 #include <stdio.h>
-#include <sstream>
+#include <iostream>
+#include <string>
 
 Inventory::Inventory() {
 	numGold = 0;
@@ -28,6 +29,7 @@ void Inventory::addItem(ItemADT* itemToAdd) {
 		if (!isInInventory(itemToAdd->getName())) {
 			if (lastItem == nullptr) {
 				lastItem = itemToAdd;
+				firstItem->setNext(itemToAdd);
 			}
 			else {
 				lastItem->setNext(itemToAdd);
@@ -88,13 +90,19 @@ void Inventory::sellItem(std::string itemName) {
 
 
 
-
-
-
-
 std::string Inventory::listItems() {
-	//try out that stringstream thing, yeah?
-	return "";
+	//work through the linked list pls
+	std::string ownedItems = "";
+	ItemADT* curr = firstItem;
+	while (curr != nullptr) {
+		ownedItems += curr->getName();
+		ownedItems += "\t Quantity: ";
+		ownedItems += std::to_string(curr->getQuantity());
+		ownedItems += "\n";
+		curr = curr->getNext();
+	}
+
+	return ownedItems;
 }
 
 //returns the amount of gold the character possesses

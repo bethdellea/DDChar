@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
+<<<<<<< HEAD
 Debug|Win32|C:\Users\Samantha\Documents\GitHub\DDChar\DnDCharCode\|
+=======
+Debug|Win32|C:\Users\Beth\Documents\GitHub\DDChar\DnDCharCode\|
+>>>>>>> 63add2f03502ef8bb22e18bc6e5aa48e6cfa6fb7
