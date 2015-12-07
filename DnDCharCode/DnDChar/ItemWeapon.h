@@ -4,16 +4,16 @@
 #ifndef __ItemWeapon__
 #define __ItemWeapon__
 
-#include "ItemADT.h"
+#include "Item.h"
 
-class ItemWeapon : public ItemADT {
+class ItemWeapon : public Item {
 
 private:
 	std::string name;
 	int worth;
 	int sellPrice;
 	//int* effects; //assuming effects will be kept in an int array, can definitely change though
-	ItemADT* nextItem; //necessary since we're making Inventory a linked list
+	Item* nextItem; //necessary since we're making Inventory a linked list
 	int quantity; //should increase since we can't have duplicate entries
 	std::string type; 
 
@@ -33,9 +33,9 @@ public:
 	//k I'm not reall sure how this one will work. We'll get there eventually.
 	//void applyEffects();
 
-	ItemADT* getNext();
+	Item* getNext();
 
-	void setNext(ItemADT* upcomingItem);
+	void setNext(Item* upcomingItem);
 
 	std::string getName();
 };

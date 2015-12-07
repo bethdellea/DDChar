@@ -1,60 +1,56 @@
-//		ItemWeapon.cpp
+//		Item.cpp
 //	Author: Beth Dellea
-//  Date created: 11/19/2015
+//  Date created: 12/04/2015
 
 
 #include "stdafx.h"
 #include <sstream>
-#include "ItemWeapon.h"
+#include "Item.h"
 
-ItemWeapon::ItemWeapon(std::string itemName, int itemWorth, int numAdding, std::string itemType) {
+Item::Item(std::string itemName, int itemWorth, int numAdding) {
 	name = itemName;
 	worth = itemWorth;
 	sellPrice = worth / 2; //standard formula, for now
 	quantity = numAdding;
-	type = itemType;
 	nextItem = nullptr;
 }
 
-//ToDo: Copy Constructor
-ItemWeapon::ItemWeapon(const ItemWeapon& ItemToCopy) {
-
+/*
+Item::Item(const Item& ItemToCopy) {
 	name = ItemToCopy->getName();
 	worth = ItemToCopy->getWorth();
 	sellPrice = worth / 2;
 	quantity = ItemToCopy->getQuantity();
-	type = ItemToCopy->type; //may or may not work in a real environment, this wasn't made in the solution
 	nextItem = nullptr; //should this be null or point to whatever the copying item points to??
 }
+*/
 
-
-
-int ItemWeapon::getQuantity() {
+int Item::getQuantity() {
 	return quantity;
 }
-void ItemWeapon::changeQuantity(int changeVal) {
+void Item::changeQuantity(int changeVal) {
 	quantity += changeVal; //if decreasing, make sure changeVal is negative!!
 }
 
 
 //returns the item's value
-int ItemWeapon::getWorth() {
+int Item::getWorth() {
 	return worth;
 }
 //returns the price the item will sell for -- could be stored as a var or calculated based on the worth
-int ItemWeapon::getSellPrice() {
+int Item::getSellPrice() {
 	return sellPrice;
 }
 
-Item* ItemWeapon::getNext() {
+Item* Item::getNext() {
 	return nextItem;
 }
 
-void ItemWeapon::setNext(Item* upcomingItem) {
+void Item::setNext(Item* upcomingItem) {
 	nextItem = upcomingItem;
 }
 
 
-std::string ItemWeapon::getName() {
+std::string Item::getName() {
 	return name;
 }

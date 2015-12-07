@@ -5,6 +5,7 @@
 
 #include "stdafx.h"
 #include "Inventory.h"
+#include "Item.cpp"
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -18,10 +19,20 @@ Inventory::Inventory() {
 
 //TODO: copy constructor
 Inventory::Inventory(const Inventory& inventoryIn) {
-
+	numGold = inventoryIn->getGold();
+	Item* curr = inventoryIn->firstItem;		//seems to hypothetically work
+	firstItem = new Item(curr);				//unable to test because of visual studio issues, unfortunately :/
+	Item* copiedCurr = firstItem;			//also probably laziness but whatever
+	curr = curr->getNext();
+	while (curr != nullptr) {
+		Item* nextItem = new Item(curr);		//if we can make the copy constructor virtual, that is
+		copiedCurr->setNext(nextItem);
+		curr = curr->getNext();
+	}
+	lastItem = nextItem;
 }
 
-void Inventory::addItem(ItemADT* itemToAdd) {
+void Inventory::addItem(Item* itemToAdd) {
 	if (firstItem == nullptr) {
 		firstItem = itemToAdd;
 	}
@@ -37,8 +48,8 @@ void Inventory::addItem(ItemADT* itemToAdd) {
 		}
 		else {
 			int itemIndx = getIndex(itemToAdd->getName());
-			ItemADT* curr = firstItem;
-			ItemADT* temp = nullptr;
+			Item* curr = firstItem;
+			Item* temp = nullptr;
 			for (int i = 0; i < itemIndx; i++) {
 				temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 				curr = curr->getNext();		//if that one was wrong, so is this.
@@ -50,8 +61,8 @@ void Inventory::addItem(ItemADT* itemToAdd) {
 void Inventory::sellItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
 	//loop through items for that index value
-	ItemADT* curr = firstItem;
-	ItemADT* temp = nullptr; //holds the pointer to the previous Item object
+	Item* curr = firstItem;
+	Item* temp = nullptr; //holds the pointer to the previous Item object
 	for (int i = 0; i < itemIndx; i++) {
 		temp = curr;
 		curr = curr->getNext();
@@ -69,31 +80,31 @@ void Inventory::sellItem(std::string itemName) {
 
 
 //CAPS SO THIS COMMENT STANDS OUT. Had to comment this function out because it instantiates an ItemADT in line 83, but ItemADT's can't be instantiated.
-
+/*
 
 
 //removes all of the item rn, sorry not sorry
-/*ItemADT* Inventory::removeItem(std::string itemName) {
+Item* Inventory::removeItem(std::string itemName) {
 	int itemIndex = getIndex(itemName);
-	ItemADT* curr = firstItem;
-	ItemADT* temp = nullptr;
+	Item* curr = firstItem;
+	Item* temp = nullptr;
 	for (int i = 0; i < itemIndex; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 		curr = curr->getNext();		//if that one was wrong, so is this.
 	}
 	temp->setNext(curr->getNext());
-	ItemADT* returnable = new ItemADT(*curr);//makes a copy for returning purposes
+	Item* returnable = new Item(*curr); //makes a copy for returning purposes --> if the copy constructor does the thing, it'd work
 	delete (curr);
 	return returnable; //user should delete this, yo!
-}*/
+}
 
-
+*/
 
 
 std::string Inventory::listItems() {
 	//work through the linked list pls
 	std::string ownedItems = "";
-	ItemADT* curr = firstItem;
+	Item* curr = firstItem;
 	while (curr != nullptr) {
 		ownedItems += curr->getName();
 		ownedItems += "\t Quantity: ";
@@ -124,10 +135,10 @@ void Inventory::removeGold(int withdrawal) {
 }
 
 //returns a copy of the item we're looking for
-ItemADT* Inventory::getItem(std::string itemName) {
+Item* Inventory::getItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
-	ItemADT* curr = firstItem;
-	ItemADT* temp = nullptr;
+	Item* curr = firstItem;
+	Item* temp = nullptr;
 	for (int i = 0; i < itemIndx; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 		curr = curr->getNext();		//if that one was wrong, so is this.
@@ -137,7 +148,7 @@ ItemADT* Inventory::getItem(std::string itemName) {
 
 //returns the index position of the item by its name
 int Inventory::getIndex(std::string itemName) {
-	ItemADT* curr = firstItem;
+	Item* curr = firstItem;
 	int indx = 0;
 	//traverse the list until the name matches
 	while (curr->getName()!= itemName) {
@@ -148,7 +159,7 @@ int Inventory::getIndex(std::string itemName) {
 }
 
 bool Inventory::isInInventory(std::string itemName) {
-	ItemADT* curr = firstItem;
+	Item* curr = firstItem;
 
 	while (curr !=nullptr) {
 		if (curr->getName() == itemName) {
@@ -162,8 +173,8 @@ bool Inventory::isInInventory(std::string itemName) {
 
 //deletes this beautiful linked list of Items
 Inventory::~Inventory() {
-	ItemADT* curr = firstItem;
-	ItemADT* next  = nullptr;
+	Item* curr = firstItem;
+	Item* next  = nullptr;
 	while (curr != nullptr) {
 		next = curr->getNext();
 		delete curr;

@@ -8,7 +8,7 @@
 
 #include "ItemWeapon.h"
 #include "ItemArmor.h"
-#include "ItemADT.h"
+#include "Item.h"
 #include <string>
 
 class removeBadItemException : std::exception {};
@@ -18,8 +18,8 @@ class Inventory {
 private:
 	
 	int numGold;
-	ItemADT* firstItem; //let's do this linked list thing
-	ItemADT* lastItem;
+	Item* firstItem; //let's do this linked list thing
+	Item* lastItem;
 
 
 	//removes the desired item from the list, adds the resale price to the character's gold
@@ -27,7 +27,7 @@ private:
 	void sellItem(std::string itemName);
 	//removes an item from the character's inventory
 		//removes every one of the item, not just one, because simplicity.
-	ItemADT* removeItem(std::string itemName);
+	Item* removeItem(std::string itemName);
 
 
 public:
@@ -40,7 +40,7 @@ public:
 
 	//adds an item to the list of Items
 	//if duplicate item, increase quantity
-	void addItem(ItemADT* itemToAdd);
+	void addItem(Item* itemToAdd);
 
 	//returns the amount of gold the character possesses
 	int getGold();
@@ -52,7 +52,7 @@ public:
 	void removeGold(int withdrawal);
 
 	//returns a copy of the item we're looking for
-	ItemADT* getItem(std::string itemName);
+	Item* getItem(std::string itemName);
 
 	//returns the index position of the item by its name
 	int getIndex(std::string itemName);

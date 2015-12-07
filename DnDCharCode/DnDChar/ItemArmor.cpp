@@ -16,7 +16,13 @@ ItemArmor::ItemArmor(std::string itemName, int itemWorth, int numAdding) {
 }
 
 //ToDo: Copy Constructor
-ItemArmor::ItemArmor(const ItemArmor& ItemToCopy) {}
+ItemArmor::ItemArmor(const ItemArmor& ItemToCopy) {
+	name = ItemToCopy->getName();
+	worth = ItemToCopy->getWorth();
+	sellPrice = worth / 2;
+	quantity = ItemToCopy->getQuantity();
+	nextItem = nullptr; //should this be null or point to whatever the copying item points to??
+}
 
 
 
@@ -37,11 +43,11 @@ int ItemArmor::getSellPrice() {
 	return sellPrice;
 }
 
-ItemADT* ItemArmor::getNext() {
+Item* ItemArmor::getNext() {
 	return nextItem;
 }
 
-void ItemArmor::setNext(ItemADT* upcomingItem) {
+void ItemArmor::setNext(Item* upcomingItem) {
 	nextItem = upcomingItem;
 }
 
