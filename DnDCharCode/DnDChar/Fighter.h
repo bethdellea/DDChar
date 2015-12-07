@@ -6,15 +6,24 @@
 #define _DDChar_Fighter
 
 #include "ClassADT.h"
+#include "ItemWeapon.h"
 
 class Fighter : ClassADT {
 
 private:
 	//Class skills never change, so can be constant
-	const std::string* skills;
+	//Note that skills is static, as it is the same for all fighters
+	static const std::string const skills[10];
+
 	//Proficiencies can be added to by race, so will not be constant
+	//Initialized here, as {} syntax does not work to initialize data members
 	std::string* profs;
-	const int hitDie, ranks;
+
+	int sizeProf;
+
+	std::string alignment;
+
+	int hitDie, ranks;
 
 public:
 
@@ -24,12 +33,9 @@ public:
 	//Sets hitDie to 10 and generates random HP value
 	Fighter();
 
-	//Deep copy constructor for skills and profs
-	Fighter(const Fighter& fighter);
-
 	//Walks the player through assigning an aligment in the constructor
 	//No alignment restrictions for fighters
-	void giveAlignment();
+	std::string giveAlignment();
 
 	//Adds a pseudo-random amount of HP to a character
 	//Max value is 10 (based on hitDie)
@@ -43,18 +49,18 @@ public:
 	//Determines how many skill ranks the character gets per level
 	//Amount is fixed by class, added to by modifier
 	//Modifier is based on character's Intelligence score
-	int addRanks(int modifier);
+	int addRanks(const int modifier);
 
 	//Determines if a character is proficient with a given item
 	//Compares an identifier in Item class with an array of
 	//proficiencies in Character, stored as strings
-	bool isProf(/*Item item*/);
+	bool isProf(std::string ItemType);
 
 	//Adds a proficiency to the character's proficiencies
 	void addProf(std::string prof);
 
-	//Adds Fighter's conditional Will save bonus against fear effects
-	void bravery();
+	//Prints available proficiencies
+	void printProfs();
 
 	//Establishes Fighter's Armor Training feature
 	//Modifies skill bonus in Body's skill array
@@ -68,8 +74,8 @@ public:
 	void printProfs();
 
 	//Deletes skills and profs
-	~Fighter() {};
-
+	~Fighter();
+	
 };
 
 #endif

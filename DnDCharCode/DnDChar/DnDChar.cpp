@@ -6,12 +6,18 @@
 #include "ItemWeapon.h"
 #include "ItemArmor.h"
 #include "Inventory.h"
+#include "Fighter.h"
 #include <string>
 
 using namespace std;
 
 int main()
 {
+
+	Fighter* aragorn = new Fighter();
+	aragorn->printProfs();
+	aragorn->addProf("Exotic");
+	aragorn->printProfs();
 	/*
 	//Opening welcome
 	cout << "Welcome to the D&D Character Maker demo!" << endl;
@@ -151,7 +157,7 @@ int main()
 					cout << "Hey, that's the wrong key! Have you been paying attention?";
 				}
 			}
-			*/
+			
 			//Creates and adds to Inventory, then prints.
 			Inventory* demo = new Inventory();
 			//ItemADT* item = new ItemArmor(itemName, worth, numItem);
@@ -163,10 +169,8 @@ int main()
 			demo->addItem(item2);
 			cout << demo->listItems() << std::endl;
 			demo->addItem(item3);
-			cout << demo->listItems();
-			
-			
-	
+			cout << demo->listItems();*/
+
 
     return 0;
 }

@@ -6,18 +6,30 @@
 #define _DDChar_Class_ADT_
 
 #include <iostream>
+#include <time.h>
+#include <string>
+#include <array>
+
 
 class ClassADT {
 
 public:
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
-	virtual void giveAlignment() = 0;
+	virtual std::string giveAlignment() = 0;
 
 	//Adds a pseudo-random amount of HP to a character
 	//RNG depends on class
 	//Modifier is based on character's Constitution score.
 	virtual int rollHP(int modifier) = 0;
+
+	//Returns a random number with values bewteen min and max, including both min and max
+	int generateRandomNum(int min, int max)
+	{
+		srand(time(NULL));
+
+		return rand() % (max - min + 1) + min;
+	}
 
 	//Determines if a given skill is a class skill
 	//Compares to an array of strings stored in Class
@@ -26,21 +38,18 @@ public:
 	//Determines how many skill ranks the character gets per level
 	//Amount is fixed by class, added to by modifier
 	//Modifier is based on character's Intelligence score
-	virtual int addRanks(int modifier) = 0;
+	virtual int addRanks(const int modifier) = 0;
 
 	//Determines if a character is proficient with a given item
 	//Compares an identifier in Item class with an array of
 		//proficiencies in Character, stored as strings
-	virtual bool isProf(/*Item item*/) = 0;
+	virtual bool isProf(std::string itemType) = 0;
 
 	//Adds a proficiency to the character's proficiencies
 	virtual void addProf(std::string prof) = 0;
 
 	//Prints available proficiencies
 	virtual void printProfs() = 0;
-
-	//Prints available proficiencies
-	void printProfs();
 
 	//Virtual default destructor to ensure more specific destructors are called
 	virtual ~ClassADT() {};
