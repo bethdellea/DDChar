@@ -1,18 +1,28 @@
-﻿Build started 12/6/2015 10:00:56 PM.
+<<<<<<< HEAD
+﻿Build started 12/6/2015 8:29:39 PM.
      1>Project "C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\DnDChar\DnDChar.vcxproj" on node 2 (Build target(s)).
+=======
+<<<<<<< HEAD
+﻿Build started 11/20/2015 10:29:52 AM.
+     1>Project "C:\Users\Samantha\Documents\GitHub\DDChar\DnDCharCode\DnDChar\DnDChar.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         DnDChar.vcxproj -> C:\Users\Samantha\Documents\GitHub\DDChar\DnDCharCode\Debug\DnDChar.exe
+     1>Done Building Project "C:\Users\Samantha\Documents\GitHub\DDChar\DnDCharCode\DnDChar\DnDChar.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05
+=======
+﻿Build started 11/21/2015 9:03:22 AM.
+     1>Project "C:\Users\Beth\Documents\GitHub\DDChar\DnDCharCode\DnDChar\DnDChar.vcxproj" on node 2 (Build target(s)).
+>>>>>>> origin/master
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\DnDChar.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt DnDChar.cpp Fighter.cpp
-         Fighter.cpp
-     1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\classadt.h(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\fighter.h(16): warning C4114: same type qualifier used more than once
-     1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\fighter.h(43): warning C4373: 'Fighter::rollHP': virtual function overrides 'ClassADT::rollHP', previous versions of the compiler did not override when parameters only differed by const/volatile qualifiers
-         c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\classadt.h(24): note: see declaration of 'ClassADT::rollHP'
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\DnDChar.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt DnDChar.cpp
          DnDChar.cpp
      1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\classadt.h(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
      1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\fighter.h(16): warning C4114: same type qualifier used more than once
      1>c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\fighter.h(43): warning C4373: 'Fighter::rollHP': virtual function overrides 'ClassADT::rollHP', previous versions of the compiler did not override when parameters only differed by const/volatile qualifiers
          c:\users\joseph\git_repositories\ddchar\dndcharcode\dndchar\classadt.h(24): note: see declaration of 'ClassADT::rollHP'
-         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\Debug\DnDChar.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\Debug\DnDChar.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\Debug\DnDChar.lib" /MACHINE:X86 Debug\DnDChar.obj
          Debug\Inventory.obj
@@ -20,10 +30,14 @@
          Debug\ItemWeapon.obj
          Debug\Fighter.obj
          Debug\stdafx.obj
-         LINK : C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\Debug\DnDChar.exe not found or not built by the last incremental link; performing full link
          DnDChar.vcxproj -> C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\Debug\DnDChar.exe
      1>Done Building Project "C:\Users\Joseph\Git_Repositories\DDChar\DnDCharCode\DnDChar\DnDChar.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.10
+<<<<<<< HEAD
+Time Elapsed 00:00:00.72
+=======
+Time Elapsed 00:00:03.83
+>>>>>>> 63add2f03502ef8bb22e18bc6e5aa48e6cfa6fb7
+>>>>>>> origin/master
