@@ -70,9 +70,6 @@ public:
 	//Modifies attack modifier *only if* trained weapon is equipped
 	void weaponTrain();
 
-	//Prints available proficiencies
-	void printProfs();
-
 	//Deletes skills and profs
 	~Fighter();
 	
