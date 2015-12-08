@@ -5,6 +5,7 @@
 #ifndef _DDChar_Fighter_
 #define _DDChar_Fighter
 
+#include "stdafx.h"
 #include "ClassADT.h"
 #include "ItemWeapon.h"
 
