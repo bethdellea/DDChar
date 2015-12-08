@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 class Human : public RaceADT {
+private:
     int speed;
     std::string* knownLanguages;
     std::string* vision;
@@ -29,6 +30,8 @@ public:
     Human(const Human& humanToCopy);
     //Destructor
     ~Human();
+    //Print speed of character
+    void printSpeed();
     //Get speed of character
     int getSpeed();
     //Increase speed of character
@@ -45,7 +48,6 @@ public:
     void changeAbilities();
 
     
-private:
     
 };
 

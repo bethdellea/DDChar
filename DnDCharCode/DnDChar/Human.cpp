@@ -23,11 +23,11 @@
 #include <iostream>
 
 Human::Human() {
-    int speed = 30;
-    std::string* knownLanguages = new std::string[50];
-    std::string* vision = new std::string[50];
-    int languageIdx = 0;
-    int visionIdx = 0;
+    speed = 30;
+    knownLanguages = new std::string[50];
+    vision = new std::string[50];
+    languageIdx = 0;
+    visionIdx = 0;
     
     knownLanguages[0] = "Common";
     languageIdx ++;
@@ -60,6 +60,9 @@ Human::~Human() {
     
 }
 
+void Human::printSpeed() {
+    std::cout << "Your current speed is: " << speed <<std::endl;
+}
 
 int Human::getSpeed() {
     return speed;
@@ -72,34 +75,64 @@ int Human::changeSpeed(int amt) {
 }
 
 void Human::addLanguage(std::string newLanguage) {
+    for (int i = 0; i < languageIdx; i++) {
+        if (newLanguage == *(knownLanguages + i)) {
+            std::cout << "You already know that language." << std::endl;
+            return;
+        }
+    }
+    
     knownLanguages[languageIdx] = newLanguage;
     languageIdx++;
+
 }
 
 void Human::printLanguages() {
-    for (int i = 0; i < languageIdx; i++) {
-        if (i == languageIdx - 1) { //If last in the list, don't print a comma afterwards
-            std::cout << knownLanguages[i] <<std::endl;
+    std::cout << "You know the languages: ";
+    if (languageIdx == 1) {
+        std::cout << knownLanguages[0] << std::endl;
+    }
+    else {
+        for (int i = 0; i < languageIdx; i++) {
+            
+            if (i == languageIdx - 1) { //If last in the list, don't print a comma afterwards
+                std::cout <<"and " << knownLanguages[i] <<std::endl;
+            }
+            else {
+                std::cout << knownLanguages [i]<< ", ";
+            }
+            
         }
-        else {
-            std::cout << knownLanguages [i]<< ", " <<std::endl;
-        }
+        
     }
 }
 
 void Human::addVision(std::string newVision) {
+    for (int i = 0; i < visionIdx; i++) {
+        if (newVision == *(vision + i)) {
+            std::cout << "You already have that vision." <<std::endl;
+            return;
+        }
+    }
     vision[visionIdx] = newVision;
     visionIdx++;
+
 }
 
 
 void Human::printVision() {
-    for (int i = 0; i < visionIdx; i++) {
-        if (i == visionIdx - 1) { //If last in the list, don't print a comma afterwards
-            std::cout << vision[i] <<std::endl;
-        }
-        else {
-            std::cout << vision [i]<< ", " <<std::endl;
+    std::cout << "Your current types of vision include: ";
+    if (visionIdx == 1) {
+        std::cout << vision[0] << std::endl;
+    }
+    else {
+        for (int i = 0; i < visionIdx; i++) { //If last in list, don't print a comma afterwards
+            if (i == visionIdx - 1) {
+                std::cout << "and " << vision[i]<<std::endl;;
+            }
+            else {
+                std::cout << vision [i]<< ", ";
+            }
         }
     }
 }
@@ -107,6 +140,6 @@ void Human::printVision() {
 
 //Stat bonus
 void Human::changeAbilities() {
-    //+2 Dexterity, +2 Intelligence, –2 Constitution:
+    //+2 to any chosen abilities
 }
 

@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 class Dwarf : public RaceADT {
+private:
     int speed;
     std::string* knownLanguages;
     std::string* vision;
@@ -28,6 +29,8 @@ public:
     Dwarf(const Dwarf& dwarfToCopy);
     //Destructor
     ~Dwarf();
+    //Print speed of character
+    void printSpeed();
     //Get speed of character
     int getSpeed();
     //Increase speed of character
@@ -43,8 +46,6 @@ public:
     //Stat bonus
     void changeAbilities();
    
-
-private:
 
 };
 #endif

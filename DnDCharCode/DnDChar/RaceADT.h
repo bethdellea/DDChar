@@ -9,19 +9,20 @@
 #ifndef D_D_RaceADT_h
 #define D_D_RaceADT_h
 
+#include <iostream>
+#include <stdio.h>
+#include <string>
+
 class RaceADT {
+private:
+    
 public:
-    //returns the total number of bytes of memory this object is using
-    virtual int calcMemUsage()=0;
-    
-    //returns the total amount of time used by this object (number of lines of code executed)
-    virtual int getElapsedTime()=0;
-    
-    //Ensure that the child destructors are called
-    virtual ~RaceADT();
     
     //Returns speed of character
     virtual int getSpeed()=0;
+    
+    //Prints speed of character
+    virtual void printSpeed()=0;
     
     //Increase speed stat
     virtual int changeSpeed (int amt)=0;
@@ -32,17 +33,20 @@ public:
     //Print a list of known languages
     virtual void printLanguages()=0;
     
+    //Add a new vision
+    virtual void addVision(std::string newVision)=0;
+
+    
+    //Print a list of vision
+    virtual void printVision()=0;
+    
     //Give a stat bonus
     virtual void changeAbilities()=0;
     
-    //Add weapon proficiencies
-    virtual void weaponProficiencies()=0;
-    
-    //Print a list of weapon proficiences
-    virtual void printProficiencies()=0;
+  
 
     
-private:
+
     
 };
 

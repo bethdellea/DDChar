@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 class Elf: public RaceADT {
+private:
     int speed;
     std::string* knownLanguages;
     std::string* vision;
@@ -29,6 +30,8 @@ public:
     Elf(const Elf& elfToCopy);
     //Destructor
     ~Elf();
+    //Print speed of character
+    void printSpeed();
     //Get speed of character
     int getSpeed();
     //Increase speed of character
@@ -44,8 +47,6 @@ public:
     //Stat bonus
     void changeAbilities();
 
-
-private:
     
 };
 
