@@ -13,7 +13,7 @@ Inventory::Inventory() {
 	numGold = 0;
 	firstItem = nullptr;
 	lastItem = nullptr;
-
+	//hi nicole
 }
 
 //TODO: copy constructor
