@@ -1,28 +1,22 @@
-//		Item.cpp
+//			Item.cpp
 //	Author: Beth Dellea
-//  Date created: 12/04/2015
-
+//	Date Created: 12/3/2015
 
 #include "stdafx.h"
-#include <sstream>
 #include "Item.h"
 
+/*			//nice in theorey, but since they can't be virtual it messes up things down the line, I think
 Item::Item(std::string itemName, int itemWorth, int numAdding) {
-	name = itemName;
-	worth = itemWorth;
-	sellPrice = worth / 2; //standard formula, for now
-	quantity = numAdding;
-	nextItem = nullptr;
+name = itemName;
+worth = itemWorth;
+sellPrice = worth / 2; //standard formula, for now
+quantity = numAdding;
+nextItem = nullptr;
 }
 
-/*
-Item::Item(const Item& ItemToCopy) {
-	name = ItemToCopy->getName();
-	worth = ItemToCopy->getWorth();
-	sellPrice = worth / 2;
-	quantity = ItemToCopy->getQuantity();
-	nextItem = nullptr; //should this be null or point to whatever the copying item points to??
-}
+//ToDo: Copy Constructor
+Item::Item(const Item* ItemToCopy) {}
+
 */
 
 int Item::getQuantity() {

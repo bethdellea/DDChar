@@ -15,13 +15,14 @@ private:
 	//int* effects; //assuming effects will be kept in an int array, can definitely change though
 	Item* nextItem; //necessary since we're making Inventory a linked list
 	int quantity; //should increase since we can't have duplicate entries
-	std::string type; 
+	std::string type;
 
 public:
 	// constructor
 	ItemWeapon(std::string itemName, int itemWorth, int numAdding, std::string itemType);
 	//copy constructor
 	ItemWeapon(const ItemWeapon& itemToCopy);
+
 
 	int getQuantity();
 	void changeQuantity(int changeVal);
@@ -38,6 +39,15 @@ public:
 	void setNext(Item* upcomingItem);
 
 	std::string getName();
+
+
+	//part of the removal process, returns the removed items to Inventory's remove function
+	//if completely depleted, Inventory needs to remove fully and update itself
+	ItemWeapon* removeSelf(int num);
+
+	//makes and returns a copy of the object via its copy constructor
+	//should be used with Inventory's copy constructor
+	ItemWeapon* copySelf();
 };
 
 #endif /* defined(__Item__) */

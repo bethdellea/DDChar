@@ -18,15 +18,14 @@ ItemWeapon::ItemWeapon(std::string itemName, int itemWorth, int numAdding, std::
 
 //ToDo: Copy Constructor
 ItemWeapon::ItemWeapon(const ItemWeapon& ItemToCopy) {
-
-	name = ItemToCopy->getName();
-	worth = ItemToCopy->getWorth();
+	name = ItemToCopy.name;
+	worth = ItemToCopy.worth;
 	sellPrice = worth / 2;
-	quantity = ItemToCopy->getQuantity();
-	type = ItemToCopy->type; //may or may not work in a real environment, this wasn't made in the solution
-	nextItem = nullptr; //should this be null or point to whatever the copying item points to??
-}
+	quantity = ItemToCopy.quantity;
+	type = ItemToCopy.type;
+	nextItem = nullptr;
 
+}
 
 
 int ItemWeapon::getQuantity() {
@@ -57,4 +56,21 @@ void ItemWeapon::setNext(Item* upcomingItem) {
 
 std::string ItemWeapon::getName() {
 	return name;
+}
+
+
+
+ItemWeapon* ItemWeapon::removeSelf(int num) {
+	//checking for appropriate removal quantity is done in Inventory, assumed to be right here
+	ItemWeapon* copiedSelf = new ItemWeapon(*this);
+	int quantDiff = copiedSelf->getQuantity() - num; //set the quantity of what's being returned to the number we want
+	copiedSelf->changeQuantity(quantDiff*-1);		//we need to remove the difference between actual and desired quant
+	this->changeQuantity(num*-1); //remove those being removed from this actual object
+	return copiedSelf;
+
+}
+
+ItemWeapon* ItemWeapon::copySelf() {
+	ItemWeapon* copied = new ItemWeapon(*this);
+	return copied;
 }

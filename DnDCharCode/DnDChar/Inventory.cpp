@@ -5,7 +5,6 @@
 
 #include "stdafx.h"
 #include "Inventory.h"
-#include "Item.cpp"
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -18,15 +17,16 @@ Inventory::Inventory() {
 }
 
 //TODO: copy constructor
-Inventory::Inventory(const Inventory& inventoryIn) {
-	numGold = inventoryIn->getGold();
-	Item* curr = inventoryIn->firstItem;		//seems to hypothetically work
-	firstItem = new Item(curr);				//unable to test because of visual studio issues, unfortunately :/
-	Item* copiedCurr = firstItem;			//also probably laziness but whatever
+Inventory::Inventory(const Inventory* inventoryIn) {
+	numGold = inventoryIn->numGold;
+	Item* curr = inventoryIn->firstItem;
+	firstItem = curr->copySelf();
+	Item* copiedCurr = firstItem;
+	Item* nextItem = nullptr;
 	curr = curr->getNext();
 	while (curr != nullptr) {
-		Item* nextItem = new Item(curr);		//if we can make the copy constructor virtual, that is
-		copiedCurr->setNext(nextItem);
+		nextItem = curr->copySelf();		//workaround for the fact that copy constructors can't be virtual
+		copiedCurr->setNext(nextItem);			//hypothetically works for nonexistant items
 		curr = curr->getNext();
 	}
 	lastItem = nextItem;
@@ -44,6 +44,7 @@ void Inventory::addItem(Item* itemToAdd) {
 			}
 			else {
 				lastItem->setNext(itemToAdd);
+				lastItem = itemToAdd;
 			}
 		}
 		else {
@@ -58,6 +59,8 @@ void Inventory::addItem(Item* itemToAdd) {
 		}
 	}
 }
+
+
 void Inventory::sellItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
 	//loop through items for that index value
@@ -67,38 +70,63 @@ void Inventory::sellItem(std::string itemName) {
 		temp = curr;
 		curr = curr->getNext();
 	}
-	if (curr->getQuantity() > 1) {
-		curr->changeQuantity(-1);
+	std::cout << "You have " << curr->getQuantity() << " of this item." << std::endl;
+	std::cout << "How many of " << itemName << " would you like to sell?";
+	int quant = 0;
+	//Checks user input to make sure it's an integer
+	while (!(std::cin >> quant) || quant == 0 || quant > curr->getQuantity()) {
+		//Some code I found online. Basically catches when cin cannot turn the input into an integer
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "I'm sorry, but the key you pressed was not a valid input or tried to sell too mmany items. Please try again." << std::endl;
 	}
-	else {
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	if (curr->getQuantity() > quant) {
+		curr->changeQuantity(quant * -1);
+		addGold(curr->getSellPrice()*quant);
+	}
+	else if (curr->getQuantity() == quant) {
 		//assuming that loop got us where we want to be... requires testing
 		temp->setNext(curr->getNext());
-		addGold(curr->getSellPrice()); //no haggling here, unfortunately
+		addGold(curr->getSellPrice()*quant); //no haggling here, unfortunately
 		delete(curr);
 	}
+
 }
 
 
-//CAPS SO THIS COMMENT STANDS OUT. Had to comment this function out because it instantiates an ItemADT in line 83, but ItemADT's can't be instantiated.
-/*
 
 
-//removes all of the item rn, sorry not sorry
 Item* Inventory::removeItem(std::string itemName) {
 	int itemIndex = getIndex(itemName);
 	Item* curr = firstItem;
 	Item* temp = nullptr;
 	for (int i = 0; i < itemIndex; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
-		curr = curr->getNext();		//if that one was wrong, so is this.
+		curr = curr->getNext();
 	}
-	temp->setNext(curr->getNext());
-	Item* returnable = new Item(*curr); //makes a copy for returning purposes --> if the copy constructor does the thing, it'd work
-	delete (curr);
+	std::cout << "You have " << curr->getQuantity() << " of this item." << std::endl;
+	std::cout << "How many of " << itemName << "would you like to remove?";
+	int quant = 0;
+	//Checks user input to make sure it's an integer
+	while (!(std::cin >> quant) || quant == 0 || quant > curr->getQuantity()) {
+		//Some code I found online. Basically catches when cin cannot turn the input into an integer
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	Item* returnable = curr->removeSelf(quant); //makes a copy for returning purposes
+	if (quant == curr->getQuantity()) { //if we remove all of the thing, it needs to be removed from the inventory entirely
+		temp->setNext(curr->getNext());
+		delete (curr);
+	}
 	return returnable; //user should delete this, yo!
 }
 
-*/
+
 
 
 std::string Inventory::listItems() {
@@ -106,10 +134,7 @@ std::string Inventory::listItems() {
 	std::string ownedItems = "";
 	Item* curr = firstItem;
 	while (curr != nullptr) {
-		ownedItems += curr->getName();
-		ownedItems += "\t Quantity: ";
-		ownedItems += std::to_string(curr->getQuantity());
-		ownedItems += "\n";
+		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\n";
 		curr = curr->getNext();
 	}
 
@@ -122,7 +147,7 @@ int Inventory::getGold() {
 }
 
 //adds gold to the total!
-void Inventory::addGold(int deposit){
+void Inventory::addGold(int deposit) {
 	numGold += deposit;
 }
 
@@ -151,7 +176,7 @@ int Inventory::getIndex(std::string itemName) {
 	Item* curr = firstItem;
 	int indx = 0;
 	//traverse the list until the name matches
-	while (curr->getName()!= itemName) {
+	while (curr->getName() != itemName && curr->getNext() != nullptr) {
 		curr = curr->getNext();
 		indx++;
 	}
@@ -161,7 +186,7 @@ int Inventory::getIndex(std::string itemName) {
 bool Inventory::isInInventory(std::string itemName) {
 	Item* curr = firstItem;
 
-	while (curr !=nullptr) {
+	while (curr != nullptr) {
 		if (curr->getName() == itemName) {
 			return true;
 		}
@@ -174,7 +199,7 @@ bool Inventory::isInInventory(std::string itemName) {
 //deletes this beautiful linked list of Items
 Inventory::~Inventory() {
 	Item* curr = firstItem;
-	Item* next  = nullptr;
+	Item* next = nullptr;
 	while (curr != nullptr) {
 		next = curr->getNext();
 		delete curr;

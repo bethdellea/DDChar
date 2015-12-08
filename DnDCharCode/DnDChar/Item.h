@@ -7,7 +7,7 @@
 #include <string>
 
 class Item {
-	
+
 private:
 	std::string name;
 	int worth;
@@ -19,23 +19,32 @@ private:
 	bool isWeapon;
 	std::string type; //only for weapons, rel isProf
 
+
 public:
-	
-	virtual int getQuantity() = 0;
-	virtual void changeQuantity(int changeVal) = 0;
+	//Item(std::string itemName, int itemWorth, int numAdding);   //need to do this in a way that it'll make whatever it needs, you know????
+	//Item(const Item* itemIn);
+	virtual int getQuantity();
+	virtual void changeQuantity(int changeVal);
 
 	//returns the item's value
-	virtual int getWorth() = 0;
+	virtual int getWorth();
 	//returns the price the item will sell for -- could be stored as a var or calculated based on the worth
-	virtual int getSellPrice() = 0;
+	virtual int getSellPrice();
+
 	//k I'm not reall sure how this one will work. We'll get there eventually.
 	//void applyEffects();
 
-	virtual Item* getNext() = 0;
+	virtual Item* getNext();
 
-	virtual void setNext(Item* upcomingItem) = 0;
+	virtual void setNext(Item* upcomingItem);
 
-	virtual std::string getName() = 0;
+	virtual std::string getName();
+
+	//part of the removal process, returns the removed items to Inventory's remove function
+	//if completely depleted, Inventory needs to remove fully and update itself
+	virtual Item* removeSelf(int num) = 0;
+
+	virtual Item* copySelf() = 0;
 };
 
 #endif /* defined(__Item__) */

@@ -16,26 +16,17 @@ class removeBadItemException : std::exception {};
 class Inventory {
 	//linked list of items
 private:
-	
+
 	int numGold;
 	Item* firstItem; //let's do this linked list thing
 	Item* lastItem;
 
-
-	//removes the desired item from the list, adds the resale price to the character's gold
-	//could have it sell by index value or by item name or whatever we like
-	void sellItem(std::string itemName);
-	//removes an item from the character's inventory
-		//removes every one of the item, not just one, because simplicity.
-	Item* removeItem(std::string itemName);
-
-
 public:
 	Inventory();
 
-	Inventory(const Inventory& inventoryIn); // <- copy constructor
+	Inventory(const Inventory* inventoryIn); // <- copy constructor
 
-	//our beautiful class's toString function, gives all items in inventory
+											 //our beautiful class's toString function, gives all items in inventory
 	std::string listItems();
 
 	//adds an item to the list of Items
@@ -58,6 +49,17 @@ public:
 	int getIndex(std::string itemName);
 
 	bool isInInventory(std::string itemName);
+
+
+	//removes the desired item from the list, adds the resale price to the character's gold
+	//could have it sell by index value or by item name or whatever we like
+	void sellItem(std::string itemName);
+	//removes an item from the character's inventory
+	//removes every one of the item, not just one, because simplicity.
+	Item* removeItem(std::string itemName);
+
+
+
 
 	//deletes this beautiful linked list of Items
 	~Inventory();

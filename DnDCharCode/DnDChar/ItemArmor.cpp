@@ -4,7 +4,6 @@
 
 
 #include "stdafx.h"
-#include <sstream>
 #include "ItemArmor.h"
 
 ItemArmor::ItemArmor(std::string itemName, int itemWorth, int numAdding) {
@@ -17,11 +16,12 @@ ItemArmor::ItemArmor(std::string itemName, int itemWorth, int numAdding) {
 
 //ToDo: Copy Constructor
 ItemArmor::ItemArmor(const ItemArmor& ItemToCopy) {
-	name = ItemToCopy->getName();
-	worth = ItemToCopy->getWorth();
+	name = ItemToCopy.name;
+	worth = ItemToCopy.worth;
 	sellPrice = worth / 2;
-	quantity = ItemToCopy->getQuantity();
-	nextItem = nullptr; //should this be null or point to whatever the copying item points to??
+	quantity = ItemToCopy.quantity;
+	nextItem = nullptr;
+
 }
 
 
@@ -54,4 +54,21 @@ void ItemArmor::setNext(Item* upcomingItem) {
 
 std::string ItemArmor::getName() {
 	return name;
+}
+
+
+ItemArmor* ItemArmor::removeSelf(int num) {
+	//checking for appropriate removal quantity is done in Inventory, assumed to be right here
+	ItemArmor* copiedSelf = new ItemArmor(*this);
+	int quantDiff = copiedSelf->getQuantity() - num; //set the quantity of what's being returned to the number we want
+	copiedSelf->changeQuantity(quantDiff*-1);		//we need to remove the difference between actual and desired quant
+	this->changeQuantity(num*-1); //remove those being removed from this actual object
+	return copiedSelf;
+
+}
+
+
+ItemArmor* ItemArmor::copySelf() {
+	ItemArmor* copied = new ItemArmor(*this);
+	return copied;
 }
