@@ -21,15 +21,6 @@ private:
 	Item* firstItem; //let's do this linked list thing
 	Item* lastItem;
 
-
-	//removes the desired item from the list, adds the resale price to the character's gold
-	//could have it sell by index value or by item name or whatever we like
-	void sellItem(std::string itemName);
-	//removes an item from the character's inventory
-		//removes every one of the item, not just one, because simplicity.
-	Item* removeItem(std::string itemName);
-
-
 public:
 	Inventory();
 
@@ -58,6 +49,17 @@ public:
 	int getIndex(std::string itemName);
 
 	bool isInInventory(std::string itemName);
+
+
+	//removes the desired item from the list, adds the resale price to the character's gold
+	//could have it sell by index value or by item name or whatever we like
+	void sellItem(std::string itemName);
+	//removes an item from the character's inventory
+	//removes every one of the item, not just one, because simplicity.
+	Item* removeItem(std::string itemName);
+
+
+
 
 	//deletes this beautiful linked list of Items
 	~Inventory();

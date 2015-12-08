@@ -29,7 +29,7 @@ ItemWeapon::ItemWeapon(const ItemWeapon& ItemToCopy) {
 
 
 //			SHOULD BE TAKEN CARE OF IN ITEM, STILL HERE IN CASE SOMETHING GOES WRONG
-/*
+		//haha guess not
 
 
 int ItemWeapon::getQuantity() {
@@ -62,17 +62,15 @@ std::string ItemWeapon::getName() {
 	return name;
 }
 
-*/
+
 
 ItemWeapon* ItemWeapon::removeSelf(int num) {
-	if (this->quantity >= num) {
+	//checking for appropriate removal quantity is done in Inventory, assumed to be right here
 		ItemWeapon* copiedSelf = new ItemWeapon(*this);
-		int quantDiff = copiedSelf->getQuantity - num; //set the quantity of what's being returned to the number we want
+		int quantDiff = copiedSelf->getQuantity() - num; //set the quantity of what's being returned to the number we want
 		copiedSelf->changeQuantity(quantDiff*-1);		//we need to remove the difference between actual and desired quant
 		this->changeQuantity(num*-1); //remove those being removed from this actual object
 		return copiedSelf;
-	}
-	//removing too many exception
 
 }
 

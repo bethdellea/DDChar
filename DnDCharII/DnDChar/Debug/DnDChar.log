@@ -1,0 +1,28 @@
+﻿Build started 12/8/2015 12:58:01 AM.
+     1>Project "C:\Users\Beth\Desktop\DDChar\DnDCharII\DnDChar\DnDChar.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\DnDChar.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt DnDChar.cpp
+         DnDChar.cpp
+     1>c:\users\beth\desktop\ddchar\dndcharii\dndchar\classadt.h(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\beth\desktop\ddchar\dndcharii\dndchar\fighter.h(16): warning C4114: same type qualifier used more than once
+     1>c:\users\beth\desktop\ddchar\dndcharii\dndchar\fighter.h(43): warning C4373: 'Fighter::rollHP': virtual function overrides 'ClassADT::rollHP', previous versions of the compiler did not override when parameters only differed by const/volatile qualifiers
+         c:\users\beth\desktop\ddchar\dndcharii\dndchar\classadt.h(24): note: see declaration of 'ClassADT::rollHP'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Beth\Desktop\DDChar\DnDCharII\Debug\DnDChar.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Beth\Desktop\DDChar\DnDCharII\Debug\DnDChar.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Beth\Desktop\DDChar\DnDCharII\Debug\DnDChar.lib" /MACHINE:X86 Debug\DnDChar.res
+         Debug\Body.obj
+         Debug\DnDChar.obj
+         Debug\Dwarf.obj
+         Debug\Elf.obj
+         Debug\Fighter.obj
+         Debug\Human.obj
+         Debug\Inventory.obj
+         Debug\Item.obj
+         Debug\ItemArmor.obj
+         Debug\ItemWeapon.obj
+         Debug\stdafx.obj
+         DnDChar.vcxproj -> C:\Users\Beth\Desktop\DDChar\DnDCharII\Debug\DnDChar.exe
+     1>Done Building Project "C:\Users\Beth\Desktop\DDChar\DnDCharII\DnDChar\DnDChar.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.65

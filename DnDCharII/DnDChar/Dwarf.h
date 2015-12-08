@@ -29,7 +29,11 @@ public:
     //Destructor
     ~Dwarf();
     //Get speed of character
-    int getSpeed();
+  
+	
+	// I (BETH) COMMENTED THIS OUT BECAUSE IT DOESN'T EXIST AND THE CODE WOULDN'T BUILD WITH IT IN (caps for visibility) 
+
+	//int getSpeed();
     //Increase speed of character
     int changeSpeed (int amt);
     //Add a new known language

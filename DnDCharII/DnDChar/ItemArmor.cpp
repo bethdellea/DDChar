@@ -27,7 +27,7 @@ ItemArmor::ItemArmor(const ItemArmor& ItemToCopy) {
 
 
 //			SHOULD BE TAKEN CARE OF IN ITEM, STILL HERE IN CASE SOMETHING GOES WRONG
-/*
+			//jk apparently not
 
 int ItemArmor::getQuantity() {
 	return quantity;
@@ -59,17 +59,14 @@ std::string ItemArmor::getName() {
 	return name;
 }
 
-*/
 
 ItemArmor* ItemArmor::removeSelf(int num) {
-	if (this->quantity >= num) {
+	//checking for appropriate removal quantity is done in Inventory, assumed to be right here
 		ItemArmor* copiedSelf = new ItemArmor(*this);
-		int quantDiff = copiedSelf->getQuantity - num; //set the quantity of what's being returned to the number we want
+		int quantDiff = copiedSelf->getQuantity() - num; //set the quantity of what's being returned to the number we want
 		copiedSelf->changeQuantity(quantDiff*-1);		//we need to remove the difference between actual and desired quant
 		this->changeQuantity(num*-1); //remove those being removed from this actual object
 		return copiedSelf;
-	}
-	//removing too many exception
 
 }
 

@@ -22,7 +22,7 @@ Inventory::Inventory(const Inventory* inventoryIn) {
 	Item* curr = inventoryIn->firstItem;		
 	firstItem = curr->copySelf();				
 	Item* copiedCurr = firstItem;   
-	Item* nextItem;
+	Item* nextItem = nullptr;
 	curr = curr->getNext();
 	while (curr != nullptr) {
 		nextItem = curr->copySelf();		//workaround for the fact that copy constructors can't be virtual
@@ -44,6 +44,7 @@ void Inventory::addItem(Item* itemToAdd) {
 			}
 			else {
 				lastItem->setNext(itemToAdd);
+				lastItem = itemToAdd;
 			}
 		}
 		else {
@@ -70,7 +71,7 @@ void Inventory::sellItem(std::string itemName) {
 		curr = curr->getNext();
 	}
 	std::cout << "You have " << curr->getQuantity() << " of this item." << std::endl;
-	std::cout << "How many of " << itemName << "would you like to sell?";
+	std::cout << "How many of " << itemName << " would you like to sell?";
 	int quant = 0;
 	//Checks user input to make sure it's an integer
 	while (!(std::cin >> quant) || quant == 0 || quant > curr->getQuantity()) {
@@ -133,10 +134,7 @@ std::string Inventory::listItems() {
 	std::string ownedItems = "";
 	Item* curr = firstItem;
 	while (curr != nullptr) {
-		ownedItems += curr->getName();
-		ownedItems += "\t Quantity: ";
-		ownedItems += std::to_string(curr->getQuantity());
-		ownedItems += "\n";
+		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\n";
 		curr = curr->getNext();
 	}
 
@@ -178,7 +176,7 @@ int Inventory::getIndex(std::string itemName) {
 	Item* curr = firstItem;
 	int indx = 0;
 	//traverse the list until the name matches
-	while (curr->getName()!= itemName) {
+	while (curr->getName()!= itemName && curr->getNext() !=nullptr) {
 		curr = curr->getNext();
 		indx++;
 	}

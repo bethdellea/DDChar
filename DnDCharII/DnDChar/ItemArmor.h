@@ -25,7 +25,7 @@ public:
 	ItemArmor(const ItemArmor& itemToCopy);
 
 	//			THESE FUNCTIONS SHOULD BE INHERITED FROM ITEM AND STILL BE FUNCTIONAL
-	/*
+			//sssssh! this didn't happen!
 	int getQuantity();
 	void changeQuantity(int changeVal);
 
@@ -42,7 +42,7 @@ public:
 
 	std::string getName();
 
-	*/
+	
 	//part of the removal process, returns the removed items to Inventory's remove function
 		//if completely depleted, Inventory needs to remove fully and update itself
 	ItemArmor* removeSelf(int num);

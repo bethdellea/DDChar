@@ -9,6 +9,8 @@
 #ifndef D_D_RaceADT_h
 #define D_D_RaceADT_h
 
+#include <string>
+
 class RaceADT {
 public:
     //returns the total number of bytes of memory this object is using
@@ -18,8 +20,8 @@ public:
     virtual int getElapsedTime()=0;
     
     //Ensure that the child destructors are called
-    virtual ~RaceADT();
-    
+    //virtual ~RaceADT()=0;			// I (BETH) MADE THIS =0 SO IT WOULD COMPILE (caps for visibility)
+									//then I commented it out entirely, not sure what it was mad about here :(
     //Returns speed of character
     virtual int getSpeed()=0;
     
