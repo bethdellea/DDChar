@@ -60,6 +60,21 @@ std::string ItemWeapon::getName() {
 
 
 
+//makes a string of the item to be added to a file
+std::string ItemWeapon::stringMe() {
+	//idek tbh
+	std::string toReturn = "w\t"; //w because this item is a weapon
+	toReturn += name + "\t";
+	//use stringstream for this shitt
+	std::stringstream myStream;
+	myStream << worth << "\t" << sellPrice << "\t" << quantity << "\t";
+	toReturn += myStream.str() + type;
+
+	return toReturn;
+
+}
+
+
 ItemWeapon* ItemWeapon::removeSelf(int num) {
 	//checking for appropriate removal quantity is done in Inventory, assumed to be right here
 	ItemWeapon* copiedSelf = new ItemWeapon(*this);

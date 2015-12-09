@@ -40,6 +40,8 @@ public:
 
 	virtual std::string getName();
 
+	virtual std::string stringMe() = 0;
+
 	//part of the removal process, returns the removed items to Inventory's remove function
 	//if completely depleted, Inventory needs to remove fully and update itself
 	virtual Item* removeSelf(int num) = 0;

@@ -5,6 +5,7 @@
 
 #include "stdafx.h"
 #include "ItemArmor.h"
+#include <sstream>
 
 ItemArmor::ItemArmor(std::string itemName, int itemWorth, int numAdding) {
 	name = itemName;
@@ -54,6 +55,20 @@ void ItemArmor::setNext(Item* upcomingItem) {
 
 std::string ItemArmor::getName() {
 	return name;
+}
+
+
+
+//makes a string of the item to be added to a file
+std::string ItemArmor::stringMe() {
+	std::string toReturn = "a\t"; //a because this item is armor
+	toReturn += name + "\t";
+	//use stringstream for this shitt
+	std::stringstream myStream;
+	myStream << worth << "\t" << sellPrice << "\t" << quantity << "\t";
+	toReturn += myStream.str();
+
+	return toReturn;
 }
 
 

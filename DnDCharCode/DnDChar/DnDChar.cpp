@@ -11,13 +11,19 @@
 
 using namespace std;
 
+
+
+
+
 int main()
 {
 
+	/*
 	Fighter* aragorn = new Fighter();
 	aragorn->printProfs();
 	aragorn->addProf("Exotic");
 	aragorn->printProfs();
+	*/
 	/*
 	//Opening welcome
 	cout << "Welcome to the D&D Character Maker demo!" << endl;

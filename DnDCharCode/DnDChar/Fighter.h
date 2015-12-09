@@ -61,6 +61,7 @@ public:
 	void addProf(std::string prof);
 
 	//Prints available proficiencies
+	//this was in the header twice, removed one of them so I could build -- Beth
 	void printProfs();
 
 	//Establishes Fighter's Armor Training feature
@@ -70,9 +71,6 @@ public:
 	//Applies Fighter's Weapon Training feature
 	//Modifies attack modifier *only if* trained weapon is equipped
 	void weaponTrain();
-
-	//Prints available proficiencies
-	void printProfs();
 
 	//Deletes skills and profs
 	~Fighter();

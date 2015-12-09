@@ -26,7 +26,11 @@ public:
 
 	Inventory(const Inventory* inventoryIn); // <- copy constructor
 
-											 //our beautiful class's toString function, gives all items in inventory
+	//makes a new inventory by loading one saved to a file
+	//whatever calls this functions neesd to ask for the file name to use
+	Inventory(std::string fName);
+
+	//our beautiful class's toString function, gives all items in inventory
 	std::string listItems();
 
 	//adds an item to the list of Items
@@ -58,7 +62,8 @@ public:
 	//removes every one of the item, not just one, because simplicity.
 	Item* removeItem(std::string itemName);
 
-
+	//writes the inventory to a file!
+	void toFile();
 
 
 	//deletes this beautiful linked list of Items

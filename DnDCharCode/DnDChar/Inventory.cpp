@@ -7,29 +7,39 @@
 #include "Inventory.h"
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 #include <string>
 
 Inventory::Inventory() {
 	numGold = 0;
 	firstItem = nullptr;
 	lastItem = nullptr;
-	//hi nicole
+	
 }
 
-//TODO: copy constructor
+//TODO: check copy constructor
 Inventory::Inventory(const Inventory* inventoryIn) {
 	numGold = inventoryIn->numGold;
 	Item* curr = inventoryIn->firstItem;
 	firstItem = curr->copySelf();
-	Item* copiedCurr = firstItem;
-	Item* nextItem = nullptr;
+	Item* prevItem = firstItem;
 	curr = curr->getNext();
 	while (curr != nullptr) {
-		nextItem = curr->copySelf();		//workaround for the fact that copy constructors can't be virtual
-		copiedCurr->setNext(nextItem);			//hypothetically works for nonexistant items
+		Item* newItem = curr->copySelf();		//workaround for the fact that copy constructors can't be virtual
+		prevItem->setNext(newItem);
+		prevItem = newItem;
+		lastItem = prevItem;
 		curr = curr->getNext();
-	}
-	lastItem = nextItem;
+		}
+}
+
+Inventory::Inventory(std::string fName){
+	//well we should probably do toFile first, huh?
+	//take file in
+	//break it up by lines
+	//these are your items
+	//break up by tabs for characteristics
+		//w first is a weapon, a first is armor
 }
 
 void Inventory::addItem(Item* itemToAdd) {
@@ -195,6 +205,37 @@ bool Inventory::isInInventory(std::string itemName) {
 	return false;
 
 }
+
+void Inventory::toFile() {
+	Item* curr = firstItem;
+	std::string toWrite = "";
+	while (curr != nullptr) {
+		toWrite += curr->stringMe() + "\n";
+		curr = curr->getNext();
+	}
+	//then do something with the compiled strings
+	//you know, that writing to a file shit
+	std::cout << "Please enter the desired name for your inventory file: ";
+	std::string filename;
+	while (!(std::cin >> filename) || filename =="") {
+		//Some code I found online. Basically catches when cin cannot turn the input into an integer
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	filename += ".txt";
+	std::ofstream outf(filename);
+	if (outf) {
+		std::string out;
+		outf << toWrite; //add the string gained in the other fcn to the file!
+		outf.close();
+	}
+	else {
+		std::cerr << "Can't write to file" << std::endl;
+	}
+}
+
 
 //deletes this beautiful linked list of Items
 Inventory::~Inventory() {

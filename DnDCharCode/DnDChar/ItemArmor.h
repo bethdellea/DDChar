@@ -42,6 +42,10 @@ public:
 	std::string getName();
 
 
+	//makes a string of the item to be added to a file
+	std::string stringMe();
+
+
 	//part of the removal process, returns the removed items to Inventory's remove function
 	//if completely depleted, Inventory needs to remove fully and update itself
 	ItemArmor* removeSelf(int num);
