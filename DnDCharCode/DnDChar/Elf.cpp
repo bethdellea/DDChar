@@ -129,8 +129,9 @@ void Elf::printVision() {
 
 
 //Stat bonus
-void Elf::changeAbilities() {
-    //Strength = 0, dexterity = 1, constitution = 2, intelligence = 3, wisdom = 4, charisma = 5
-    //+2 Dexterity, +2 Intelligence, –2 Constitution:
+void Elf::changeAbilities(int* statArr) {
+    statArr[1] = *(statArr + 1) + 2; //+2 Dexterity
+    statArr[3] = *(statArr + 3) + 2; //+2 Intelligence
+    statArr[2] = *(statArr + 2) - 2; //-2 Constitution
 }
 

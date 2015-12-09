@@ -8,16 +8,20 @@
 #include "Inventory.h"
 #include "Fighter.h"
 #include <string>
+#include "RaceADT.h"
+#include "Elf.h"
+#include "Dwarf.h"
+#include "Human.h"
 
 using namespace std;
-
-
-
-
 
 int main()
 {
 
+    RaceADT* myHuman = new Human();
+    int* testArr = new int [6];
+    myHuman->changeAbilities(testArr);
+    
 	/*
 	Fighter* aragorn = new Fighter();
 	aragorn->printProfs();
@@ -176,6 +180,9 @@ int main()
 			cout << demo->listItems() << std::endl;
 			demo->addItem(item3);
 			cout << demo->listItems();*/
+    
+   
+    
 
 
     return 0;

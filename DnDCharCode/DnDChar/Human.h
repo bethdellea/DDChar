@@ -45,7 +45,7 @@ public:
     //Prints a list of visions
     void printVision();
     //Stat bonus
-    void changeAbilities();
+    void changeAbilities(int* statArr);
 
     
     

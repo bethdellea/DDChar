@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-class Body {
+/*class Body {
 
 	//fixed size
 	int* skills; //contains the skill bonus
@@ -47,5 +47,5 @@ class Body {
 	
 	}
 
-	Body::~Body() {};
-};
+	Body::~Body() {};*/
+//};

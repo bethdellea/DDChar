@@ -5,7 +5,7 @@
 //  Created by Nicole Lane on 12/6/15.
 //  Copyright (c) 2015 Nicole Lane. All rights reserved.
 //
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <stdio.h>
 #include "Human.h"
 #include <iostream>
@@ -17,10 +17,6 @@
 //  Created by Nicole Lane on 12/6/15.
 //  Copyright (c) 2015 Nicole Lane. All rights reserved.
 //
-
-#include <stdio.h>
-#include "Human.h"
-#include <iostream>
 
 Human::Human() {
     speed = 30;
@@ -139,7 +135,30 @@ void Human::printVision() {
 
 
 //Stat bonus
-void Human::changeAbilities() {
+void Human::changeAbilities(int* statArr) {
+    bool loop = true;
+    //Strength = 0, dexterity = 1, constitution = 2, intelligence = 3, wisdom = 4, charisma = 5
     //+2 to any chosen abilities
+    
+    std::cout << "Choose the number of the ability you'd like to increase by 2: " << std::endl;
+    std::cout << "0) Strength" << std::endl;
+    std::cout << "1) Dexterity" << std::endl;
+    std::cout << "2) Constitution" << std::endl;
+    std::cout << "3) Intelligence" << std::endl;
+    std::cout << "4) Wisdom" << std::endl;
+    std::cout << "5) Charisma" << std::endl;
+    int abil;
+    std::cin >> abil;
+    while (loop) {
+        if (abil < 0 || abil > 5) {
+            std::cout << "Invalid choice. Choose a number 0 through 5." << std::endl;
+            std::cin >> abil;
+        }
+        else if (abil >= 0 || abil <= 5 ) {
+            loop = false;
+        }
+    }
+    statArr[abil] =  *(statArr + abil) + 2; //Increase chosen ability in the array by 2
+    
 }
 

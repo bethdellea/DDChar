@@ -41,7 +41,7 @@ public:
     virtual void printVision()=0;
     
     //Give a stat bonus
-    virtual void changeAbilities()=0;
+    virtual void changeAbilities(int* statArr)=0;
     
   
 
