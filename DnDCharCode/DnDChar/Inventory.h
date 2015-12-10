@@ -46,8 +46,10 @@ public:
 	//removes gold!
 	void removeGold(int withdrawal);
 
+	/*		//this function is not acutally necessary with the way the inventory functions. for that reason, it's commented out
 	//returns a copy of the item we're looking for
 	Item* getItem(std::string itemName);
+	*/
 
 	//returns the index position of the item by its name
 	int getIndex(std::string itemName);
@@ -67,6 +69,9 @@ public:
 
 	//the function that loops and allows users to select the actions they wish to take with their inventory
 	void interact();
+	
+	//calls the walkthrough for adding an item to the inventory, which then calls the other addItem()
+	void addItem();
 
 	//deletes this beautiful linked list of Items
 	~Inventory();
