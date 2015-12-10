@@ -65,6 +65,8 @@ public:
 	//writes the inventory to a file!
 	void toFile();
 
+	//the function that loops and allows users to select the actions they wish to take with their inventory
+	void interact();
 
 	//deletes this beautiful linked list of Items
 	~Inventory();

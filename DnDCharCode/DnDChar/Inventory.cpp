@@ -7,6 +7,7 @@
 #include "Inventory.h"
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <string>
 
@@ -34,13 +35,59 @@ Inventory::Inventory(const Inventory* inventoryIn) {
 }
 
 Inventory::Inventory(std::string fName){
-	//well we should probably do toFile first, huh?
-	//take file in
-	//break it up by lines
-	//these are your items
-	//break up by tabs for characteristics
-		//w first is a weapon, a first is armor
+	//this takes more code than expected, tbh
+
+	std::ifstream infile(fName);
+	if (infile) {
+		firstItem = nullptr;
+		std::string goldBal;
+		getline(infile, goldBal);
+		numGold = atoi(goldBal.c_str());
+		while (infile) {  //work through the whole file
+			std::string line;
+			getline(infile, line);
+			if (line != "") {
+				std::stringstream linestream(line);
+				//only try and add actual data, please!
+				Item* itemIn;
+				std::string* charsArray = new std::string[6];
+				int curr = 0;
+				while (linestream) {
+					std::string itemData;
+					getline(linestream, itemData, '\t');
+					charsArray[curr] = itemData;
+					curr++;
+				}
+
+				if (charsArray[0] == "a") {
+					//then the item is armor. sweet.
+					std::string itemName = charsArray[1];
+					int itemWorth = atoi(charsArray[2].c_str());
+					int sellP = atoi(charsArray[3].c_str()); //calculated by ItemArmor right now, but here because some day that might change
+					int itemQuant = atoi(charsArray[4].c_str());		//and then we'd need to input it
+					itemIn = new ItemArmor(itemName, itemWorth, itemQuant);
+				}
+				else if (charsArray[0] == "w") {
+					//then the item is a weapon. kewl.
+					std::string itemName = charsArray[1];
+					int itemWorth = atoi(charsArray[2].c_str()); //casts these strings back into ints so they're useable
+					int sellP = atoi(charsArray[3].c_str());
+					int itemQuant = atoi(charsArray[4].c_str());
+					std::string itemType = charsArray[5];
+					itemIn = new ItemWeapon(itemName, itemWorth, itemQuant, itemType);
+				}
+
+				//we just made the item from its line, now we add it to this brave new inventory
+				addItem(itemIn);
+			}
+		}
+	}
+	else {
+		std::cerr << "File not found." << std::endl;
+	}
+
 }
+
 
 void Inventory::addItem(Item* itemToAdd) {
 	if (firstItem == nullptr) {
@@ -144,7 +191,7 @@ std::string Inventory::listItems() {
 	std::string ownedItems = "";
 	Item* curr = firstItem;
 	while (curr != nullptr) {
-		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\n";
+		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\tValue: "+ std::to_string(curr->getWorth()) + "\n";
 		curr = curr->getNext();
 	}
 
@@ -209,7 +256,8 @@ bool Inventory::isInInventory(std::string itemName) {
 void Inventory::toFile() {
 	Item* curr = firstItem;
 	std::string toWrite = "";
-	while (curr != nullptr) {
+	toWrite += getGold() + "\n";
+		while (curr != nullptr) {
 		toWrite += curr->stringMe() + "\n";
 		curr = curr->getNext();
 	}
@@ -252,4 +300,21 @@ Inventory::~Inventory() {
 	curr = nullptr;
 	firstItem = nullptr;
 	lastItem = nullptr;
+}
+
+
+void Inventory::interact() {
+	bool hasQuit = false;
+	while (!hasQuit) {
+		std::cout << "Welcome to your inventory. Here you can view and manage your inventory and gold." << std::endl;
+		if (firstItem == nullptr) {
+			std::cout << "You currently have no items in your inventory." << std::endl;
+		}
+		else {
+			std::cout << "The following items are in your inventory: " << listItems() << std::endl;
+		}
+		std::cout << "\nYour current gold balance is: " << getGold() << std::endl;
+
+		hasQuit = true;
+	}
 }
