@@ -17,6 +17,7 @@ const string Fighter::skills[10] = {"Climb", "Craft", "Handle Animal", "Intimida
 Fighter::Fighter()
 {
 	hitDie = 10;
+	goldStart = 5;
 
 	//Assumes an Intelligence modifier of +0
 	ranks = 2;
@@ -50,14 +51,6 @@ string Fighter::giveAlignment()
 
 	return align;
 
-}
-
-//Adds a pseudo-random amount of HP to a character
-//Max value is 10 (based on hitDie)
-//Modifier is based on character's Constitution score.
-int Fighter::rollHP(const int modifier)
-{
-	return generateRandomNum(1,hitDie) + modifier; //TODO: Include random number generation for hitDie.
 }
 
 //Determines if a given skill is a class skill

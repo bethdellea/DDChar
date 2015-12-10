@@ -36,7 +36,7 @@ public:
 	//Adds a pseudo-random amount of HP to a character
 	//RNG depends on class
 	//Modifier is based on character's Constitution score.
-	virtual int rollHP(int modifier) = 0;
+	int rollHP(int modifier);
 
 	//Returns a random number with values bewteen min and max, including both min and max
 	int generateRandomNum(int min, int max);
@@ -60,6 +60,9 @@ public:
 
 	//Prints available proficiencies
 	virtual void printProfs() = 0;
+	
+	//Generates the number of d6's used to roll for character gold.
+	int startingGold();
 
 
 

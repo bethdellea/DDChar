@@ -12,3 +12,17 @@ int ClassADT::generateRandomNum(int min, int max)
 
 	return rand() % (max - min + 1) + min;
 }
+
+//Adds a pseudo-random amount of HP to a character
+//Max value is 10 (based on hitDie)
+//Modifier is based on character's Constitution score.
+int ClassADT::rollHP(const int modifier)
+{
+	return generateRandomNum(1, hitDie); //+ modifier;
+}
+
+//Generates the number of d6's used to roll for character gold.
+int ClassADT::startingGold()
+{
+	return generateRandomNum(1, 6) * goldStart * 10;
+}

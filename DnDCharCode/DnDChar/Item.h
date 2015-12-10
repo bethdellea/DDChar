@@ -47,8 +47,6 @@ public:
 	virtual Item* removeSelf(int num) = 0;
 
 	virtual Item* copySelf() = 0;
-
-	//virtual ~Item() = 0;
 };
 
 #endif /* defined(__Item__) */
