@@ -16,16 +16,6 @@ private:
 	//Note that skills is static, as it is the same for all fighters
 	static const std::string const skills[10];
 
-	//Proficiencies can be added to by race, so will not be constant
-	//Initialized here, as {} syntax does not work to initialize data members
-	std::string* profs;
-
-	int sizeProf;
-
-	std::string alignment;
-
-	int ranks;
-
 public:
 
 	//Establishes all values in a Fighter instance

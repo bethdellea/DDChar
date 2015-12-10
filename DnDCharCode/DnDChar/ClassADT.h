@@ -18,6 +18,10 @@ protected:
 	int goldStart;
 	int hitDie;
 
+	//Proficiencies can be added to by race, so will not be constant
+	//Initialized here, as {} syntax does not work to initialize data members
+	std::string* profs;
+
 public:
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
