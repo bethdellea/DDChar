@@ -52,14 +52,6 @@ string Fighter::giveAlignment()
 
 }
 
-//Adds a pseudo-random amount of HP to a character
-//Max value is 10 (based on hitDie)
-//Modifier is based on character's Constitution score.
-int Fighter::rollHP(const int modifier)
-{
-	return generateRandomNum(1,hitDie) + modifier; //TODO: Include random number generation for hitDie.
-}
-
 //Determines if a given skill is a class skill
 //Compares to skills
 bool Fighter::isClassSkill(std::string skill)

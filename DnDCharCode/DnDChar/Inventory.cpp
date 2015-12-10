@@ -78,7 +78,7 @@ Inventory::Inventory(std::string fName){
 				}
 
 				//we just made the item from its line, now we add it to this brave new inventory
-				addItem(itemIn);
+				//addItem(itemIn);
 			}
 		}
 	}
