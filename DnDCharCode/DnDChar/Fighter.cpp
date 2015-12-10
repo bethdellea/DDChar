@@ -17,6 +17,7 @@ const string Fighter::skills[10] = {"Climb", "Craft", "Handle Animal", "Intimida
 Fighter::Fighter()
 {
 	hitDie = 10;
+	goldStart = 5;
 
 	//Assumes an Intelligence modifier of +0
 	ranks = 2;

@@ -60,6 +60,9 @@ public:
 
 	//Prints available proficiencies
 	virtual void printProfs() = 0;
+	
+	//Generates the number of d6's used to roll for character gold.
+	int startingGold();
 
 
 
