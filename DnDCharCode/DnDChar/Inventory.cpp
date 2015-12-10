@@ -50,31 +50,32 @@ Inventory::Inventory(std::string fName){
 				std::stringstream linestream(line);
 				//only try and add actual data, please!
 				//an array of the characteristics of the items being loaded in
-				std::string* charsArray = new std::string[9];
+				std::string* charsArray = new std::string[6];
 				int curr = 0;
 				while (linestream) {
 					std::string itemData;
 					getline(linestream, itemData, '\t');
 					charsArray[curr] = itemData;
+					std::cout << curr << std::endl;
 					curr++;
 				}
 
-				if(charsArray[1] == "a") {
+				if (charsArray[0] == "a") {
 					//then the item is armor. sweet.
-					std::string itemName = charsArray[2];
-					int itemWorth = atoi(charsArray[3].c_str());
-					int sellP = atoi(charsArray[4].c_str()); //calculated by ItemArmor right now, but here because some day that might change
-					int itemQuant = atoi(charsArray[5].c_str());		//and then we'd need to input it
+					std::string itemName = charsArray[1];
+					int itemWorth = atoi(charsArray[2].c_str());
+					int sellP = atoi(charsArray[3].c_str()); //calculated by ItemArmor right now, but here because some day that might change
+					int itemQuant = atoi(charsArray[4].c_str());		//and then we'd need to input it
 					Item* itemIn = new ItemArmor(itemName, itemWorth, itemQuant);
 					addItem(itemIn);
 				}
-				else if(charsArray[1] == "w") {
+				else if (charsArray[0] == "w") {
 					//then the item is a weapon. kewl.
-					std::string itemName = charsArray[2];
-					int itemWorth = atoi(charsArray[3].c_str()); //casts these strings back into ints so they're useable
-					int sellP = atoi(charsArray[4].c_str());
-					int itemQuant = atoi(charsArray[5].c_str());
-					std::string itemType = charsArray[6];
+					std::string itemName = charsArray[1];
+					int itemWorth = atoi(charsArray[2].c_str()); //casts these strings back into ints so they're useable
+					int sellP = atoi(charsArray[3].c_str());
+					int itemQuant = atoi(charsArray[4].c_str());
+					std::string itemType = charsArray[5];
 					Item* itemIn = new ItemWeapon(itemName, itemWorth, itemQuant, itemType);
 					addItem(itemIn);
 				}
@@ -261,9 +262,9 @@ bool Inventory::isInInventory(std::string itemName) {
 void Inventory::toFile() {
 	Item* curr = firstItem;
 	std::string toWrite = "";
-	toWrite += std::to_string(getGold()) + "\n";
+	toWrite += getGold() + "\n";
 		while (curr != nullptr) {
-		toWrite += "\t" + curr->stringMe() + "\n";
+		toWrite += curr->stringMe() + "\n";
 		curr = curr->getNext();
 	}
 	//then do something with the compiled strings
@@ -357,9 +358,8 @@ void Inventory::interact() {
 			}
 			else if (addorremove == "d" || addorremove == "D") {
 				std::cout << "How much gold will you be depositing today? ";
-				std::cout << "\n(Enter 0 if you do not wish to deposit.)";
-				int deposit = -1;
-				while (!(std::cin >> deposit) || deposit < 0) {
+				int deposit = 0;
+				while (!(std::cin >> deposit) || deposit == 0) {
 					//Some code I found online. Basically catches when cin cannot turn the input into an integer
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -372,9 +372,8 @@ void Inventory::interact() {
 			}
 			else if (addorremove == "w" || addorremove == "W") {
 				std::cout << "How much gold will you be withdrawing today? ";
-				std::cout << "\n(Enter 0 if you did not want to withdraw)";
-				int withdraw = -1;
-				while (!(std::cin >> withdraw) || withdraw < 0 || withdraw > getGold()) {
+				int withdraw = 0;
+				while (!(std::cin >> withdraw) || withdraw == 0 || withdraw > getGold()) {
 					//Some code I found online. Basically catches when cin cannot turn the input into an integer
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -546,7 +545,7 @@ void Inventory::addItem() {
 		int numItem = 0;
 
 		//Checks user input to make sure it's an integer
-		while (!(std::cin >> numItem) || numItem == 0 || numItem < 0) {
+		while (!(std::cin >> numItem) || numItem == 0) {
 			//Some code I found online. Basically catches when cin cannot turn the input into an integer
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -558,7 +557,7 @@ void Inventory::addItem() {
 		std::cout << std::endl << "Excellent! Now we need to know what the name of your armor is." << std::endl;
 		std::cout << "In a real game of D&D, you would select your items from a list." << std::endl;
 		std::cout << "After all, if you could just make whatever you wanted, it wouldn't be a fair game!" << std::endl;
-		std::cout << "For this version though, we'll give you a bit more freedom." << std::endl << "Please enter the name of your armor; be as heroic as possible! (make sure the name is one word)" << std::endl;
+		std::cout << "For this version though, we'll give you a bit more freedom." << std::endl << "Please enter the name of your armor; be as heroic as possible!" << std::endl;
 		std::cout << "Item name: ";
 		std::string itemName = "";
 		std::cin >> itemName;
@@ -570,7 +569,7 @@ void Inventory::addItem() {
 		int worth = 0;
 
 		//Checks user input to make sure it's an integer
-		while (!(std::cin >> worth) || worth == 0 || worth < 0) {
+		while (!(std::cin >> worth) || worth == 0) {
 			//Some code I found online. Basically catches when cin cannot turn the input into an integer
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -613,7 +612,7 @@ void Inventory::addItem() {
 		int numItem = 0;
 
 		//Checks user input to make sure it's an integer
-		while (!(std::cin >> numItem) || numItem == 0 || numItem < 0) {
+		while (!(std::cin >> numItem) || numItem == 0) {
 			//Some code I found online. Basically catches when cin cannot turn the input into an integer
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -627,7 +626,7 @@ void Inventory::addItem() {
 		std::cout << std::endl << "Excellent! Now we need to know what the name of your armor is." << std::endl;
 		std::cout << "In a real game of D&D, you would select your items from a list." << std::endl;
 		std::cout << "After all, if you could just make whatever you wanted, it wouldn't be a fair game!" << std::endl;
-		std::cout << "For this version though, we'll give you a bit more freedom." << std::endl << "Please enter the name of your armor; be as heroic as possible! (make sure the name is one word)" << std::endl;
+		std::cout << "For this version though, we'll give you a bit more freedom." << std::endl << "Please enter the name of your armor; be as heroic as possible!" << std::endl;
 		std::cout << "Item name: ";
 		std::string itemName = "";
 		std::cin >> itemName;
@@ -640,7 +639,7 @@ void Inventory::addItem() {
 		int worth = 0;
 
 		//Checks user input to make sure it's an integer
-		while (!(std::cin >> worth) || worth == 0 || worth < 0) {
+		while (!(std::cin >> worth) || worth == 0) {
 			//Some code I found online. Basically catches when cin cannot turn the input into an integer
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
