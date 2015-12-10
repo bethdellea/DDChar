@@ -4,6 +4,16 @@
 
 
 void testInventory() {
+	//Inventory* testInven = new Inventory();
+	Inventory* testInven = new Inventory("test2.txt");
+	//testInven->interact();
+
+	//testInven->toFile();
+	std::cout << testInven->getGold() << std::endl;
+	std::cout << testInven->listItems();
+
+
+
 	Inventory* demo = nullptr;
 	std::cout << "For this demo, you will be making an item for your character's inventory." << std::endl;
 	std::cout << "D&D Characters carry a number of items, but for sanity's sake let's just use armor or weapons! Which would you like?" << std::endl;
