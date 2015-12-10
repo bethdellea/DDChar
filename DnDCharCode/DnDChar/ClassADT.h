@@ -13,6 +13,11 @@
 
 class ClassADT {
 
+protected:
+
+	int goldStart;
+	int hitDie;
+
 public:
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
@@ -24,12 +29,7 @@ public:
 	virtual int rollHP(int modifier) = 0;
 
 	//Returns a random number with values bewteen min and max, including both min and max
-	int generateRandomNum(int min, int max)
-	{
-		srand(time(NULL));
-
-		return rand() % (max - min + 1) + min;
-	}
+	int generateRandomNum(int min, int max);
 
 	//Determines if a given skill is a class skill
 	//Compares to an array of strings stored in Class
@@ -50,6 +50,8 @@ public:
 
 	//Prints available proficiencies
 	virtual void printProfs() = 0;
+
+
 
 	//Virtual default destructor to ensure more specific destructors are called
 	virtual ~ClassADT() {};

@@ -24,7 +24,7 @@ private:
 
 	std::string alignment;
 
-	int hitDie, ranks;
+	int ranks;
 
 public:
 
