@@ -22,12 +22,12 @@ class Body {
 		//Skill
 		//null array
 		//how many do they get to choose? 5? 
-		//Appraise, Autohypnosis, Balance, Bluff, Climb, Concentration, Control Shape, 
-		//Craft, Decipher Script, Diplomacy, Disable Device, Disguise, Escapse Artist, Forgery, 
-		//Gather Information, Handle Animal, Heal, Hide, Intimidate, Jump, Knowledge, Listen
-		//Move Silently, Open Lock, Perform, Psicraft, Profession, Ride, Search, Sense Motive, 
-		//Slieght of Hand, Speak Language, Spellcraft, Spot, Survival, Swim, Tumble, 
-		//Use Magic Device, Use Psionic Device, Use Rope 
+		//Acrobatics(Dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha), 
+		//Disable Device (dex), Disguise (cha), Escapse Artist (cha), Fly (dex), 
+		//Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
+		//Perception (wis), perform (cha), Profession (wis), Ride (dex), Sense Motive (wis), 
+		//Slieght of Hand (dex), Spellcraft (int), Stealth (dex), Survival (wis), Swim (str) 
+		//Use Magic Device (cha)
 	}
 	//sets skills or changes them 
 	void Body::setSkills(int index, int change) {
