@@ -129,9 +129,9 @@ void Dwarf::printVision() {
 
 //Stat bonus
 void Dwarf::changeAbilities(int* abilArr) {
-    /*abilArr[2] = *(abilArr + 2) + 2; //+2 Constitution
-    statArr[4] = *(statArr + 4) + 2; //+2 Wisdom
-    statArr[5] = *(statArr + 5) - 2; //-2 Charisma*/
+    abilArr[2] = *(abilArr + 2) + 2; //+2 Constitution
+    abilArr[4] = *(abilArr + 4) + 2; //+2 Wisdom
+    abilArr[5] = *(abilArr + 5) - 2; //-2 Charisma
 }
 
 

@@ -37,7 +37,7 @@ public:
 	//Creates a character based on a character save file
 	Character(std::string filename);
 
-	//Caculates AC based on Body's Dex modifier, Inventory's armor, and any size modifiers due to Race
+	//Calculates AC based on Body's Dex modifier, Inventory's armor, and any size modifiers due to Race
 	//For race, check if race = dwarf, essentially
 	int getAC();
 

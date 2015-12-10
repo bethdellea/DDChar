@@ -43,6 +43,9 @@ public:
     //Give a stat bonus
     virtual void changeAbilities(int* statArr)=0;
     
+    //Call all destructors
+    virtual ~RaceADT() {};
+    
   
 
     

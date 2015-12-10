@@ -178,9 +178,6 @@ void Human::changeAbilities(int* abilArr) {
     }
     
     abilArr[abil] =  *(abilArr + abil) + 2; //Increase chosen ability in the array by 2
-    for (int i = 0; i < 6; i ++) {
-        std::cout << *(abilArr + i) << std::endl;
-    }
     
 }
 

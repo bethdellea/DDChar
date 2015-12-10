@@ -9,7 +9,7 @@
 #include "ClassADT.h"
 #include "ItemWeapon.h"
 
-class Fighter : ClassADT {
+class Fighter : public ClassADT {
 
 private:
 	//Class skills never change, so can be constant
