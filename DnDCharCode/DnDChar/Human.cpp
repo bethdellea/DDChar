@@ -11,6 +11,7 @@
 #include "Human.h"
 #include <iostream>
 #include <typeinfo>
+#include "Body.h"
 
 //
 //  Human.cpp
@@ -137,10 +138,13 @@ void Human::printVision() {
 
 
 //Stat bonus
-void Human::changeAbilities(int* statArr) {
-    bool goodInput = false;
+void Human::changeAbilities(int* abilArr) {
     //Strength = 0, dexterity = 1, constitution = 2, intelligence = 3, wisdom = 4, charisma = 5
     //+2 to any chosen abilities
+    for (int i = 0; i < 6; i++) {
+        std::cout << "Value at " << i << std::endl;
+        std::cout << *(abilArr + i) <<std::endl;
+    }
     
     std::cout << "Choose the number of the ability you'd like to increase by 2: " << std::endl;
     std::cout << "0) Strength" << std::endl;
@@ -149,25 +153,34 @@ void Human::changeAbilities(int* statArr) {
     std::cout << "3) Intelligence" << std::endl;
     std::cout << "4) Wisdom" << std::endl;
     std::cout << "5) Charisma" << std::endl;
-    int abil;
     
+    int abil = -1;
+    bool goodInput = false;
+    //This checks for the correct input, which is any number from 0 to 5, but does not include strings
     while (!goodInput) {
         std::cin >> abil;
-        if (abil == 0 || abil == 1 || abil == 2 || abil == 3 || abil == 4 || abil == 5) {
-            goodInput = true;
-            
+        if (abil < 0 || abil > 5) {
+            std::cout << "Please enter a valid number." << std::endl;
+            goodInput = false;
         }
-        while (!(std::cin >> abil) || abil == 0) {
-            //Some code I found online. Basically catches when cin cannot turn the input into an integer
+        if (abil == 0 || abil == 1 || abil == 2 || abil == 3 || abil == 4 || abil == 5) {
+            std::cout << "Selection recorded!" << std::endl;
+            goodInput = true;
+        }
+        
+        if (!std::cin >> abil) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
             goodInput = false;
         }
         
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-    statArr[abil] =  *(statArr + abil) + 2; //Increase chosen ability in the array by 2
+    
+    abilArr[abil] =  *(abilArr + abil) + 2; //Increase chosen ability in the array by 2
+    for (int i = 0; i < 6; i ++) {
+        std::cout << *(abilArr + i) << std::endl;
+    }
     
 }
 

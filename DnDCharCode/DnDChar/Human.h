@@ -13,6 +13,7 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
+#include "Body.h"
 
 class Human : public RaceADT {
 private:
@@ -45,7 +46,7 @@ public:
     //Prints a list of visions
     void printVision();
     //Stat bonus
-    void changeAbilities(int* statArr);
+    void changeAbilities(int* abilArr);
 
     
     

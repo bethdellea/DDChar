@@ -12,23 +12,35 @@
 #include "Elf.h"
 #include "Dwarf.h"
 #include "Human.h"
+#include "Character.h"
 
 using namespace std;
 
 int main()
 {
 
-    RaceADT* myHuman = new Human();
+    Character* myCharacter = new Character();
+    
+//    Body* myBody = new Body();
+//    RaceADT* myElf = new Elf();
+//    int* abilArr = myBody->getAbilities();
+//    cout<< abilArr << endl;
+//    myElf->changeAbilities(abilArr);
+    
+    /*RaceADT* myHuman = new Human();
     int* testArr = new int [6];
+    for (int i = 0; i < 6; i++) {
+        testArr[i] = 0;
+    }
     myHuman->changeAbilities(testArr);
     
-	/*
+	
 	Fighter* aragorn = new Fighter();
 	aragorn->printProfs();
 	aragorn->addProf("Exotic");
 	aragorn->printProfs();
-	*/
-	/*
+	
+	
 	//Opening welcome
 	cout << "Welcome to the D&D Character Maker demo!" << endl;
 	cout << "For this demo, you will be making an item for your character's inventory." << endl;

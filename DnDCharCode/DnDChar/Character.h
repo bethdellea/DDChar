@@ -18,7 +18,7 @@ private:
 	
 	Body* body;
 	RaceADT* race;
-	ClassADT* clas;
+	ClassADT* classType;
 	Inventory* inventory;
 	int HP;
 

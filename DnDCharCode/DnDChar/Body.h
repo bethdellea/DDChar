@@ -12,10 +12,12 @@ class Body{
 	private: 
 		//fixed size
 		int* skills; //contains the skill bonus
-		//fixed size
-		int* abilities; //contains ability score 
+    
+		
 
-	public: 
+	public:
+    //fixed size. I moved the abilities array to public, because after testing it in character.cpp, I learned it can't be private.
+        int* abilities; //contains ability score
 		Body();
 		//sets skills or changes them 
 		void setSkills(int change); 
@@ -29,6 +31,8 @@ class Body{
 
 		void setAbility(int ability);
 		//mathematically based on abilities
+        //Return ability array
+        int* getAbilities();
 		int getModifier(int ability);
 		void printThisAbil(std::string ability);
 		void printAllAbilities();
