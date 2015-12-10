@@ -79,11 +79,6 @@ Inventory::Inventory(std::string fName) {
 					addItem(itemIn);
 				}
 
-<<<<<<< HEAD
-				//we just made the item from its line, now we add it to this brave new inventory
-				//addItem(itemIn);
-=======
->>>>>>> origin/master
 			}
 		}
 	}
@@ -675,5 +670,6 @@ void Inventory::addItem() {
 		addItem(item);
 
 	}
+
 
 }
