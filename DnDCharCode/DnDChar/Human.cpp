@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "Human.h"
 #include <iostream>
+#include <typeinfo>
 
 //
 //  Human.cpp
@@ -136,7 +137,7 @@ void Human::printVision() {
 
 //Stat bonus
 void Human::changeAbilities(int* statArr) {
-    bool loop = true;
+    bool goodInput = false;
     //Strength = 0, dexterity = 1, constitution = 2, intelligence = 3, wisdom = 4, charisma = 5
     //+2 to any chosen abilities
     
@@ -148,15 +149,22 @@ void Human::changeAbilities(int* statArr) {
     std::cout << "4) Wisdom" << std::endl;
     std::cout << "5) Charisma" << std::endl;
     int abil;
-    std::cin >> abil;
-    while (loop) {
-        if (abil < 0 || abil > 5) {
-            std::cout << "Invalid choice. Choose a number 0 through 5." << std::endl;
-            std::cin >> abil;
+    
+    while (!goodInput) {
+        std::cin >> abil;
+        if (abil == 0 || abil == 1 || abil == 2 || abil == 3 || abil == 4 || abil == 5) {
+            goodInput = true;
+            
         }
-        else if (abil >= 0 || abil <= 5 ) {
-            loop = false;
+        while (!(std::cin >> abil) || abil == 0) {
+            //Some code I found online. Basically catches when cin cannot turn the input into an integer
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
+            goodInput = false;
         }
+        
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     statArr[abil] =  *(statArr + abil) + 2; //Increase chosen ability in the array by 2
     
