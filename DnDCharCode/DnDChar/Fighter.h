@@ -28,6 +28,11 @@ public:
 	//No alignment restrictions for fighters
 	std::string giveAlignment();
 
+	//Adds a pseudo-random amount of HP to a character
+	//Max value is 10 (based on hitDie)
+	//Modifier is based on character's Constitution score.
+	int rollHP(const int modifier);
+
 	//Determines if a given skill is a class skill
 	//Compares to skills
 	bool isClassSkill(std::string skill);
