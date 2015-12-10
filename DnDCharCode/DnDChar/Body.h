@@ -12,29 +12,32 @@ class Body{
 	private: 
 		//fixed size
 		int* skills; //contains the skill bonus
-    
 		
 
 	public:
-        //I had to make this public in order for character to be able to access it!
+    
+        //fixed size
         int* abilities; //contains ability score
     
 		Body();
+    
+        //Returns a random number with values bewteen min and max, including both min and max
+        int generateRandomNum(int min, int max);
+
 		//sets skills or changes them 
-		void setSkills(int change); 
+		void setSkills(int index, int change); 
 		//returns the value for the skill
 		int skillCheck(int skill);
 		void printThisSkill(std::string skill);
 		void printAllSkills();
 		
 		//determine amount of bonus given
-		int skillCalc(int ability, int rank, int mod);
+		int skillCalc( int rank, int mod);
 
 		void setAbility(int ability);
 		//mathematically based on abilities
-        //Return ability array
-        int* getAbilities();
 		int getModifier(int ability);
+		int* getAbilities();
 		void printThisAbil(std::string ability);
 		void printAllAbilities();
 
