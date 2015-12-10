@@ -22,6 +22,12 @@ protected:
 	//Initialized here, as {} syntax does not work to initialize data members
 	std::string* profs;
 
+	int sizeProf;
+
+	std::string alignment;
+
+	int ranks;
+
 public:
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
