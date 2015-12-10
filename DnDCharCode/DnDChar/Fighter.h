@@ -14,7 +14,7 @@ class Fighter : public ClassADT {
 private:
 	//Class skills never change, so can be constant
 	//Note that skills is static, as it is the same for all fighters
-	static const std::string const skills[10];
+	static const std::string const skills[8];
 
 public:
 

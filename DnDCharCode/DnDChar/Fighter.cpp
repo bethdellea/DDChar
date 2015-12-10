@@ -9,7 +9,7 @@
 
 using namespace std;
 //Initializes skills at compile time
-const string Fighter::skills[10] = {"Climb", "Craft", "Handle Animal", "Intimidate", "Knowledge Dungeoneering", "Knowledge Engineering", "Profession", "Ride", "Survival", "Swim"};
+const string Fighter::skills[8] = {"Climb", "Craft", "Handle Animal", "Intimidate", "Profession", "Ride", "Survival", "Swim"};
 
 //Establishes all values in a Fighter instance
 //Determines skill ranks
@@ -57,7 +57,7 @@ string Fighter::giveAlignment()
 //Compares to skills
 bool Fighter::isClassSkill(std::string skill)
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		if (skill==skills[i])
 		{
