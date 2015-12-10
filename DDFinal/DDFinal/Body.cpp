@@ -1,24 +1,26 @@
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream>
 #include <time.h>
 #include <string>
+#include "Body.h"
+#include <time.h>
 
-class Body {
 
-	//fixed size
-	skills; //contains the skill bonus
-				 //fixed size
-	abilities; //contains ability score
-	skillsSize;
-	abilitySize;
+
+
 
 	Body::Body() {
+        //fixed size
+        skills; //contains the skill bonus
+
+        //skillsSize;
+        //abilitySize;
         
 		//Abilites
 		//Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
-        abilities = new int [6]; //Roll 4-24 and subtract from 1-6
-
+        abilities = new int [6];
+        
 		//Skill
 		//null array
 		//how many do they get to choose? 5? 
@@ -30,13 +32,10 @@ class Body {
 		//Use Magic Device, Use Psionic Device, Use Rope 
 	}
 	//sets skills or changes them 
-	void Body::setSkills(int index, int change) {
+	/*void Body::setSkills(int index, int change) {
 		skills[index] += change;
 	}
-    
-    int Body::generateRandomNum(int min, int max) {
-        
-    }
+
 	//returns the value for the skill
 	int Body::skillCheck(int skill) {
 		//generate a number from 1 -20 
@@ -47,13 +46,13 @@ class Body {
 		randNum += skills[skill];
 		return randNum;
 	}
-	void Body::printThisSkill(int skill) {
+void Body::printThisSkill(int skill) {
 		//checks the size of the array
 		if (skill > 5) {
 			std::cout << "Incorrect index input for the skills array." << std::endl;
 		}
 		else {
-			std::cout << "Skill level at this spot is: " + skills[skill] << std::endl;
+			std::cout << "Skill level at this spot is: " + skills [skill] << std::endl;
 		}
 
 	}
@@ -73,7 +72,7 @@ class Body {
 		return total;
 	}
 
-	int Body::setAbility(int ability) {
+    int Body::setAbility(int ability) {
 		//sets to the ability score given 
 		int randNum1 = rand() % (6 - 1 + 1) + 1;
 		int randNum2 = rand() % (6 - 1 + 1) + 1;
@@ -119,4 +118,4 @@ class Body {
 	Body::~Body() {
 
 	};
-};
+};*/
