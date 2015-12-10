@@ -4,13 +4,13 @@
 
 
 void testInventory() {
-
-	Inventory* testInven = new Inventory("testFile.txt.txt");
+	//Inventory* testInven = new Inventory();
+	Inventory* testInven = new Inventory("test2.txt");
 	//testInven->interact();
 
 	//testInven->toFile();
-	testInven->listItems();
-
+	std::cout << testInven->getGold() << std::endl;
+	std::cout << testInven->listItems();
 
 
 
