@@ -70,6 +70,7 @@ public:
 
 	//Virtual default destructor to ensure more specific destructors are called
 	virtual ~ClassADT() {};
+
 };
 
 #endif
