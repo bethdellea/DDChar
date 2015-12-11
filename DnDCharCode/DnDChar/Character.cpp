@@ -218,7 +218,7 @@ void Character::writeFile(string fileName){
 			//Some code I found online. Basically catches when cin cannot turn the input into an integer
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
+			std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		invFilename += ".txt";
