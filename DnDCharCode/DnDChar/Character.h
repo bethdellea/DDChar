@@ -17,8 +17,11 @@ class Character {
 private:
 	
 	Body* body;
+	std::string name;
 	RaceADT* race;
+	std::string raceStr;
 	ClassADT* classType;
+	std::string classStr;
 	Inventory* inventory;
 	int HP;
 
