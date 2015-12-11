@@ -17,9 +17,11 @@
 
 class Human : public RaceADT {
 private:
+
     
     
 public:
+
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;

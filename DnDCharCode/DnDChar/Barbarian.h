@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "ClassADT.h"
+#include "RaceADT.h"
 #include "ItemWeapon.h"
 
 class Barbarian : public ClassADT {
@@ -14,7 +15,7 @@ class Barbarian : public ClassADT {
 private:
 	//Class skills never change, so can be constant
 	//Note that skills is static, as it is the same for all barbarians
-	static const std::string const skills[9];
+	static const int const skills[9];
 
 public:
 
@@ -25,17 +26,12 @@ public:
 	Barbarian();
 
 	//Walks the player through assigning an aligment in the constructor
-	//Only chaotic alignments for barbarians
+	//Only nonlawful alignments for barbarians
 	std::string giveAlignment();
 
 	//Determines if a given skill is a class skill
 	//Compares to skills
-	bool isClassSkill(std::string skill);
-
-	//Determines how many skill ranks the character gets per level
-	//Amount is fixed by class, added to by modifier
-	//Modifier is based on character's Intelligence score
-	int addRanks(const int modifier);
+	bool isClassSkill(int skill);
 
 	//Determines if a character is proficient with a given item
 	//Compares an identifier in Item class with an array of
@@ -49,7 +45,8 @@ public:
 	//this was in the header twice, removed one of them so I could build -- Beth
 	void printProfs();
 
-	//TODO: Add Barbarian-specific methods
+	//Adds to the character's move speed
+	void buffMove(RaceADT* race);
 
 	//Deletes skills and profs
 	~Barbarian();

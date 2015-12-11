@@ -12,6 +12,7 @@
 #include "ItemArmor.h"
 #include "Inventory.h"
 #include "Fighter.h"
+#include "Barbarian.h"
 #include <string>
 #include "RaceADT.h"
 #include "Elf.h"
@@ -43,17 +44,18 @@ Character::Character() {
     while (!goodInput) {
         cin >> choice;
         if (!cin >> choice) {
-            cin.clear();
-            cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
-            cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << endl;
             goodInput = false;
         }
+		
 
-        else if (choice < 1 || choice > 3) {
+		else if (choice < 1 || choice > 3) {
             cout << "Please enter a valid number." << endl;
             goodInput = false;
         }
-        
+
         if (choice == 1 || choice == 2 || choice == 3) {
             cout << "Selection recorded!" << endl;
             goodInput = true;
@@ -85,6 +87,7 @@ Character::Character() {
     //Decide which class (right now, we only have Fighter, but we can add more conditions
     cout << "And now to choose your class. Choose a number from the list below." << endl;
     cout << "1) Fighter" << endl;
+	cout << "2) Barbarian" << endl;
     
     int classChoice = -1;
     bool goodInputClass = false;
@@ -92,11 +95,11 @@ Character::Character() {
     //This checks for the correct input, which right now is only number 1, but does not include strings
     while (!goodInputClass) {
         cin >> classChoice;
-        if (classChoice > 1 || classChoice < 1) {
+        if (classChoice > 2 || classChoice < 1) {
             cout << "Please enter a valid number." << endl;
             goodInputClass = false;
         }
-        if (classChoice == 1) {
+        if (classChoice == 1 || classChoice == 2) {
             cout << "Selection recorded!" << endl;
             goodInputClass = true;
         }
@@ -118,6 +121,14 @@ Character::Character() {
         HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
         cout << "Your total HP is: " << HP << endl;
     }
+
+	if (classChoice == 2) {
+		cout << "Chose class type 'Barbarian'." << endl;
+		classType = new Barbarian();
+		cout << "Rolling a die to determine your HP." << endl;
+		HP = classType->rollHP(body->abilities[2]); //Send body's constitution modifier to the rollHP method
+		cout << "Your total HP is: " << HP << endl;
+	}
     
     
     //Create new, empty inventory

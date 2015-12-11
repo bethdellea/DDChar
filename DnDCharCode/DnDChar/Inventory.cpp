@@ -122,7 +122,7 @@ void Inventory::sellItem(std::string itemName) {
 	int itemIndx = getIndex(itemName);
 	//loop through items for that index value
 	Item* curr = firstItem;
-	Item* temp = nullptr; //holds the pointer to the previous Item object
+	Item* temp = firstItem; //holds the pointer to the previous Item object
 	for (int i = 0; i < itemIndx; i++) {
 		temp = curr;
 		curr = curr->getNext();
@@ -144,6 +144,9 @@ void Inventory::sellItem(std::string itemName) {
 		addGold(curr->getSellPrice()*quant);
 	}
 	else if (curr->getQuantity() == quant) {
+		if (curr == firstItem){
+			firstItem = nullptr;
+		}
 		//assuming that loop got us where we want to be... requires testing
 		temp->setNext(curr->getNext());
 		addGold(curr->getSellPrice()*quant); //no haggling here, unfortunately
@@ -158,7 +161,7 @@ void Inventory::sellItem(std::string itemName) {
 Item* Inventory::removeItem(std::string itemName) {
 	int itemIndex = getIndex(itemName);
 	Item* curr = firstItem;
-	Item* temp = nullptr;
+	Item* temp = firstItem;
 	for (int i = 0; i < itemIndex; i++) {
 		temp = curr;		//same algorithm as selling as far as traversing and removing the thing
 		curr = curr->getNext();
@@ -174,11 +177,14 @@ Item* Inventory::removeItem(std::string itemName) {
 		std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
 	}
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+	int currQuant = curr->getQuantity();
 	Item* returnable = curr->removeSelf(quant); //makes a copy for returning purposes
-	if (quant == curr->getQuantity()) { //if we remove all of the thing, it needs to be removed from the inventory entirely
+	if (quant == currQuant) { //if we remove all of the thing, it needs to be removed from the inventory entirely
 		temp->setNext(curr->getNext());
-		delete (curr);
+		if (curr == firstItem) {
+			firstItem = nullptr;
+		}
+		delete(curr);
 	}
 	return returnable; //user should delete this, yo!
 }
@@ -194,7 +200,9 @@ std::string Inventory::listItems() {
 		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\tValue: " + std::to_string(curr->getWorth()) + "\n";
 		curr = curr->getNext();
 	}
-
+	if (ownedItems == "") {
+		ownedItems = "You have no items in your inventory.";
+	}
 	return ownedItems;
 }
 

@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "ClassADT.h"
+#include "Body.h"
 
 //Returns a random number with values bewteen min and max, including both min and max
 int ClassADT::generateRandomNum(int min, int max)
@@ -25,4 +26,12 @@ int ClassADT::rollHP(const int modifier)
 int ClassADT::startingGold()
 {
 	return generateRandomNum(1, 6) * goldStart * 10;
+}
+
+//Determines how many skill ranks the character gets per level
+//Amount is fixed by class, added to by modifier
+//Modifier is based on character's Intelligence score
+int ClassADT::addRanks(Body* bod)
+{
+	return ranks + bod->getModifier(bod->abilities[3]);
 }
