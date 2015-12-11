@@ -108,7 +108,7 @@ Character::Character() {
 	int classChoice = -1;
 	bool goodInputClass = false;
 
-	//This checks for the correct input, which right now is only number 1, but does not include strings
+	//This checks for the correct input, but does not include strings
 	while (!goodInputClass) {
 		cin >> classChoice;
 		if (classChoice > 2 || classChoice < 1) {
