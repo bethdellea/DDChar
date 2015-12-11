@@ -11,26 +11,20 @@
 
 Body::Body() {
         //fixed size
-        //contains the skill bonus
         skillSize = 26;
-        skills = new int[skillSize];
         abilitySize = 6;
-		//Abilites
 		
         //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
-        abilities = new int [6];
+        abilities = new int [abilitySize];
     
     //Set all random values for abilities array
     for (int i = 0; i < 6; i ++) {
         abilities[i] = setAbility(i);
     }
-    
         //fixed size
-        skills = new int [26]; //contains the skill bonus
+        skills = new int [skillSize]; //contains the skill bonus
     
 		//Skill
-		//null array
-		//how many do they get to choose? 5? 
 		//Acrobatics(Dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha), 
 		//Disable Device (dex), Disguise (cha), Escapse Artist (cha), Fly (dex), 
 		//Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
@@ -124,8 +118,11 @@ int Body::setAbility(int ability) {
 	}
 	//mathematically based on abilities
 int Body::getModifier(int ability) {
-		return ((abilities[ability]) / 10) - 2;
+        //std::cout << abilities[ability] << std::endl;
+		//int mod = ((abilities[ability]) / 10) - 2;
+        return 0;
 	}
+
 void Body::printThisAbil(int ability) {
 		//checks the size of the array first
 		if (sizeof(abilities) / sizeof(int) > ability) {

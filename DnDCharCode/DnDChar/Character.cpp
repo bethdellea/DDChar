@@ -19,6 +19,7 @@
 #include "Dwarf.h"
 #include "Human.h"
 #include "Character.h"
+#include "Barbarian.h"
 
 using namespace std;
 
@@ -126,7 +127,7 @@ Character::Character() {
 		cout << "Chose class type 'Barbarian'." << endl;
 		classType = new Barbarian();
 		cout << "Rolling a die to determine your HP." << endl;
-		HP = classType->rollHP(body->abilities[2]); //Send body's constitution modifier to the rollHP method
+		HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
 		cout << "Your total HP is: " << HP << endl;
 	}
     
@@ -134,8 +135,29 @@ Character::Character() {
     //Create new, empty inventory
     cout << "Creating your empty inventory now." << endl;
     inventory = new Inventory();
-    
 
+    
+}
+
+//Calculates the Fortitude save (see formula in the character sheet)
+int Character::getFort() {
+    int fort = body->getModifier(2) + classType->fort;
+    return fort;
+}
+
+int Character::getRef() {
+    int ref = body->getModifier(1) + classType->ref;
+    return ref;
+}
+
+int Character::getWill() {
+    int will = body->getModifier(4) + classType->will;
+    return will;
+}
+
+int Character::getAC() {
+    int AC = 10 + body->getModifier(1);
+    return AC;
 }
 
 Character::~Character() {

@@ -20,6 +20,7 @@
 		F42616BC1C1A4B6400B89412 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42616AC1C1A4B6400B89412 /* Item.cpp */; };
 		F42616BD1C1A4B6400B89412 /* ItemArmor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42616AE1C1A4B6400B89412 /* ItemArmor.cpp */; };
 		F42616BE1C1A4B6400B89412 /* ItemWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42616B01C1A4B6400B89412 /* ItemWeapon.cpp */; };
+		F4BC9ACD1C1A744E002E5FAC /* Barbarian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC9ACC1C1A744E002E5FAC /* Barbarian.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,8 @@
 		F42616B01C1A4B6400B89412 /* ItemWeapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemWeapon.cpp; path = DnDCharCode/DnDChar/ItemWeapon.cpp; sourceTree = SOURCE_ROOT; };
 		F42616B11C1A4B6400B89412 /* ItemWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemWeapon.h; path = DnDCharCode/DnDChar/ItemWeapon.h; sourceTree = SOURCE_ROOT; };
 		F42616B21C1A4B6400B89412 /* RaceADT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceADT.h; path = DnDCharCode/DnDChar/RaceADT.h; sourceTree = SOURCE_ROOT; };
+		F44DFFDA1C1A68C9002EF134 /* Barbarian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Barbarian.h; path = DnDCharCode/DnDChar/Barbarian.h; sourceTree = SOURCE_ROOT; };
+		F4BC9ACC1C1A744E002E5FAC /* Barbarian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Barbarian.cpp; path = DnDCharCode/DnDChar/Barbarian.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				F42616991C1A4B4E00B89412 /* Body.cpp */,
+				F44DFFDA1C1A68C9002EF134 /* Barbarian.h */,
+				F4BC9ACC1C1A744E002E5FAC /* Barbarian.cpp */,
 				F426169B1C1A4B6400B89412 /* Body.h */,
 				F426169C1C1A4B6400B89412 /* Character.cpp */,
 				F426169D1C1A4B6400B89412 /* Character.h */,
@@ -182,6 +187,7 @@
 				F42616BE1C1A4B6400B89412 /* ItemWeapon.cpp in Sources */,
 				F426169A1C1A4B4E00B89412 /* Body.cpp in Sources */,
 				F42616BD1C1A4B6400B89412 /* ItemArmor.cpp in Sources */,
+				F4BC9ACD1C1A744E002E5FAC /* Barbarian.cpp in Sources */,
 				F42616B41C1A4B6400B89412 /* ClassADT.cpp in Sources */,
 				F42616BC1C1A4B6400B89412 /* Item.cpp in Sources */,
 				F42616B91C1A4B6400B89412 /* Human.cpp in Sources */,

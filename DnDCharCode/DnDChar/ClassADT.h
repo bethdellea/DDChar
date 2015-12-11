@@ -26,11 +26,11 @@ protected:
 	int sizeProf;
 
 public:
-	int fort, ref, will;
-	int ranks;
-
-	std::string alignment;
-
+    
+    int fort, ref, will;
+    std::string alignment;
+    
+    int ranks;
 
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
@@ -39,7 +39,7 @@ public:
 	//Adds a pseudo-random amount of HP to a character
 	//RNG depends on class
 	//Modifier is based on character's Constitution score.
-	int rollHP(int modifier);
+	int rollHP(const int modifier);
 
 	//Returns a random number with values bewteen min and max, including both min and max
 	int generateRandomNum(int min, int max);

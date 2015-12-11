@@ -17,8 +17,11 @@ class Character {
 private:
 	
 	Body* body;
+	std::string name;
 	RaceADT* race;
+	std::string raceStr;
 	ClassADT* classType;
+	std::string classStr;
 	Inventory* inventory;
 	int HP;
 
@@ -31,15 +34,12 @@ public:
 	//Generates HP by calling Class's rollHP method with Body's Constitution modifier
 	Character();
 
-	//Copy constructor, because reasons
-	Character(Character& character);
-
 	//Creates a character based on a character save file
 	Character(std::string filename);
 
 	//Calculates AC based on Body's Dex modifier, Inventory's armor, and any size modifiers due to Race
 	//For race, check if race = dwarf, essentially
-	int getAC();
+    int getAC();
 
 	//Calculates the Fortitude save (see formula in the character sheet)
 	int getFort();

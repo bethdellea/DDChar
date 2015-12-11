@@ -17,12 +17,20 @@
 class Dwarf : public RaceADT {
 private:
 
+    
+    
+    
+public:
+
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;
     int visionIdx;
+    int speed;
     
+
 public:
+
 
     /* Creates a new Dwarf; sets initial base speed, known languages and adds natural weapon proficiencies*/
     Dwarf();
