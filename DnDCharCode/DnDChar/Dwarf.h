@@ -16,13 +16,14 @@
 
 class Dwarf : public RaceADT {
 private:
-    int speed;
+
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;
     int visionIdx;
     
 public:
+
     /* Creates a new Dwarf; sets initial base speed, known languages and adds natural weapon proficiencies*/
     Dwarf();
     //Create a deep copy of a Dwarf parameter

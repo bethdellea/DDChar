@@ -17,7 +17,7 @@
 
 class Elf: public RaceADT {
 private:
-    int speed;
+
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;

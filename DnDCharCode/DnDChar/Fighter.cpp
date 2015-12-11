@@ -9,15 +9,21 @@
 
 using namespace std;
 //Initializes skills at compile time
-const string Fighter::skills[8] = {"Climb", "Craft", "Handle Animal", "Intimidate", "Profession", "Ride", "Survival", "Swim"};
+const int Fighter::skills[8] = {4, 5, 11, 13, 16, 17, 22, 24};
 
 //Establishes all values in a Fighter instance
 //Determines skill ranks
 //Sets hit die
 Fighter::Fighter()
 {
+	className = "Fighter";
 	hitDie = 10;
 	goldStart = 5;
+
+	//Sets base saves
+	fort = 2;
+	ref = 0;
+	will = 0;
 
 	//Assumes an Intelligence modifier of +0
 	ranks = 2;
@@ -43,7 +49,7 @@ string Fighter::giveAlignment()
 	cin >> align;
 
 	//Checks align for good input
-	while (align != "LG" && align != "NG" && align != "CG" && align != "LN" && align != "NN" && align != "CN" && align != "NE" && align != "LE" && align != "NE" && align != "CE")
+	while (align != "LG" && align != "NG" && align != "CG" && align != "LN" && align != "NN" && align != "CN" && align != "NE" && align != "LE" && align != "CE")
 	{
 		cout << "The input you provided is not correct. Please try again." << endl;
 		cin >> align;
@@ -55,7 +61,7 @@ string Fighter::giveAlignment()
 
 //Determines if a given skill is a class skill
 //Compares to skills
-bool Fighter::isClassSkill(std::string skill)
+bool Fighter::isClassSkill(int skill)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -66,14 +72,6 @@ bool Fighter::isClassSkill(std::string skill)
 	}
 
 		return false;
-}
-
-//Determines how many skill ranks the character gets per level
-//Amount is fixed by class, added to by modifier
-//Modifier is based on character's Intelligence score
-int Fighter::addRanks(const int modifier)
-{
-	return 2 + modifier;
 }
 
 //Determines if a character is proficient with a given item
@@ -125,7 +123,7 @@ void Fighter::printProfs()
 	}
 }
 
-//Establishes Fighter's Armor Training feature
+/*//Establishes Fighter's Armor Training feature
 //Modifies skill bonus in Body's skill array
 void Fighter::armorTrain()
 {
@@ -137,7 +135,7 @@ void Fighter::armorTrain()
 void Fighter::weaponTrain()
 {
 	//TODO: Need ability to set specific skills
-}
+}*/
 
 //Deletes skills and profs
 Fighter::~Fighter()

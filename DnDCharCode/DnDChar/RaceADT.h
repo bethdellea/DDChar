@@ -15,8 +15,13 @@
 
 class RaceADT {
 private:
+
+protected:
+	
     
 public:
+
+	int speed;
     
     //Returns speed of character
     virtual int getSpeed()=0;

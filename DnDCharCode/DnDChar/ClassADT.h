@@ -14,9 +14,11 @@
 class ClassADT {
 
 protected:
-
+	std::string className;
 	int goldStart;
 	int hitDie;
+
+	int fort, ref, will;
 
 	//Proficiencies can be added to by race, so will not be constant
 	//Initialized here, as {} syntax does not work to initialize data members
@@ -26,7 +28,7 @@ protected:
 
 	std::string alignment;
 
-	int ranks;
+	static int ranks;
 
 public:
 	//Walks the player through assigning an aligment in the constructor
@@ -43,12 +45,12 @@ public:
 
 	//Determines if a given skill is a class skill
 	//Compares to an array of strings stored in Class
-	virtual bool isClassSkill(std::string skill) = 0;
+	virtual bool isClassSkill(int skill) = 0;
 
 	//Determines how many skill ranks the character gets per level
 	//Amount is fixed by class, added to by modifier
 	//Modifier is based on character's Intelligence score
-	virtual int addRanks(const int modifier) = 0;
+	int addRanks(Body* bod);
 
 	//Determines if a character is proficient with a given item
 	//Compares an identifier in Item class with an array of

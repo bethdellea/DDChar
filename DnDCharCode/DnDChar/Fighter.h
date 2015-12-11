@@ -14,7 +14,7 @@ class Fighter : public ClassADT {
 private:
 	//Class skills never change, so can be constant
 	//Note that skills is static, as it is the same for all fighters
-	static const std::string const skills[8];
+	static const int const skills[8];
 
 public:
 
@@ -30,12 +30,7 @@ public:
 
 	//Determines if a given skill is a class skill
 	//Compares to skills
-	bool isClassSkill(std::string skill);
-
-	//Determines how many skill ranks the character gets per level
-	//Amount is fixed by class, added to by modifier
-	//Modifier is based on character's Intelligence score
-	int addRanks(const int modifier);
+	bool isClassSkill(int skill);
 
 	//Determines if a character is proficient with a given item
 	//Compares an identifier in Item class with an array of
