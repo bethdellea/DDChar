@@ -21,8 +21,9 @@ int main()
 {
 	srand(time(NULL));
     Character* myCharacter = new Character();
-    myCharacter->getAC();
-
+	//  myCharacter->getAC();
+	//myCharacter->writeFile(myCharacter->name);
+	//myCharacter->callFile();
     return 0;
 }
 

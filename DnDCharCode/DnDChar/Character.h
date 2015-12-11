@@ -55,6 +55,9 @@ public:
 	//Has the Class generate an amount of starting gold and puts it in Inventory
 	void putGold();
 
+	//calls the writeFile function
+	void callFile();
+
 	//Deletes the 4 object instances, as all are pointers
 	~Character();
 };

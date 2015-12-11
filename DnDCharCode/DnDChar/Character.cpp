@@ -154,7 +154,8 @@ Character::Character() {
 	inventory = new Inventory();
 	inventory->interact();
 
-
+	cout << "You have an excellent inventory! Now we'll save to a file!" << endl;
+	callFile();
 }
 
 //Calculates the Fortitude save (see formula in the character sheet)
@@ -178,15 +179,9 @@ int Character::getAC() {
 	return AC;
 }
 
-Character::~Character() {
-	//Calls all 4 destructors for each object
-	delete[] body;
-	delete[] race;
-	delete[] classType;
-	delete[] inventory;
+void Character::callFile() {
+	writeFile(name);
 }
-
-
 void Character::writeFile(string fileName) {
 	//name of file should be name of character
 	std::string toWrite = "";
@@ -276,3 +271,12 @@ void Character::writeFile(string fileName) {
 	}
 
 }
+
+Character::~Character() {
+	//Calls all 4 destructors for each object
+	delete[] body;
+	delete[] race;
+	delete[] classType;
+	delete[] inventory;
+}
+
