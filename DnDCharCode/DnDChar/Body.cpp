@@ -144,7 +144,7 @@ std::string Body::printThisSkill(int skill) {
 		return error + "\n";
 	}
 	else {
-		std::string output = "Skill level at this spot is: " + skills[skill];
+		std::string output = "Skill level at this spot is:\t" + skills[skill];
 		return output + "\n";
 	}
 
@@ -196,6 +196,7 @@ int Body::setAbility() {
 int Body::getModifier(int ability) {
     return ((abilities[ability]) / 10) - 2;
 }
+
 void Body::printThisAbil(int ability) {
     //checks the size of the array first
     if (sizeof(abilities) / sizeof(int) > ability) {
@@ -205,14 +206,26 @@ void Body::printThisAbil(int ability) {
         std::cout << "That was not a correct index in the ability array." << std::endl;
     }
 }
+
 int* Body::getAbilities() {
     return abilities;
 }
+
 void Body::printAllAbilities() {
     for (int i = 0; i < abilitySize - 1; i++) {
         std::cout << abilities[i] << ", ";
     }
     std::cout << abilities[abilitySize - 1] << std::endl;
+}
+std::string Body::printAbilities()
+{
+	std::string abils = "";
+	abils += "Strength:\t" + abilities[0];
+	abils += "Dexterity:\t" + abilities[1];
+	abils += "Constitution:\t" + abilities[2];
+	abils += "Intelligence:\t" + abilities[3];
+	abils += "Wisdom:\t" + abilities[4];
+	abils += "Charisma:\t" + abilities[5];
 }
 Body::~Body() {
     //delete[] tempArr;

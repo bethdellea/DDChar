@@ -43,6 +43,7 @@ class Body{
 		int* getAbilities();
 		void printThisAbil(int ability);
 		void printAllAbilities();
+		std::string printAbilities();
 
 		~Body();
 };
