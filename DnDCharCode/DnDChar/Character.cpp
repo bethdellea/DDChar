@@ -310,8 +310,8 @@ void Character::includeRanks()
 	cout << "25 - Swim (str)" << endl;
 	cout << "26 - Use Magic Device (cha)" << endl << endl;
 
-	for (int i = 0; i < classType->ranks; i++) {
-		cout << "You have " + to_string(classType->ranks-i) + " ranks to add to your skills!" << endl;
+	for (int i = 0; i < classType->addRanks(body); i++) {
+		cout << "You have " + to_string(classType->addRanks(body)-i) + " ranks to add to your skills!" << endl;
 		cout << "Please enter the number of the skill you wish to add to:" << endl;
 
 		int index = -1;

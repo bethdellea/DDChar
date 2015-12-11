@@ -41,6 +41,6 @@ int ClassADT::startingGold()
 //Modifier is based on character's Intelligence score
 int ClassADT::addRanks(Body* bod)
 {
-	return ranks + bod->getModifier(bod->abilities[3]);
+	return ranks + bod->getModifier(3);
 }
 
