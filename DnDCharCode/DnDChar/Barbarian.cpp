@@ -10,7 +10,6 @@
 #include <iostream>
 #include "Barbarian.h"
 
-
 using namespace std;
 //Initializes skills at compile time
 const int Barbarian::skills[9] = {1, 4, 5, 11, 13, 15, 17, 22, 23};
@@ -23,14 +22,12 @@ Barbarian::Barbarian()
 	className = "Barbarian";
 	hitDie = 12;
 	goldStart = 3;
+	ranks = 4;
 
 	//Sets base saves
 	fort = 2;
 	ref = 0;
 	will = 0;
-
-	//Assumes an Intelligence modifier of +0
-	ranks = 4;
 
 	//Assigns character's alignment
 	alignment = giveAlignment();
@@ -130,4 +127,10 @@ void Barbarian::printProfs()
 void Barbarian::buffMove(RaceADT* race)
 {
 	race->speed += 10;
+}
+
+//Deletes skills and profs
+Barbarian::~Barbarian()
+{
+	delete[] profs;
 }

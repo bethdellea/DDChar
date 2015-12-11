@@ -9,6 +9,7 @@
 #include <time.h>
 #include <string>
 #include <array>
+#include "Body.h"
 
 
 class ClassADT {
@@ -26,11 +27,13 @@ protected:
 
 	int sizeProf;
 
+public:
+
+	int ranks;
+
 	std::string alignment;
 
-	static int ranks;
 
-public:
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
 	virtual std::string giveAlignment() = 0;
@@ -65,8 +68,6 @@ public:
 	
 	//Generates the number of d6's used to roll for character gold.
 	int startingGold();
-
-
 
 	//Virtual default destructor to ensure more specific destructors are called
 	virtual ~ClassADT() {};

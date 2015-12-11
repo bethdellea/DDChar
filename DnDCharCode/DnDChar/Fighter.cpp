@@ -6,7 +6,6 @@
 #include <iostream>
 #include "Fighter.h"
 
-
 using namespace std;
 //Initializes skills at compile time
 const int Fighter::skills[8] = {4, 5, 11, 13, 16, 17, 22, 24};
@@ -19,6 +18,7 @@ Fighter::Fighter()
 	className = "Fighter";
 	hitDie = 10;
 	goldStart = 5;
+	ranks = 2;
 
 	//Sets base saves
 	fort = 2;
