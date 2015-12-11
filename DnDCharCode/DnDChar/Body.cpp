@@ -92,12 +92,12 @@ Body::Body() {
     //Skill
     //null array
     //how many do they get to choose? 5?
-    //Acrobatics(Dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha),
+    /*Acrobatics(Dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha),
     //Disable Device (dex), Disguise (cha), Escapse Artist (cha), Fly (dex),
     //Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
     //Perception (wis), perform (cha), Profession (wis), Ride (dex), Sense Motive (wis),
     //Slieght of Hand (dex), Spellcraft (int), Stealth (dex), Survival (wis), Swim (str)
-    //Use Magic Device (cha),
+    Use Magic Device (cha),*/
 }
 
 //sets skills or changes them

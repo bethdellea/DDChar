@@ -26,14 +26,6 @@ using namespace std;
 
 
 Character::Character() {
-	
-	string name;
-	RaceADT* race;
-	string raceStr;
-	ClassADT* classType;
-	string classStr;
-	Inventory* inventory;
-	int HP;
 
 	//Selection of name and race
 	cout << "Hello! You are here to make a Dungeons and Dragons character. Luckily, I am here to help!" << endl;
@@ -43,7 +35,7 @@ Character::Character() {
 	cout << endl;
 	cout << "An excellent choice! That certainly sounds like a strong name to me!" << endl;
     cout<< "Next, a body (you need one, after all)." << endl;
-    Body* body = new Body();
+    body = new Body();
     cout << "Nice bod!" << endl;
 
 	cout << "Next, you must select your race. Choose a number from the list below." << endl;
@@ -147,6 +139,8 @@ Character::Character() {
 		HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
 		cout << "Your total HP is: " << HP << endl;
 	}
+
+	includeRanks();
 
 
 	//Create new, empty inventory
@@ -274,4 +268,74 @@ void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* 
 		std::cerr << "Can't write to file" << std::endl;
 	}
 
+}
+
+//Walks user through adding ranks to his or her skills
+void Character::includeRanks()
+{
+	/*Acrobatics(dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha),
+	//Disable Device (dex), Disguise (cha), Escapse Artist (cha), Fly (dex),
+	//Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
+	//Perception (wis), perform (cha), Profession (wis), Ride (dex), Sense Motive (wis),
+	//Slieght of Hand (dex), Spellcraft (int), Stealth (dex), Survival (wis), Swim (str)
+	Use Magic Device (cha),*/
+
+	cout << "Characters can modify their skills with ranks!" << endl;
+	cout << "Eligible skills are as follows:" << endl;
+	cout << "1 - Acrobatics(dex)" << endl;
+	cout << "2 - Appraise (int)" << endl;
+	cout << "3 - Bluff (cha)" << endl;
+	cout << "4 - Climb (str)" << endl;
+	cout << "5 - Craft (int)" << endl;
+	cout << "6 - Diplomacy (cha)" << endl;
+	cout << "7 - Disable Device (dex)" << endl;
+	cout << "8 - Disguise (cha)" << endl;
+	cout << "9 - Escapse Artist (cha)" << endl;
+	cout << "10 - Fly (dex)" << endl;
+	cout << "11 - Handle Animal (cha)" << endl;
+	cout << "12 - Heal (wis)" << endl;
+	cout << "13 - Intimidate (cha)" << endl;
+	cout << "14 - Knowledge(int)" << endl;
+	cout << "15 - Linguistics (int)" << endl;
+	cout << "16 - Perception (wis)" << endl;
+	cout << "17 - Perform (cha)" << endl;
+	cout << "18 - Profession (wis)" << endl;
+	cout << "19 - Ride (dex)" << endl;
+	cout << "20 - Sense Motive (wis)" << endl;
+	cout << "21 - Slieght of Hand (dex)" << endl;
+	cout << "22 - Spellcraft (int)" << endl;
+	cout << "23 - Stealth (dex)" << endl;
+	cout << "24 - Survival (wis)" << endl;
+	cout << "25 - Swim (str)" << endl;
+	cout << "26 - Use Magic Device (cha)" << endl << endl;
+
+	for (int i = 0; i < classType->ranks; i++) {
+		cout << "You have " + to_string(classType->ranks-i) + " ranks to add to your skills!" << endl;
+		cout << "Please enter the number of the skill you wish to add to:" << endl;
+
+		int index = -1;
+		bool goodInput = false;
+		//This checks for the correct input, which is any number from 1 to 3, but does not include strings
+		while (!goodInput) {
+			cin >> index;
+			if (!cin >> index) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << endl;
+			}
+			else
+			{
+				goodInput = true;
+			}
+		}
+		body->setSkills(index, 1);
+
+	}
+}
+
+//Has the Class generate an amount of starting gold and puts it in Inventory
+void Character::putGold()
+{
+	int startGold = classType->startingGold();
+	inventory->addGold(startGold);
 }

@@ -58,6 +58,9 @@ public:
 	//calls the writeFile function
 	void callFile();
 
+	//Walks user through adding ranks to his or her skills
+	void includeRanks();
+
 	//Deletes the 4 object instances, as all are pointers
 	~Character();
 };
