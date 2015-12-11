@@ -153,6 +153,8 @@ Character::Character() {
 	cout << "Creating your empty inventory now (it won't be empty for long)." << endl;
 	inventory = new Inventory();
 	inventory->interact();
+    
+    writeFile("fjdksal.txt", body, race, classType);
 
 
 }
@@ -187,7 +189,7 @@ Character::~Character() {
 }
 
 
-void Character::writeFile(string fileName) {
+void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* classType){
 	//name of file should be name of character
 	std::string toWrite = "";
 	fileName += ".txt";

@@ -21,7 +21,7 @@ int main()
 {
 	srand(time(NULL));
     Character* myCharacter = new Character();
-    myCharacter->getAC();
+    //myCharacter->getAC();
 
     return 0;
 }

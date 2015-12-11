@@ -35,7 +35,7 @@ public:
 	Character();
 
 	//Creates a character based on a character save file
-	Character(std::string filename);
+	Character(std::string filename, Body* body, RaceADT* race, ClassADT* classType);
 
 	//Calculates AC based on Body's Dex modifier, Inventory's armor, and any size modifiers due to Race
 	//For race, check if race = dwarf, essentially
@@ -51,7 +51,7 @@ public:
 	int getWill();
 
 	//Saves a character and all accompanying data in a file format
-	void writeFile(std::string filename);
+	void writeFile(std::string filename, Body* body, RaceADT* race, ClassADT* classType);
 
 	//Has the Class generate an amount of starting gold and puts it in Inventory
 	void putGold();

@@ -18,10 +18,11 @@ Body::Body() {
     //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
     
     //Set all random values for abilities array
+    
     int* tempArr = new int[6];
     for (int i = 0; i < 6; i++) {
         tempArr[i] = setAbility();
-        std::cout << setAbility() << " ";
+        std::cout << tempArr[i] << " ";
     }
     
     std::cout << std::endl;
@@ -42,7 +43,7 @@ Body::Body() {
                 goodInput = false;
             }
             else if (choice != tempArr[0] && choice != tempArr[1] && choice != tempArr[2] && choice != tempArr[3] && choice != tempArr[4] && choice != tempArr[5]) {
-                cout << "You have either entered an invalid number or you have already choosen that value." << endl;
+                cout << "You have either entered an invalid number or you have already chosen that value." << endl;
                 goodInput = false;
             }
             else {
