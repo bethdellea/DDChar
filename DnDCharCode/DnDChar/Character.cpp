@@ -26,15 +26,23 @@ using namespace std;
 
 Character::Character() {
     Body* body = new Body();
-    
+	string name;
     RaceADT* race;
+	string raceStr;
     ClassADT* classType;
+	string classStr;
     Inventory* inventory;
     int HP;
     
-    //Selection of race
-    cout << "Hello! You are here to make a Dungeons and Dragons character. Luckily, I am here to help!" << endl;
-    cout << "First, you must select your race. Choose a number from the list below." <<endl;
+	//Selection of name and race
+	cout << "Hello! You are here to make a Dungeons and Dragons character. Luckily, I am here to help!" << endl;
+	cout << "First things first! Please enter a name for your character: ";
+	std::cin >> name;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	cout << endl;
+	cout << "An excellent choice! That certainly sounds like a strong name to me!" << endl;
+
+	cout << "Next, you must select your race. Choose a number from the list below." << endl;
     cout << "1) Dwarf" << endl;
     cout << "2) Elf" << endl;
     cout << "3) Human" << endl;
@@ -70,17 +78,20 @@ Character::Character() {
         cout << "Chose race type 'Dwarf." << endl;
         race = new Dwarf();
         race->changeAbilities(body->abilities);
+		raceStr = "Dwarf";
     }
     else if (choice == 2) {
         cout << "Chose race type 'Elf." << endl;
         race = new Elf();
         race->changeAbilities(body->abilities);
+		raceStr = "Elf";
     }
     
     else if (choice == 3) {
         cout << "Chose race type 'Human." << endl;
         race = new Human();
         race->changeAbilities(body->abilities);
+		raceStr = "Human";
     }
     
     
@@ -117,6 +128,7 @@ Character::Character() {
     if (classChoice == 1) {
         cout << "Chose class type 'Fighter'." << endl;
         classType = new Fighter();
+		classStr = "Fighter";
         cout << "Rolling a die to determine your HP." << endl;
         
         HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
@@ -126,6 +138,7 @@ Character::Character() {
 	if (classChoice == 2) {
 		cout << "Chose class type 'Barbarian'." << endl;
 		classType = new Barbarian();
+		classStr = "Barbarian";
 		cout << "Rolling a die to determine your HP." << endl;
 		HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
 		cout << "Your total HP is: " << HP << endl;
