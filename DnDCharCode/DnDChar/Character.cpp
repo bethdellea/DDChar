@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nicole Lane. All rights reserved.
 //
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream>
 #include "ItemWeapon.h"
 #include "ItemArmor.h"
@@ -42,21 +42,23 @@ Character::Character() {
     //This checks for the correct input, which is any number from 1 to 3, but does not include strings
     while (!goodInput) {
         cin >> choice;
-        if (choice < 1 || choice > 3) {
-            cout << "Please enter a valid number." << endl;
-            goodInput = false;
-        }
-        if (choice == 1 || choice == 2 || choice == 3) {
-            cout << "Selection recorded!" << endl;
-            goodInput = true;
-        }
-        
         if (!cin >> choice) {
             cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
             cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << endl;
             goodInput = false;
         }
+
+        else if (choice < 1 || choice > 3) {
+            cout << "Please enter a valid number." << endl;
+            goodInput = false;
+        }
+        
+        if (choice == 1 || choice == 2 || choice == 3) {
+            cout << "Selection recorded!" << endl;
+            goodInput = true;
+        }
+        
     }
     
     

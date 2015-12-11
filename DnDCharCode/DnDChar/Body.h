@@ -11,6 +11,8 @@
 class Body{
 	private: 
 		//fixed size
+    int abilitySize;
+    int skillSize;
 		int* skills; //contains the skill bonus
 		
 

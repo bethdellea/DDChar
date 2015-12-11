@@ -3,18 +3,17 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include "Body.h"
 
-class Body {
 
-	//fixed size
-	skills; //contains the skill bonus
-				 //fixed size
-	abilities; //contains ability score
-	skillsSize;
-	abilitySize;
 
-	Body::Body() {
-        
+
+
+Body::Body() {
+        //fixed size
+        skills; //contains the skill bonus
+        skillSize;
+        abilitySize;
 		//Abilites
 		//Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
         abilities = new int [6]; //Roll 4-24 and subtract from 1-6
@@ -30,7 +29,7 @@ class Body {
 		//Use Magic Device (cha)
 	}
 	//sets skills or changes them 
-	void Body::setSkills(int index, int change) {
+	/*void Body::setSkills(int index, int change) {
 		skills[index] += change;
 	}
     
@@ -95,10 +94,10 @@ class Body {
 
 	}
 	//mathematically based on abilities
-	int Body::getModifier(int ability) {
+int Body::getModifier(int ability) {
 		return ((abilities[ability]) / 10) - 2;
 	}
-	void Body::printThisAbil(int ability) {
+void Body::printThisAbil(int ability) {
 		//checks the size of the array first
 		if (sizeof(abilities) / sizeof(int) > ability) {
 			std::cout << "The modifier at this location is: " << abilities[ability] << std::endl;
@@ -107,16 +106,16 @@ class Body {
 			std::cout << "That was not a correct index in the ability array." << std::endl;
 		}
 	}
-	int* Body::getAbilities() {
+int* Body::getAbilities() {
 		return abilities;
 	}
-	void Body::printAllAbilities() {
+void Body::printAllAbilities() {
 		for (int i = 0; i < abilitySize - 1; i++) {
 			std::cout << abilities[i] << ", ";
 		}
 		std::cout << abilities[abilitySize - 1] << std::endl;
 	}
-	Body::~Body() {
+Body::~Body() {
 
 	};
-};
+};*/
