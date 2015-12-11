@@ -26,7 +26,7 @@ using namespace std;
 
 
 Character::Character() {
-	Body* body = new Body();
+	
 	string name;
 	RaceADT* race;
 	string raceStr;
@@ -42,6 +42,9 @@ Character::Character() {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	cout << endl;
 	cout << "An excellent choice! That certainly sounds like a strong name to me!" << endl;
+    cout<< "Next, a body (you need one, after all)." << endl;
+    Body* body = new Body();
+    cout << "Nice bod!" << endl;
 
 	cout << "Next, you must select your race. Choose a number from the list below." << endl;
 	cout << "1) Dwarf" << endl;
