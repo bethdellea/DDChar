@@ -147,6 +147,7 @@ Character::Character() {
 	//Create new, empty inventory
 	cout << "Creating your empty inventory now (it won't be empty for long)." << endl;
 	inventory = new Inventory();
+	putGold();
 	inventory->interact();
     
     writeFile("testFile");
@@ -203,29 +204,11 @@ void Character::writeFile(string fileName){
 		toWrite += "Your Hit Points: " + to_string(HP) + "\t";
 		toWrite += "Your Speed: " + to_string(race->getSpeed()) + "\n";
 		// LANGUAGES (thanks Nicole)
-		toWrite += "You know the languages: ";
-		if (race->languageIdx == 1) {
-			toWrite += race->knownLanguages[0] + "\n";
-		}
-		else {
-			for (int i = 0; i < race->languageIdx; i++) {
-
-				if (i == race->languageIdx - 1) { //If last in the list, don't print a comma afterwards
-					toWrite += "and " + race->knownLanguages[i];
-				}
-				else {
-					toWrite += race->knownLanguages[i] + ", ";
-				}
-
-			}
-
-		}
-
+		toWrite += race->getLangString();
 		// VISIONS (thanks Nicole)
-        toWrite += race->getLangString();
-        cout<< "TO WRITE: " << toWrite<< endl;
         toWrite += "\n";
-
+		toWrite += race->getVisionString();
+		toWrite += body->printAbilities() + "\n";
 		//-------------------------------------------
 		//packing up the inventory
 		std::cout << "Writing your inventory to its file..." << endl;

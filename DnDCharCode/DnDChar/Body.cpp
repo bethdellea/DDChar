@@ -224,7 +224,7 @@ std::string Body::printAbilities()
 	abils += "Dexterity:\t" + std::to_string(abilities[1]) + "\n";
 	abils += "Constitution:\t" + std::to_string(abilities[2]) + "\n";
 	abils += "Intelligence:\t" + std::to_string(abilities[3]) + "\n";
-	abils += "Wisdom:\t" + std::to_string(abilities[4]) + "\n";
+	abils += "Wisdom:   \t" + std::to_string(abilities[4]) + "\n";
 	abils += "Charisma:\t" + std::to_string(abilities[5]) + "\n";
 	return abils;
 }
