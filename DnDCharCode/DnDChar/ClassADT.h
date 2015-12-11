@@ -19,8 +19,6 @@ protected:
 	int goldStart;
 	int hitDie;
 
-	int fort, ref, will;
-
 	//Proficiencies can be added to by race, so will not be constant
 	//Initialized here, as {} syntax does not work to initialize data members
 	std::string* profs;
@@ -29,6 +27,7 @@ protected:
 
 public:
     
+    int fort, ref, will;
     std::string alignment;
     
     int ranks;

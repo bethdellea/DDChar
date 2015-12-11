@@ -141,15 +141,18 @@ Character::Character() {
 
 //Calculates the Fortitude save (see formula in the character sheet)
 int Character::getFort() {
-    return body->getModifier(2);
+    int fort = body->getModifier(2) + classType->fort;
+    return fort;
 }
 
 int Character::getRef() {
-    return body->getModifier(1);
+    int ref = body->getModifier(1) + classType->ref;
+    return ref;
 }
 
 int Character::getWill() {
-    return body->getModifier(4);
+    int will = body->getModifier(4) + classType->will;
+    return will;
 }
 
 int Character::getAC() {
