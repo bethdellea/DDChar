@@ -50,7 +50,7 @@ public:
 	int getWill();
 
 	//Saves a character and all accompanying data in a file format
-	void writeFile(std::string filename, Body* body, RaceADT* race, ClassADT* classType);
+	void writeFile(std::string filename);
 
 	//Has the Class generate an amount of starting gold and puts it in Inventory
 	void putGold();

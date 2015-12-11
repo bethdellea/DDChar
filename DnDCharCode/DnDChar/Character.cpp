@@ -148,7 +148,7 @@ Character::Character() {
 	inventory = new Inventory();
 	inventory->interact();
     
-    writeFile("fjdksal.txt", body, race, classType);
+    writeFile("testFile");
 
 
 }
@@ -183,7 +183,7 @@ Character::~Character() {
 }
 
 
-void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* classType){
+void Character::writeFile(string fileName){
 	//name of file should be name of character
 	std::string toWrite = "";
 	fileName += ".txt";
@@ -237,6 +237,7 @@ void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* 
 			}
 		}
 		toWrite += "\n";
+        cout << "TO WRITE " << toWrite << endl;
 
 		//-------------------------------------------
 		//packing up the inventory

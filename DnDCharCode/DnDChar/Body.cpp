@@ -220,13 +220,12 @@ void Body::printAllAbilities() {
 std::string Body::printAbilities()
 {
 	std::string abils = "";
-	abils += "Strength:\t" + abilities[0];
-	abils += "Dexterity:\t" + abilities[1];
-	abils += "Constitution:\t" + abilities[2];
-	abils += "Intelligence:\t" + abilities[3];
-	abils += "Wisdom:\t" + abilities[4];
-	abils += "Charisma:\t" + abilities[5];
-
+	abils += "Strength:\t" + std::to_string(abilities[0]) + "\n";
+	abils += "Dexterity:\t" + std::to_string(abilities[1]) + "\n";
+	abils += "Constitution:\t" + std::to_string(abilities[2]) + "\n";
+	abils += "Intelligence:\t" + std::to_string(abilities[3]) + "\n";
+	abils += "Wisdom:\t" + std::to_string(abilities[4]) + "\n";
+	abils += "Charisma:\t" + std::to_string(abilities[5]) + "\n";
 	return abils;
 }
 
