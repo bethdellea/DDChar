@@ -12,20 +12,21 @@
 #include <string>
 
 Inventory::Inventory() {
+	//you start out broke and with nothing
 	numGold = 0;
 	firstItem = nullptr;
 	lastItem = nullptr;
 
 }
 
-
+//copy constructor because good practices
 Inventory::Inventory(const Inventory* inventoryIn) {
 	numGold = inventoryIn->numGold;
 	Item* curr = inventoryIn->firstItem;
 	firstItem = curr->copySelf();
 	Item* prevItem = firstItem;
 	curr = curr->getNext();
-	while (curr != nullptr) {
+	while (curr != nullptr) {  //walk through inventory to copy, ask for copies of each item, store those items
 		Item* newItem = curr->copySelf();		//workaround for the fact that copy constructors can't be virtual
 		prevItem->setNext(newItem);
 		prevItem = newItem;
@@ -41,15 +42,17 @@ Inventory::Inventory(std::string fName) {
 	if (infile) {
 		firstItem = nullptr;
 		std::string goldBal;
+		//the very first line in the file is how much gold you have!
 		getline(infile, goldBal);
 		numGold = atoi(goldBal.c_str());
 		while (infile) {  //work through the whole file
 			std::string line;
 			getline(infile, line);
 			if (line != "") {
-				std::stringstream linestream(line);
 				//only try and add actual data, please!
+				std::stringstream linestream(line);
 				//an array of the characteristics of the items being loaded in
+					//9 is more spaces than needed, to avoid errors caused by random errors in the txt file
 				std::string* charsArray = new std::string[9];
 				int curr = 0;
 				while (linestream) {
@@ -58,11 +61,10 @@ Inventory::Inventory(std::string fName) {
 					charsArray[curr] = itemData;
 					curr++;
 				}
-
 				if (charsArray[1] == "a") {
 					//then the item is armor. sweet.
 					std::string itemName = charsArray[2];
-					int itemWorth = atoi(charsArray[3].c_str());
+					int itemWorth = atoi(charsArray[3].c_str()); //casting string to int so it can be the param we need
 					int sellP = atoi(charsArray[4].c_str()); //calculated by ItemArmor right now, but here because some day that might change
 					int itemQuant = atoi(charsArray[5].c_str());		//and then we'd need to input it
 					Item* itemIn = new ItemArmor(itemName, itemWorth, itemQuant);
@@ -91,11 +93,14 @@ Inventory::Inventory(std::string fName) {
 
 void Inventory::addItem(Item* itemToAdd) {
 	if (firstItem == nullptr) {
+		//if we've got nothing, make sure this is the first one!
 		firstItem = itemToAdd;
 	}
 	else {
 		if (!isInInventory(itemToAdd->getName())) {
+			//if it's not already in the inventory, add it to the end
 			if (lastItem == nullptr) {
+				//if there's only one item in the list so far....
 				lastItem = itemToAdd;
 				firstItem->setNext(itemToAdd);
 			}
@@ -105,14 +110,16 @@ void Inventory::addItem(Item* itemToAdd) {
 			}
 		}
 		else {
+			//if we already have the item, we're just changing the quantity of it
 			int itemIndx = getIndex(itemToAdd->getName());
 			Item* curr = firstItem;
 			Item* temp = nullptr;
 			for (int i = 0; i < itemIndx; i++) {
-				temp = curr;		//same algorithm as selling as far as traversing and removing the thing
-				curr = curr->getNext();		//if that one was wrong, so is this.
+				temp = curr;		
+				curr = curr->getNext();		
 			}
 			curr->changeQuantity(itemToAdd->getQuantity());
+			delete itemToAdd; //item wasn't actually added, nothing points to it now, so we should get rid of it
 		}
 	}
 }
@@ -128,11 +135,11 @@ void Inventory::sellItem(std::string itemName) {
 		curr = curr->getNext();
 	}
 	std::cout << "You have " << curr->getQuantity() << " of this item." << std::endl;
+	std::cout << itemName << " sells for " << curr->getSellPrice() << " gold." << std::endl;
 	std::cout << "How many of " << itemName << " would you like to sell?";
 	int quant = 0;
 	//Checks user input to make sure it's an integer
 	while (!(std::cin >> quant) || quant == 0 || quant > curr->getQuantity()) {
-		//Some code I found online. Basically catches when cin cannot turn the input into an integer
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "I'm sorry, but the key you pressed was not a valid input or tried to sell too mmany items. Please try again." << std::endl;
@@ -140,14 +147,20 @@ void Inventory::sellItem(std::string itemName) {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (curr->getQuantity() > quant) {
+		//if we have more than enough of the thing....
 		curr->changeQuantity(quant * -1);
 		addGold(curr->getSellPrice()*quant);
 	}
 	else if (curr->getQuantity() == quant) {
+		//if we have exactly enough of the thing
 		if (curr == firstItem){
 			firstItem = nullptr;
+			//we'll delete the thing in a second
 		}
-		//assuming that loop got us where we want to be... requires testing
+		else if (curr == lastItem) {
+			//if we're kicking off the last one, adjust where the last pointer goes
+			lastItem = temp;
+		}
 		temp->setNext(curr->getNext());
 		addGold(curr->getSellPrice()*quant); //no haggling here, unfortunately
 		delete(curr);
@@ -184,23 +197,30 @@ Item* Inventory::removeItem(std::string itemName) {
 		if (curr == firstItem) {
 			firstItem = nullptr;
 		}
+		else if (curr == lastItem) {
+			//if we're removing the last item, we need to update where lastItem points
+			lastItem = temp;
+		}
 		delete(curr);
 	}
-	return returnable; //user should delete this, yo!
+	return returnable; //user should delete this!
 }
 
 
 
 
 std::string Inventory::listItems() {
-	//work through the linked list pls
+	// work through the linked list pls
 	std::string ownedItems = "";
+	// we're concatonating each item's attributes into the string. 
+			// the toString-type function on an item level gives more information than this needs
 	Item* curr = firstItem;
 	while (curr != nullptr) {
 		ownedItems += curr->getName() + "\t Quantity: " + std::to_string(curr->getQuantity()) + "\tValue: " + std::to_string(curr->getWorth()) + "\n";
 		curr = curr->getNext();
 	}
 	if (ownedItems == "") {
+		//give some feedback if they're itemless
 		ownedItems = "You have no items in your inventory.";
 	}
 	return ownedItems;
@@ -213,6 +233,7 @@ int Inventory::getGold() {
 
 //adds gold to the total!
 void Inventory::addGold(int deposit) {
+	//the function that calls this one checks for positive gold input
 	numGold += deposit;
 }
 
@@ -221,11 +242,12 @@ void Inventory::removeGold(int withdrawal) {
 	if (numGold >= withdrawal) {
 		numGold -= withdrawal;
 	}
-	//controlling for overdraft will happen in the inventory interface
+	//controlling for overdraft input will happen in the inventory interface
 	std::cout << "There was an error in removing your gold. Please double check your numbers and try again." << std::endl;
 }
 
 
+//this function was deemed unnecessary, but may be worthwhile some day
 /*
 //returns a copy of the item we're looking for
 Item* Inventory::getItem(std::string itemName) {
@@ -242,7 +264,9 @@ return curr;
 */
 
 //returns the index position of the item by its name
+// must run isInInventory first
 int Inventory::getIndex(std::string itemName) {
+	//used for verifying if an item is in the inventory
 	Item* curr = firstItem;
 	int indx = 0;
 	//traverse the list until the name matches
@@ -250,9 +274,11 @@ int Inventory::getIndex(std::string itemName) {
 		curr = curr->getNext();
 		indx++;
 	}
+	//we found it!! yayy!!!  (or we ran out of list space -- isInInventory should be called before this)
 	return indx;
 }
 
+// basic true/false to check if it's there or not
 bool Inventory::isInInventory(std::string itemName) {
 	Item* curr = firstItem;
 
@@ -270,7 +296,7 @@ void Inventory::toFile(std::string filename) {
 	Item* curr = firstItem;
 	std::string toWrite = "";
 	toWrite += std::to_string(getGold()) + "\n";
-	while (curr != nullptr) {
+	while (curr != nullptr) {	//the item information is tabbed in and then written as one item per line
 		toWrite += "\t" + curr->stringMe() + "\n";
 		curr = curr->getNext();
 	}
@@ -362,7 +388,7 @@ void Inventory::interact() {
 					//Some code I found online. Basically catches when cin cannot turn the input into an integer
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-					std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
+					std::cout << "I'm sorry, but the key you pressed was not a valid deposit. Please try again." << std::endl;
 				}
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -377,10 +403,9 @@ void Inventory::interact() {
 					//Some code I found online. Basically catches when cin cannot turn the input into an integer
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-					std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
+					std::cout << "I'm sorry, but the key you pressed was not a valid input or exceeded your balance. Please try again." << std::endl;
 				}
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
 				removeGold(withdraw);
 				std::cout << "\nYour deposit has been processed. Thank you. Your balance is now " << getGold() << std::endl;
 			}
@@ -418,7 +443,7 @@ void Inventory::interact() {
 				else {
 					std::cout << "Wondeful. Let's add your first item!" << std::endl;
 					addItem();
-					std::cout << "Your new item has been added! This is what your inventory looks like now: \n" << listItems() << std::endl;
+					std::cout << "Your new item has been added! This is what your inventory looks like now: \n" << listItems() << std::endl << std::endl;
 				}
 			}
 			else {
@@ -464,7 +489,7 @@ void Inventory::interact() {
 						}
 					}
 					removeItem(toRemove);
-					std::cout << "Your item has been removed! This is what your inventory looks like now: \n" << listItems() << std::endl;
+					std::cout << "Your item has been removed! This is what your inventory looks like now: \n" << listItems() << std::endl << std::endl;
 
 				}
 				//sell an item
@@ -485,14 +510,14 @@ void Inventory::interact() {
 						}
 					}
 					sellItem(toSell);
-					std::cout << "Your item has been sold! This is what your inventory looks like now: \n" << listItems() << std::endl;
+					std::cout << "Your item has been sold! This is what your inventory looks like now: \n" << listItems() << std::endl << std::endl;
 
 				}
 				//add an item
 				else {
 					//borrow Joe's add/remove interface from test
 					addItem();
-					std::cout << "Your new item has been added! This is what your inventory looks like now: \n" << listItems() << std::endl;
+					std::cout << "Your new item has been added! This is what your inventory looks like now: \n" << listItems() << std::endl << std::endl;
 
 				}
 			}

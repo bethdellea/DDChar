@@ -148,10 +148,10 @@ Character::Character() {
 	//Create new, empty inventory
 	cout << "Creating your empty inventory now (it won't be empty for long)." << endl;
 	inventory = new Inventory();
-	putGold();
+	putGold();		//your class impacts your starting gold amount. Let's let it do that.
 	inventory->interact();
     
-    writeFile("testFile");
+    writeFile(name);
 
 
 }
@@ -191,9 +191,9 @@ void Character::writeFile(string fileName){
 	std::string toWrite = "";
 	fileName += ".txt";
 	std::ofstream outf(fileName, fstream::app);
-	//will append to the file - if you have more than one of a character, you must append it yourself
+	//will append to the file if there is more than one character with the name
 	if (outf) {
-
+		std::cout << "Writing your character to " + name + ".txt" << std::endl;
 		toWrite += "Name: " + name + "\n";
 		toWrite += "Race: " + raceStr + "\n";
 		toWrite += "Class: " + classStr + "\n";
@@ -202,13 +202,16 @@ void Character::writeFile(string fileName){
 		for (int i = 0; i < classType->sizeProf; i++) {
 			toWrite += classType->profs[i] + "\t";
 		}
-		toWrite += "Your Hit Points: " + to_string(HP) + "\t";
+		toWrite += "\nYour Hit Points: " + to_string(HP) + "\t";
 		toWrite += "Your Speed: " + to_string(race->getSpeed()) + "\n";
 		// LANGUAGES (thanks Nicole)
+		// race has a function that makes a string of the known languages all pretty for output
 		toWrite += race->getLangString();
 		// VISIONS (thanks Nicole)
+		// race has a function that makes a string of the vision types all pretty for output
         toWrite += "\n";
 		toWrite += race->getVisionString();
+		// body has a function that makes a string of the abilities for output
 		toWrite += body->printAbilities() + "\n";
 		//-------------------------------------------
 		//packing up the inventory
@@ -216,22 +219,23 @@ void Character::writeFile(string fileName){
 		std::cout << "Please enter the desired name for your inventory file: ";
 		std::string invFilename;
 		while (!(std::cin >> invFilename) || invFilename == "") {
-			//Some code I found online. Basically catches when cin cannot turn the input into an integer
+			//make sure we're getting valid input for a file name
+			// cin is actually good here because we don't want spaces in our file names anyway
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "I'm sorry, but the key you pressed was not a valid input. Please try again." << std::endl;
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		invFilename += ".txt";
-		inventory->toFile(invFilename);
+		inventory->toFile(invFilename); //let inventory make itself into a file
 		toWrite += "Total Gold Hoarded: " + to_string(inventory->getGold()) + "\n";
 		toWrite += "Items in your inventory:\n" + inventory->listItems() + "\n";
 		toWrite += "More detailed inventory information can be found in " + invFilename + "\n";
 		//end of the inventory
 		//--------------------------------------------
-
+		toWrite += "\n\n\n"; //put some buffer space at the end for readability if it concatenates
 		std::string out;
-		outf << toWrite; //add the string gained in the other fcn to the file!
+		outf << toWrite; //add the string gained above to the file!
 		outf.close();
 
 

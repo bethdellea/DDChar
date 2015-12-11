@@ -20,9 +20,17 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-    Character* myCharacter = new Character();
+    //Character* myCharacter = new Character();
 	//myCharacter->writeFile(myCharacter->name);
 	//myCharacter->callFile();
-    return 0;
+    
+	Inventory* testInven = new Inventory();
+	testInven->interact();
+
+	Inventory* testInven2 = new Inventory(testInven);
+	std::cout << "Made a copy of testInven... Listing those items. \n" << testInven2->listItems();
+
+	
+	return 0;
 }
 

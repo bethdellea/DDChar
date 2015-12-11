@@ -63,7 +63,7 @@ std::string ItemArmor::getName() {
 std::string ItemArmor::stringMe() {
 	std::string toReturn = "a\t"; //a because this item is armor
 	toReturn += name + "\t";
-	//use stringstream for this shitt
+	//use stringstream for this type casting thing
 	std::stringstream myStream;
 	myStream << worth << "\t" << sellPrice << "\t" << quantity << "\t";
 	toReturn += myStream.str();
@@ -84,5 +84,6 @@ ItemArmor* ItemArmor::removeSelf(int num) {
 
 ItemArmor* ItemArmor::copySelf() {
 	ItemArmor* copied = new ItemArmor(*this);
+	//we couldn't add a virtual copy constructor, so this function is  in both item types and can be called from Inventory
 	return copied;
 }
