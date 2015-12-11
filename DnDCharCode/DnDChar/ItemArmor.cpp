@@ -77,9 +77,8 @@ ItemArmor* ItemArmor::removeSelf(int num) {
 	ItemArmor* copiedSelf = new ItemArmor(*this);
 	int quantDiff = copiedSelf->getQuantity() - num; //set the quantity of what's being returned to the number we want
 	copiedSelf->changeQuantity(quantDiff*-1);		//we need to remove the difference between actual and desired quant
-	this->changeQuantity(num*-1); //remove those being removed from this actual object
+	this->changeQuantity(num * -1); //remove those being removed from this actual object
 	return copiedSelf;
-
 }
 
 
