@@ -21,7 +21,7 @@ Body::Body() {
     int* tempArr = new int[6];
     for (int i = 0; i < 6; i++) {
         tempArr[i] = setAbility();
-        std::cout << setAbility() << " ";
+        std::cout << tempArr[i] << " ";
     }
     
     std::cout << std::endl;
@@ -132,7 +132,6 @@ void Body::fillSkills() {
 int Body::skillCheck(int skill) {
     //generate a number from 1 -20
     //adds the modifier skills
-    srand(time(NULL));
     int randNum = rand() % (20 - 1 + 1) + 1;
     randNum += skills[skill];
     return randNum;
@@ -163,7 +162,6 @@ int Body::skillCalc(int rank, int mod) {
     return total;
 }
 int Body::generateRandomNum(int min, int max) {
-    srand(time(NULL));
     int num = rand() % (max - min + 1) + min;
     return num;
 }
