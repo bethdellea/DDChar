@@ -135,7 +135,7 @@ Character::Character() {
 	if (classChoice == 2) {
 		cout << "Chose class type 'Barbarian'." << endl;
 		classType = new Barbarian();
-		race->speed += 10;	//TODO: Get buffMove() to do this instead
+		race->changeSpeed(10);	//TODO: Get buffMove() to do this instead
 		classStr = "Barbarian";
 		cout << "Rolling a die to determine your HP." << endl;
 		HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
