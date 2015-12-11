@@ -6,7 +6,6 @@
 #define _DDChar_Class_ADT_
 
 #include <iostream>
-#include <time.h>
 #include <string>
 #include <array>
 #include "Body.h"

@@ -13,12 +13,13 @@
 #include "Dwarf.h"
 #include "Human.h"
 #include "Character.h"
+#include <ctime>
 
 using namespace std;
 
 int main()
 {
-
+	srand(time(NULL));
     Character* myCharacter = new Character();
     
 //    Body* myBody = new Body();

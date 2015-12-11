@@ -5,12 +5,12 @@
 #include "stdafx.h"
 #include "ClassADT.h"
 #include "Body.h"
+#include <ctime>
+#include <stdlib.h>
 
 //Returns a random number with values bewteen min and max, including both min and max
 int ClassADT::generateRandomNum(int min, int max)
 {
-	srand(time(NULL));
-
 	return rand() % (max - min + 1) + min;
 }
 
@@ -43,3 +43,4 @@ int ClassADT::addRanks(Body* bod)
 {
 	return ranks + bod->getModifier(bod->abilities[3]);
 }
+
