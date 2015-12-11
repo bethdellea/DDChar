@@ -132,7 +132,6 @@ void Body::fillSkills() {
 int Body::skillCheck(int skill) {
     //generate a number from 1 -20
     //adds the modifier skills
-    srand(time(NULL));
     int randNum = rand() % (20 - 1 + 1) + 1;
     randNum += skills[skill];
     return randNum;
@@ -165,7 +164,6 @@ int Body::skillCalc(int rank, int mod) {
     return total;
 }
 int Body::generateRandomNum(int min, int max) {
-    srand(time(NULL));
     int num = rand() % (max - min + 1) + min;
     return num;
 }
@@ -226,6 +224,8 @@ std::string Body::printAbilities()
 	abils += "Intelligence:\t" + abilities[3];
 	abils += "Wisdom:\t" + abilities[4];
 	abils += "Charisma:\t" + abilities[5];
+
+	return abils;
 }
 Body::~Body() {
     //delete[] tempArr;
