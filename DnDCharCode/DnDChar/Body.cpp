@@ -137,20 +137,16 @@ int Body::skillCheck(int skill) {
     randNum += skills[skill];
     return randNum;
 }
-
-std::string Body::printThisSkill(int skill) {
-	//checks the size of the array
-	if (skill > 5) {
-		std::string error = "Incorrect index input for the skills array.";
-		return error + "\n";
-	}
-	else {
-		std::string output = "Skill level at this spot is: " + skills[skill];
-		return output + "\n";
-	}
-
+void Body::printThisSkill(int skill) {
+    //checks the size of the array
+    if (skill > 5) {
+        std::cout << "Incorrect index input for the skills array." << std::endl;
+    }
+    else {
+        std::cout << "Skill level at this spot is: " << skills[skill] << std::endl;
+    }
+    
 }
-
 void Body::printAllSkills() {
     for (int i = 0; i < skillSize - 1; i++) {
         std::cout << skills[i] << ", ";
