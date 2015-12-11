@@ -37,7 +37,7 @@ class Body{
 		//determine amount of bonus given
 		int skillCalc( int rank, int mod);
 
-		int setAbility(int ability);
+		int setAbility();
 		//mathematically based on abilities
 		int getModifier(int ability);
 		int* getAbilities();
