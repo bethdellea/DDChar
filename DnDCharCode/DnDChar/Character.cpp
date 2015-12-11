@@ -146,8 +146,9 @@ Character::Character() {
     
     
     //Create new, empty inventory
-    cout << "Creating your empty inventory now." << endl;
+    cout << "Creating your empty inventory now (it won't be empty for long)." << endl;
     inventory = new Inventory();
+    inventory->interact();
 
     
 }

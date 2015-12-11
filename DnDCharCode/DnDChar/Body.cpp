@@ -27,7 +27,7 @@ Body::Body() {
     std::cout << std::endl;
     
     string names[] = { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-    int num = 0;
+
     int choice = -1;
     for (int i = 0; i < 6; i++) {
         bool goodInput = false;
