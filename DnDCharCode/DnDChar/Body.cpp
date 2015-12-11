@@ -11,12 +11,13 @@
 
 Body::Body() {
         //fixed size
-        skills; //contains the skill bonus
-        skillSize;
-        abilitySize;
+         //contains the skill bonus
+        skillSize = 26;
+        skills = new int[skillSize];
+        abilitySize = 6;
 		//Abilites
 		//Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
-        abilities = new int [6]; //Roll 4-24 and subtract from 1-6
+        abilities = new int [abilitySize]; //Roll 4-24 and subtract from 1-6
 
 		//Skill
 		//null array
