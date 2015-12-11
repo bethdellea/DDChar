@@ -27,13 +27,13 @@ using namespace std;
 
 Character::Character() {
 	
-	string name;
-	RaceADT* race;
-	string raceStr;
-	ClassADT* classType;
-	string classStr;
-	Inventory* inventory;
-	int HP;
+	name;
+	race;
+	raceStr;
+	classType;
+	classStr;
+	inventory;
+	HP;
 
 	//Selection of name and race
 	cout << "Hello! You are here to make a Dungeons and Dragons character. Luckily, I am here to help!" << endl;
@@ -154,7 +154,7 @@ Character::Character() {
 	inventory = new Inventory();
 	inventory->interact();
     
-    writeFile("fjdksal.txt", body, race, classType);
+    writeFile("testFile");
 
 
 }
@@ -189,7 +189,7 @@ Character::~Character() {
 }
 
 
-void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* classType){
+void Character::writeFile(string fileName){
 	//name of file should be name of character
 	std::string toWrite = "";
 	fileName += ".txt";
@@ -243,6 +243,7 @@ void Character::writeFile(string fileName, Body* body, RaceADT* race, ClassADT* 
 			}
 		}
 		toWrite += "\n";
+        cout << "TO WRITE " << toWrite << endl;
 
 		//-------------------------------------------
 		//packing up the inventory

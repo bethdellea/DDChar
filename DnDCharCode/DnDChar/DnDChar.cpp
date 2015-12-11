@@ -21,14 +21,13 @@ int main()
 {
 	srand(time(NULL));
     Character* myCharacter = new Character();
-<<<<<<< HEAD
+
     //myCharacter->getAC();
 
-=======
+
 	//  myCharacter->getAC();
 	//myCharacter->writeFile(myCharacter->name);
 	//myCharacter->callFile();
->>>>>>> origin/master
     return 0;
 }
 

@@ -18,10 +18,11 @@ class Inventory {
 private:
 
 	int numGold;
-	Item* firstItem; //let's do this linked list thing
+	
 	Item* lastItem;
 
 public:
+    Item* firstItem; //let's do this linked list thing
 	Inventory();
 
 	Inventory(const Inventory* inventoryIn); // <- copy constructor
@@ -74,7 +75,7 @@ public:
 	void addItem();
 
 	//deletes this beautiful linked list of Items
-	~Inventory();
+    ~Inventory();
 };
 
 #endif /* defined(__Inventory__) */
