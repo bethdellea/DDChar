@@ -65,7 +65,7 @@ public:
 	Item* removeItem(std::string itemName);
 
 	//writes the inventory to a file!
-	void toFile();
+	void toFile(std::string filename);
 
 	//the function that loops and allows users to select the actions they wish to take with their inventory
 	void interact();

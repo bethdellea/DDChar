@@ -266,7 +266,7 @@ bool Inventory::isInInventory(std::string itemName) {
 
 }
 
-void Inventory::toFile() {
+void Inventory::toFile(std::string filename) {
 	Item* curr = firstItem;
 	std::string toWrite = "";
 	toWrite += std::to_string(getGold()) + "\n";
@@ -275,17 +275,8 @@ void Inventory::toFile() {
 		curr = curr->getNext();
 	}
 	//then do something with the compiled strings
-	//you know, that writing to a file shit
-	std::cout << "Please enter the desired name for your inventory file: ";
-	std::string filename;
-	while (!(std::cin >> filename) || filename == "") {
-		//Some code I found online. Basically catches when cin cannot turn the input into an integer
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
-	}
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	filename += ".txt";
+	//you know, that writing to a file stuff
+	
 	std::ofstream outf(filename);
 	if (outf) {
 		std::string out;
