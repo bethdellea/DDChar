@@ -24,15 +24,15 @@ public:
 
     std::string* knownLanguages;
     std::string* vision;
-    int languageIdx;
+    int languageIdx; //Keeps track of which index to add to when adding to the array
     int visionIdx;
-    int speed;
+    int speed; //Base movement speed
     
 
 public:
 
 
-    /* Creates a new Dwarf; sets initial base speed, known languages and adds natural weapon proficiencies*/
+    /* Creates a new Dwarf; sets initial base speed and known languages*/
     Dwarf();
     //Create a deep copy of a Dwarf parameter
     Dwarf(const Dwarf& dwarfToCopy);
@@ -52,11 +52,11 @@ public:
     void addVision(std::string newVision);
     //Prints a list of current visions
     void printVision();
-    std::string getVisionString();
     //Stat bonus
-    void changeAbilities(int* abilArr);
+    void changeAbilities(int* abilArr); //Takes body's ability array and adjusts the values based off of specific race
     //For printing to a file
     std::string getLangString();
+    std::string getVisionString();
    
 
 };

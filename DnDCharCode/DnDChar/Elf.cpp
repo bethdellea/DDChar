@@ -12,18 +12,19 @@
 
 Elf::Elf() {
     speed = 30;
-    knownLanguages = new std::string[50];
+    knownLanguages = new std::string[50]; //In case new languages or visions are "invented"
     vision = new std::string[50];
     languageIdx = 0;
     visionIdx = 0;
     
-    knownLanguages[0] = "Common";
+    knownLanguages[0] = "Common"; //Initialize all languages and visions specific to the race
     knownLanguages[1] = "Elven";
     languageIdx += 2;
     vision[0] = "Low Light Vision";
     visionIdx++;
 }
 
+//Very rarely will there be a case where a copy constructor is needed for Race, but good to have just in case
 Elf::Elf(const Elf& elfToCopy){
     speed = elfToCopy.speed;
     languageIdx = elfToCopy.languageIdx;
@@ -33,7 +34,7 @@ Elf::Elf(const Elf& elfToCopy){
     std::string* vision = new std::string[50];
     
     //Set known languages in new array
-    for (int i = 0; i < languageIdx; i++) {
+    for (int i = 0; i < languageIdx; i++) { //Copy all information in the existing arrays to the new ones
         knownLanguages[i] = elfToCopy.knownLanguages[i];
     }
     //Set vision in new array
@@ -65,6 +66,7 @@ int Elf::changeSpeed(int amt) {
     
 }
 
+//Add to the language array when you learn a new language (unless you already know it)
 void Elf::addLanguage(std::string newLanguage) {
     for (int i = 0; i < languageIdx; i++) {
         if (newLanguage == *(knownLanguages + i)) {
@@ -77,6 +79,7 @@ void Elf::addLanguage(std::string newLanguage) {
     languageIdx++;
 }
 
+//Cycle through array and print
 void Elf::printLanguages() {
 
     std::cout << "You know the languages: ";
@@ -98,6 +101,7 @@ void Elf::printLanguages() {
     }
 }
 
+//Like addLanguages but for vision
 void Elf::addVision(std::string newVision) {
     for (int i = 0; i < visionIdx; i++) {
         if (newVision == *(vision + i)) {
@@ -111,6 +115,7 @@ void Elf::addVision(std::string newVision) {
 }
 
 
+//Append to a string so it can be written to a file when saving
 std::string Elf::getLangString() {
     std::string toWrite = "";
     toWrite += "You know the languages: ";
@@ -134,6 +139,7 @@ std::string Elf::getLangString() {
 }
 
 
+//Display all known visions
 void Elf::printVision() {
     std::cout << "Your current types of vision include: ";
 
@@ -151,6 +157,8 @@ void Elf::printVision() {
         }
     }
 }
+
+//Append to a string so it can be written to a file when saving
 
 std::string Elf::getVisionString() {
     std::string toWrite = "";
@@ -177,7 +185,7 @@ std::string Elf::getVisionString() {
 
 
 
-//Stat bonus
+//Stat bonus, based on race; takes the ability array made in body as a parameter and changes the values accordingly
 void Elf::changeAbilities(int* abilArr) {
     abilArr[1] = *(abilArr + 1) + 2; //+2 Dexterity
     abilArr[3] = *(abilArr + 3) + 2; //+2 Intelligence

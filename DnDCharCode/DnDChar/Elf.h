@@ -22,15 +22,14 @@ private:
     
     
 public:
-
+    //Public in order for other classes to access them (when sending these data members as parameters, etc.)
     std::string* knownLanguages;
     std::string* vision;
-    int languageIdx;
+    int languageIdx; //Keeps track of which index in the array to add to next
     int visionIdx;
-
-
     int speed;
-    /* Creates a new Elf; sets initial base speed, known languages and adds natural weapon proficiencies*/
+    
+    /* Creates a new Elf; sets initial base speed, known languages and movement*/
     Elf();
     //Create a deep copy of a Elf parameter
     Elf(const Elf& elfToCopy);
@@ -38,6 +37,8 @@ public:
     ~Elf();
     //For printing to a file
     std::string getLangString();
+    std::string getVisionString();
+    
     //Print speed of character
     void printSpeed();
     //Get speed of character
@@ -52,8 +53,8 @@ public:
     void addVision(std::string newVision);
     //Prints a list of visions
     void printVision();
-    std::string getVisionString();
-    //Stat bonus
+    
+    //Stat bonus, takes body's ability array and adjusts the values based off of specific race
     void changeAbilities(int* abilArr);
 
     

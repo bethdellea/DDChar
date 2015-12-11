@@ -56,4 +56,4 @@ public:
 	ItemArmor* copySelf();
 };
 
-#endif /* defined(__Item__) */#pragma once
+#endif

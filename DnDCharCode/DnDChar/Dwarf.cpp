@@ -14,17 +14,17 @@ Dwarf::Dwarf() {
     speed = 20;
     knownLanguages = new std::string[50];
     vision = new std::string[50];
-    languageIdx = 0;
+    languageIdx = 0; //Keep track of where in the array a new language/vision should be added
     visionIdx = 0;
     
-    knownLanguages[0] = "Common";
+    knownLanguages[0] = "Common"; //Initialize arrays based on languages and visions specific to race
     knownLanguages[1] = "Dwarven";
     languageIdx += 2;
     vision[0] = "Darkvision";
     visionIdx++;
 }
 
-//Create a deep copy of a Dwarf parameter
+//Create a deep copy of a Dwarf parameter (although rarely will it be used)
 Dwarf::Dwarf(const Dwarf& dwarfToCopy){
     speed = dwarfToCopy.speed;
     languageIdx = dwarfToCopy.languageIdx;
@@ -65,6 +65,7 @@ int Dwarf::getSpeed() {
     return speed;
 }
 
+//Add language to the array unless it has already been learned
 void Dwarf::addLanguage(std::string newLanguage) {
     for (int i = 0; i < languageIdx; i++) {
         if (newLanguage == *(knownLanguages + i)) {
@@ -77,9 +78,10 @@ void Dwarf::addLanguage(std::string newLanguage) {
     languageIdx++;
 }
 
+//Displays all known languages
 void Dwarf::printLanguages() {
     std::cout << "You know the languages: ";
-    if (languageIdx == 1) {
+    if (languageIdx == 1) { //Skip the loop if you only know one language
         std::cout << knownLanguages[0] << std::endl;
     }
     else {
@@ -97,6 +99,7 @@ void Dwarf::printLanguages() {
     }
 }
 
+//Append to a string to write to a file when saving
 std::string Dwarf::getLangString() {
     std::string toWrite = "";
     toWrite += "You know the languages: ";
@@ -119,6 +122,7 @@ std::string Dwarf::getLangString() {
     return toWrite;
 }
 
+//Append to a string to write to a file when saving
 std::string Dwarf::getVisionString() {
         std::string toWrite = "";
         toWrite += "Your current types of vision are: ";
@@ -142,7 +146,7 @@ std::string Dwarf::getVisionString() {
     }
 
 
-
+//Add vision unless you already have one
 void Dwarf::addVision(std::string newVision) {
     for (int i = 0; i < visionIdx; i++) {
         if (newVision == *(vision + i)) {
@@ -155,6 +159,7 @@ void Dwarf::addVision(std::string newVision) {
 
 }
 
+//Display all current visions
 void Dwarf::printVision() {
     std::cout << "Your current types of vision include: ";
     if (visionIdx == 1) { //If you only have one, don't go into the loop
@@ -173,7 +178,7 @@ void Dwarf::printVision() {
 
 }
 
-//Stat bonus
+//Stat bonus, takes body's ability array and changes the values accordingly
 void Dwarf::changeAbilities(int* abilArr) {
     abilArr[2] = *(abilArr + 2) + 2; //+2 Constitution
     abilArr[4] = *(abilArr + 4) + 2; //+2 Wisdom

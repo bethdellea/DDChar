@@ -19,17 +19,8 @@ using namespace std;
 
 int main()
 {
-	srand(time(NULL));
-    //Character* myCharacter = new Character();
-	//myCharacter->writeFile(myCharacter->name);
-	//myCharacter->callFile();
-    
-	Inventory* testInven = new Inventory();
-	testInven->interact();
-
-	Inventory* testInven2 = new Inventory(testInven);
-	std::cout << "Made a copy of testInven... Listing those items. \n" << testInven2->listItems();
-
+	srand(time(NULL)); //Seed random for all methods to use
+    Character* myCharacter = new Character();
 	
 	return 0;
 }

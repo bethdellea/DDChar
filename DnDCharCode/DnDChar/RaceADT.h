@@ -28,6 +28,7 @@ public:
 
 	int speed;
     
+    //Append vision and language arrays to a string in order to write it to a file
     virtual std::string getLangString()=0;
     virtual std::string getVisionString()=0;
     

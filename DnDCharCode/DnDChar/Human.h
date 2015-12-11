@@ -24,7 +24,7 @@ public:
     
     std::string* knownLanguages;
     std::string* vision;
-    int languageIdx;
+    int languageIdx; //Keeps track of which index in the array to add to next
     int visionIdx;
     
 
@@ -47,11 +47,12 @@ public:
     void printLanguages();
     //Add a new vision
     void addVision(std::string newVision);
+    //Append vision and language arrays to a string in order to write to a file
     std::string getLangString();
     std::string getVisionString();
     //Prints a list of visions
     void printVision();
-    //Stat bonus
+    //Stat bonus; takes the ability array from body, asks the user for their choice, and adds 2 to their selection in the array
     void changeAbilities(int* abilArr);
 
     
