@@ -114,7 +114,8 @@ Character::Character() {
         cout << "Chose class type 'Fighter'." << endl;
         classType = new Fighter();
         cout << "Rolling a die to determine your HP." << endl;
-        HP = classType->rollHP(body->abilities[2]); //Send body's constitution modifier to the rollHP method
+        
+        HP = classType->rollHP(body->getModifier(2)); //Send body's constitution modifier to the rollHP method
         cout << "Your total HP is: " << HP << endl;
     }
     

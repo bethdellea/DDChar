@@ -10,6 +10,7 @@
 
 
 Body::Body() {
+<<<<<<< Updated upstream
         //fixed size
          //contains the skill bonus
         skillSize = 26;
@@ -18,7 +19,22 @@ Body::Body() {
 		//Abilites
 		//Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
         abilities = new int [abilitySize]; //Roll 4-24 and subtract from 1-6
+=======
+    skillSize = 26;
+    abilitySize = 6;
+>>>>>>> Stashed changes
 
+        //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+        abilities = new int [6];
+    
+    //Set all random values for abilities array
+    for (int i = 0; i < 6; i ++) {
+        abilities[i] = setAbility(i);
+    }
+    
+        //fixed size
+        skills = new int [26]; //contains the skill bonus
+    
 		//Skill
 		//null array
 		//how many do they get to choose? 5? 
@@ -27,18 +43,37 @@ Body::Body() {
 		//Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
 		//Perception (wis), perform (cha), Profession (wis), Ride (dex), Sense Motive (wis), 
 		//Slieght of Hand (dex), Spellcraft (int), Stealth (dex), Survival (wis), Swim (str) 
-		//Use Magic Device (cha)
+		//Use Magic Device (cha),
 	}
+
 	//sets skills or changes them 
-	/*void Body::setSkills(int index, int change) {
+	void Body::setSkills(int index, int change) {
 		skills[index] += change;
 	}
-    
-    int Body::generateRandomNum(int min, int max) {
-        
+
+//Fills the skills array with base modifiers
+void Body::fillSkills() {
+        for (int i = 0; i < 26; i ++) {
+            if (i == 3 || i == 24) {
+                skills[i] = getModifier(0); //Strength modifiers
+            }
+            if (i == 0 || i == 6 || i == 9 || i == 18 || i == 20 || i == 22) { //Dexterity modifiers
+                skills[i] = getModifier(1);
+            }
+            if (i == 1 || i == 4 || i == 13 || i == 14 || 21) { //Intelligence modifiers
+                skills[i] = getModifier(3);
+            }
+            if (i == 11 || i == 15 || i == 17 || i == 19 || i == 23) { //Wisdom modifiers
+                skills[i] = getModifier(4);
+            }
+            if (i == 2 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12 || i == 16 || i == 25){ //Charisma modifiers
+                skills[i] = getModifier(5);
+            }
+        }
     }
+
 	//returns the value for the skill
-	int Body::skillCheck(int skill) {
+    int Body::skillCheck(int skill) {
 		//generate a number from 1 -20 
 		//adds the modifier skills
 		int timer = 0;
@@ -47,21 +82,21 @@ Body::Body() {
 		randNum += skills[skill];
 		return randNum;
 	}
-	void Body::printThisSkill(int skill) {
+    void Body::printThisSkill(int skill) {
 		//checks the size of the array
 		if (skill > 5) {
 			std::cout << "Incorrect index input for the skills array." << std::endl;
 		}
 		else {
-			std::cout << "Skill level at this spot is: " + skills[skill] << std::endl;
+			std::cout << "Skill level at this spot is: " <<  skills[skill] << std::endl;
 		}
 
 	}
 	void Body::printAllSkills() {
-		for (int i = 0; i < skillsSize - 1; i++) {
+		for (int i = 0; i < skillSize - 1; i++) {
 			std::cout << skills[i] << ", ";
 		}
-		std::cout << skills[skillsSize - 1] << std::endl;
+		std::cout << skills[skillSize - 1] << std::endl;
 	}
 
 	//determine amount of bonus given
@@ -73,7 +108,7 @@ Body::Body() {
 		return total;
 	}
 
-	int Body::setAbility(int ability) {
+int Body::setAbility(int ability) {
 		//sets to the ability score given 
 		int randNum1 = rand() % (6 - 1 + 1) + 1;
 		int randNum2 = rand() % (6 - 1 + 1) + 1;
@@ -117,6 +152,5 @@ void Body::printAllAbilities() {
 		std::cout << abilities[abilitySize - 1] << std::endl;
 	}
 Body::~Body() {
-
-	};
-};*/
+    
+};
