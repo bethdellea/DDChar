@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nicole Lane. All rights reserved.
 //
 
-//#include "stdafx.h"
+#include "stdafx.h"
 #include <iostream>
 #include "ItemWeapon.h"
 #include "ItemArmor.h"

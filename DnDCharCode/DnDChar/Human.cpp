@@ -141,10 +141,6 @@ void Human::printVision() {
 void Human::changeAbilities(int* abilArr) {
     //Strength = 0, dexterity = 1, constitution = 2, intelligence = 3, wisdom = 4, charisma = 5
     //+2 to any chosen abilities
-    for (int i = 0; i < 6; i++) {
-        std::cout << "Value at " << i << std::endl;
-        std::cout << *(abilArr + i) <<std::endl;
-    }
     
     std::cout << "Choose the number of the ability you'd like to increase by 2: " << std::endl;
     std::cout << "0) Strength" << std::endl;
