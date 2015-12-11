@@ -26,9 +26,11 @@ protected:
 
 	std::string alignment;
 
-	int ranks;
+	
 
 public:
+    
+    int ranks;
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
 	virtual std::string giveAlignment() = 0;

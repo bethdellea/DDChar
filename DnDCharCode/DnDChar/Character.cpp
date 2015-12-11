@@ -124,7 +124,6 @@ Character::Character() {
     cout << "Creating your empty inventory now." << endl;
     inventory = new Inventory();
     
-
 }
 
 Character::~Character() {

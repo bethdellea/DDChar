@@ -17,7 +17,7 @@
 
 class Elf: public RaceADT {
 private:
-    int speed;
+    
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;
@@ -25,6 +25,7 @@ private:
 
     
 public:
+    int speed;
     /* Creates a new Elf; sets initial base speed, known languages and adds natural weapon proficiencies*/
     Elf();
     //Create a deep copy of a Elf parameter
