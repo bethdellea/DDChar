@@ -14,6 +14,7 @@
 #include "Fighter.h"
 #include "Barbarian.h"
 #include <string>
+#include <fstream>
 #include "RaceADT.h"
 #include "Elf.h"
 #include "Dwarf.h"
@@ -181,3 +182,90 @@ Character::~Character() {
     delete[] inventory;
 }
 
+
+void Character::writeFile(string fileName) {
+	//name of file should be name of character
+	std::string toWrite = "";
+	fileName += ".txt";
+	std::ofstream outf(fileName, fstream::app);
+	//will append to the file - if you have more than one of a character, you must append it yourself
+	if (outf) {
+
+		toWrite += "Name: " + name + "\n";
+		toWrite += "Race: " + raceStr + "\n";
+		toWrite += "Class: " + classStr + "\n";
+		toWrite += "Alignment: " + classType->alignment + "\t";
+		toWrite += "Proficiencies: ";
+		for (int i = 0; i < classType->sizeProf; i++) {
+			toWrite += classType->profs[i] + "\t";
+		}
+		toWrite += "Your Hit Points: " + to_string(HP) + "\t";
+		toWrite += "Your Speed: " + to_string(race->getSpeed()) + "\n";
+		// LANGUAGES (thanks Nicole)
+		toWrite += "You know the languages: ";
+		if (race->languageIdx == 1) {
+			toWrite += race->knownLanguages[0] +"\n";
+		}
+		else {
+			for (int i = 0; i < race->languageIdx; i++) {
+
+				if (i == race->languageIdx - 1) { //If last in the list, don't print a comma afterwards
+					toWrite += "and " + race->knownLanguages[i];
+				}
+				else {
+					toWrite += race->knownLanguages[i] + ", ";
+				}
+
+			}
+
+		}
+
+		// VISIONS (thanks Nicole)
+		toWrite += "Your current types of vision include: ";
+
+		if (race->visionIdx == 1) {
+			toWrite += race->vision[0];
+		}
+		else {
+			for (int i = 0; i < race->visionIdx; i++) { //If last in list, don't print a comma afterwards
+				if (i == race->visionIdx - 1) {
+					toWrite += "and " + race->vision[i];
+				}
+				else {
+					toWrite += race->vision[i] + ", ";
+				}
+			}
+		}
+		toWrite += "\n";
+
+		//-------------------------------------------
+		//packing up the inventory
+		std::cout << "Writing your inventory to its file..." << endl;
+		std::cout << "Please enter the desired name for your inventory file: ";
+		std::string invFilename;
+		while (!(std::cin >> invFilename) || invFilename == "") {
+			//Some code I found online. Basically catches when cin cannot turn the input into an integer
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "I'm sorry, but the key you pressed was not a valid input or was greater than the quantity you have. Please try again." << std::endl;
+		}
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		invFilename += ".txt";
+		inventory->toFile(invFilename);
+		toWrite += "Total Gold Hoarded: " + to_string(inventory->getGold()) + "\n";
+		toWrite += "Items in your inventory:\n" + inventory->listItems() + "\n";
+		toWrite += "More detailed inventory information can be found in " + invFilename + "\n";
+		//end of the inventory
+		//--------------------------------------------
+
+		std::string out;
+		outf << toWrite; //add the string gained in the other fcn to the file!
+		outf.close();
+
+
+	}
+	else {
+		std::cerr << "Can't write to file" << std::endl;
+	}
+
+}
