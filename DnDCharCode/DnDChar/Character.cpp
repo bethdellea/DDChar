@@ -71,26 +71,27 @@ Character::Character() {
 
 	//Change the abilities array in body according to selected race
 	if (choice == 1) {
-		cout << "Chose race type 'Dwarf." << endl;
+		cout << "Chose race type 'Dwarf'." << endl;
 		race = new Dwarf();
 		race->changeAbilities(body->abilities);
 		raceStr = "Dwarf";
 	}
 	else if (choice == 2) {
-		cout << "Chose race type 'Elf." << endl;
+		cout << "Chose race type 'Elf'." << endl;
 		race = new Elf();
 		race->changeAbilities(body->abilities);
 		raceStr = "Elf";
 	}
 
 	else if (choice == 3) {
-		cout << "Chose race type 'Human." << endl;
+		cout << "Chose race type 'Human'." << endl;
 		race = new Human();
 		race->changeAbilities(body->abilities);
 		raceStr = "Human";
 	}
-
-
+    
+    race->printLanguages();
+    race->printVision();
 
 	//Decide which class (right now, we only have Fighter, but we can add more conditions
 	cout << "And now to choose your class. Choose a number from the list below." << endl;
@@ -221,23 +222,9 @@ void Character::writeFile(string fileName){
 		}
 
 		// VISIONS (thanks Nicole)
-		toWrite += "Your current types of vision include: ";
-
-		if (race->visionIdx == 1) {
-			toWrite += race->vision[0];
-		}
-		else {
-			for (int i = 0; i < race->visionIdx; i++) { //If last in list, don't print a comma afterwards
-				if (i == race->visionIdx - 1) {
-					toWrite += "and " + race->vision[i];
-				}
-				else {
-					toWrite += race->vision[i] + ", ";
-				}
-			}
-		}
-		toWrite += "\n";
-        cout << "TO WRITE " << toWrite << endl;
+        toWrite += race->getLangString();
+        cout<< "TO WRITE: " << toWrite<< endl;
+        toWrite += "\n";
 
 		//-------------------------------------------
 		//packing up the inventory

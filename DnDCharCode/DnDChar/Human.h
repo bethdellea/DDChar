@@ -21,7 +21,7 @@ private:
     
     
 public:
-
+    
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;
@@ -47,6 +47,8 @@ public:
     void printLanguages();
     //Add a new vision
     void addVision(std::string newVision);
+    std::string getLangString();
+    std::string getVisionString();
     //Prints a list of visions
     void printVision();
     //Stat bonus

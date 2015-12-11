@@ -78,6 +78,7 @@ void Elf::addLanguage(std::string newLanguage) {
 }
 
 void Elf::printLanguages() {
+
     std::cout << "You know the languages: ";
     if (languageIdx == 1) {
         std::cout << knownLanguages[0] << std::endl;
@@ -109,6 +110,30 @@ void Elf::addVision(std::string newVision) {
   
 }
 
+
+std::string Elf::getLangString() {
+    std::string toWrite = "";
+    toWrite += "You know the languages: ";
+    
+    if (languageIdx == 1) {
+        
+        toWrite += knownLanguages[0];
+    }
+    else {
+        for (int i = 0; i < languageIdx; i++) { //If last in list, don't print a comma afterwards
+            if (i == languageIdx - 1) {
+                toWrite += "and " + knownLanguages[i];
+            }
+            else {
+                toWrite += knownLanguages[i] + ", ";
+            }
+        }
+    }
+    toWrite += "\n";
+    return toWrite;
+}
+
+
 void Elf::printVision() {
     std::cout << "Your current types of vision include: ";
 
@@ -126,6 +151,30 @@ void Elf::printVision() {
         }
     }
 }
+
+std::string Elf::getVisionString() {
+    std::string toWrite = "";
+    toWrite += "Your current types of vision are: ";
+    
+    if (visionIdx == 1) {
+        
+        toWrite += vision[0];
+    }
+    else {
+        for (int i = 0; i < 10; i++) { //If last in list, don't print a comma afterwards
+            if (i == visionIdx - 1) {
+                toWrite += "and " + vision[i];
+            }
+            else {
+                toWrite += vision[i] + ", ";
+            }
+        }
+    }
+    toWrite += "\n";
+    return toWrite;
+}
+
+
 
 
 //Stat bonus

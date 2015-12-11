@@ -52,8 +52,11 @@ public:
     void addVision(std::string newVision);
     //Prints a list of current visions
     void printVision();
+    std::string getVisionString();
     //Stat bonus
     void changeAbilities(int* abilArr);
+    //For printing to a file
+    std::string getLangString();
    
 
 };

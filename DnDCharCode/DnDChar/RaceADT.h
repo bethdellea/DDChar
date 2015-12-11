@@ -27,7 +27,9 @@ public:
 
 
 	int speed;
-
+    
+    virtual std::string getLangString()=0;
+    virtual std::string getVisionString()=0;
     
     //Returns speed of character
     virtual int getSpeed()=0;

@@ -36,6 +36,8 @@ public:
     Elf(const Elf& elfToCopy);
     //Destructor
     ~Elf();
+    //For printing to a file
+    std::string getLangString();
     //Print speed of character
     void printSpeed();
     //Get speed of character
@@ -50,6 +52,7 @@ public:
     void addVision(std::string newVision);
     //Prints a list of visions
     void printVision();
+    std::string getVisionString();
     //Stat bonus
     void changeAbilities(int* abilArr);
 

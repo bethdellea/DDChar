@@ -86,6 +86,50 @@ void Human::addLanguage(std::string newLanguage) {
 
 }
 
+std::string Human::getLangString() {
+    std::string toWrite = "";
+    toWrite += "You know the languages: ";
+    
+    if (languageIdx == 1) {
+        
+        toWrite += knownLanguages[0];
+    }
+    else {
+        for (int i = 0; i < languageIdx; i++) { //If last in list, don't print a comma afterwards
+            if (i == languageIdx - 1) {
+                toWrite += "and " + knownLanguages[i];
+            }
+            else {
+                toWrite += knownLanguages[i] + ", ";
+            }
+        }
+    }
+    toWrite += "\n";
+    return toWrite;
+}
+
+std::string Human::getVisionString() {
+    std::string toWrite = "";
+    toWrite += "Your current types of vision are: ";
+    
+    if (visionIdx == 1) {
+        
+        toWrite += vision[0];
+    }
+    else {
+        for (int i = 0; i < 10; i++) { //If last in list, don't print a comma afterwards
+            if (i == visionIdx - 1) {
+                toWrite += "and " + vision[i];
+            }
+            else {
+                toWrite += vision[i] + ", ";
+            }
+        }
+    }
+    toWrite += "\n";
+    return toWrite;
+}
+
 void Human::printLanguages() {
     std::cout << "You know the languages: ";
     if (languageIdx == 1) {

@@ -1,0 +1,27 @@
+Name: fdas
+Race: Dwarf
+Class: Barbarian
+Alignment: CE	Proficiencies: Martial	Simple	Your Hit Points: 7	Your Speed: 20
+You know the languages: Your current types of vision include: 
+Total Gold Hoarded: 0
+Items in your inventory:
+You have no items in your inventory.
+More detailed inventory information can be found in fdsa.txt
+Name: fdsagfas
+Race: Dwarf
+Class: Barbarian
+Alignment: CE	Proficiencies: Martial	Simple	Your Hit Points: 8	Your Speed: 20
+You know the languages: Your current types of vision include: 
+Total Gold Hoarded: 0
+Items in your inventory:
+You have no items in your inventory.
+More detailed inventory information can be found in gfdsagfa.txt
+Name: fdjklsa
+Race: Dwarf
+Class: Fighter
+Alignment: CE	Proficiencies: Martial	Simple	Your Hit Points: 11	Your Speed: 20
+You know the languages: Your current types of vision include: 
+Total Gold Hoarded: 0
+Items in your inventory:
+You have no items in your inventory.
+More detailed inventory information can be found in fdsa.txt
