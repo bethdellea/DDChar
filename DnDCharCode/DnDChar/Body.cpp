@@ -10,20 +10,13 @@
 
 
 Body::Body() {
-<<<<<<< Updated upstream
         //fixed size
-         //contains the skill bonus
+        //contains the skill bonus
         skillSize = 26;
         skills = new int[skillSize];
         abilitySize = 6;
 		//Abilites
-		//Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
-        abilities = new int [abilitySize]; //Roll 4-24 and subtract from 1-6
-=======
-    skillSize = 26;
-    abilitySize = 6;
->>>>>>> Stashed changes
-
+		
         //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
         abilities = new int [6];
     
