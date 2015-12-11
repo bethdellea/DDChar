@@ -124,6 +124,26 @@ Character::Character() {
     cout << "Creating your empty inventory now." << endl;
     inventory = new Inventory();
     
+    getAC();
+    
+}
+
+//Calculates the Fortitude save (see formula in the character sheet)
+int Character::getFort() {
+    return body->getModifier(2);
+}
+
+int Character::getRef() {
+    return body->getModifier(1);
+}
+
+int Character::getWill() {
+    return body->getModifier(4);
+}
+
+int Character::getAC() {
+    int AC = 10 + body->getModifier(1);
+    return AC;
 }
 
 Character::~Character() {

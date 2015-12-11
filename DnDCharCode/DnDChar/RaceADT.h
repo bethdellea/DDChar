@@ -17,6 +17,10 @@ class RaceADT {
 private:
     
 public:
+    std::string vision;
+    std::string knownLanguages;
+    int visionIdx;
+    int languageIdx;
     
     //Returns speed of character
     virtual int getSpeed()=0;

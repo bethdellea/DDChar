@@ -18,13 +18,14 @@
 class Human : public RaceADT {
 private:
     
+    
+public:
     std::string* knownLanguages;
     std::string* vision;
     int languageIdx;
     int visionIdx;
-
     
-public:
+
     int speed;
     /* Creates a new Human; sets initial base speed, known languages and adds natural weapon proficiencies*/
     Human();
