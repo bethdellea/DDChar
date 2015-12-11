@@ -132,6 +132,7 @@ void Body::fillSkills() {
 int Body::skillCheck(int skill) {
     //generate a number from 1 -20
     //adds the modifier skills
+    srand(time(NULL));
     int randNum = rand() % (20 - 1 + 1) + 1;
     randNum += skills[skill];
     return randNum;
@@ -147,9 +148,7 @@ std::string Body::printThisSkill(int skill) {
 		std::string output = "Skill level at this spot is:\t" + skills[skill];
 		return output + "\n";
 	}
-
 }
-
 void Body::printAllSkills() {
     for (int i = 0; i < skillSize - 1; i++) {
         std::cout << skills[i] << ", ";
@@ -166,6 +165,7 @@ int Body::skillCalc(int rank, int mod) {
     return total;
 }
 int Body::generateRandomNum(int min, int max) {
+    srand(time(NULL));
     int num = rand() % (max - min + 1) + min;
     return num;
 }
