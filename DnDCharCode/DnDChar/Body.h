@@ -31,7 +31,7 @@ class Body{
 		void setSkills(int index, int change); 
 		//returns the value for the skill
 		int skillCheck(int skill);
-		std::string printThisSkill(int skill);
+		void printThisSkill(int skill);
 		void printAllSkills();
 		
 		//determine amount of bonus given
