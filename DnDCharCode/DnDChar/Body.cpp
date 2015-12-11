@@ -215,6 +215,7 @@ void Body::printAllAbilities() {
     }
     std::cout << abilities[abilitySize - 1] << std::endl;
 }
+
 std::string Body::printAbilities()
 {
 	std::string abils = "";
@@ -227,6 +228,7 @@ std::string Body::printAbilities()
 
 	return abils;
 }
+
 Body::~Body() {
     //delete[] tempArr;
     delete[] abilities;
