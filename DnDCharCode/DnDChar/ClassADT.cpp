@@ -19,7 +19,15 @@ int ClassADT::generateRandomNum(int min, int max)
 //Modifier is based on character's Constitution score.
 int ClassADT::rollHP(int modifier)
 {
-	return generateRandomNum(1, hitDie) + modifier;
+	int HP = generateRandomNum(1, hitDie) + modifier;
+
+	//Makes sure character has at least 1 HP.
+	if (HP < 1)
+	{
+		HP = 1;
+	}
+
+	return HP;
 }
 
 //Generates the number of d6's used to roll for character gold.
