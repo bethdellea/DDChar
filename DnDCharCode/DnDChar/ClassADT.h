@@ -11,6 +11,7 @@
 #include <array>
 #include "Body.h"
 
+
 class ClassADT {
 
 protected:
@@ -26,11 +27,12 @@ protected:
 
 	int sizeProf;
 
-	std::string alignment;
-
 public:
     
-    static int ranks;
+    std::string alignment;
+    
+    int ranks;
+
 	//Walks the player through assigning an aligment in the constructor
 	//Limits the availability of some alignments based on class
 	virtual std::string giveAlignment() = 0;
@@ -38,7 +40,7 @@ public:
 	//Adds a pseudo-random amount of HP to a character
 	//RNG depends on class
 	//Modifier is based on character's Constitution score.
-	int rollHP(int modifier);
+	int rollHP(const int modifier);
 
 	//Returns a random number with values bewteen min and max, including both min and max
 	int generateRandomNum(int min, int max);
@@ -65,8 +67,6 @@ public:
 	
 	//Generates the number of d6's used to roll for character gold.
 	int startingGold();
-
-
 
 	//Virtual default destructor to ensure more specific destructors are called
 	virtual ~ClassADT() {};
