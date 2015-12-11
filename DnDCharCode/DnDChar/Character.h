@@ -17,7 +17,6 @@ class Character {
 private:
 	
 	Body* body;
-	std::string name;
 	RaceADT* race;
 	std::string raceStr;
 	ClassADT* classType;
@@ -26,7 +25,7 @@ private:
 	int HP;
 
 public:
-
+	std::string name;
 	//Default constructor, however it will still ask for user input
 	//Will probably be pretty big/delegated to other functions
 	//Initializes the pointers with instances

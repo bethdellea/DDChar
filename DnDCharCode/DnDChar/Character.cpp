@@ -242,6 +242,9 @@ void Character::writeFile(string fileName) {
 		}
 		toWrite += "\n";
 
+		//ABILITIES
+		toWrite += body->printAbilities();
+
 		//-------------------------------------------
 		//packing up the inventory
 		std::cout << "Writing your inventory to its file..." << endl;
