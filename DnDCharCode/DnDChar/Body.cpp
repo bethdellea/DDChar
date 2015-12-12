@@ -12,14 +12,14 @@ Body::Body() {
     skillSize = 26;
     skills = new int[skillSize];
     abilitySize = 6;
-    //Abilites
+    //Abilities
     //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
     abilities = new int[abilitySize]; //Roll 4-24 and subtract from 1-6
     //Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
     
     //Set all random values for abilities array
     
-    int* tempArr = new int[6];
+    int* tempArr = new int[6]; //Values to be inputted into the abilities array by the user
     for (int i = 0; i < 6; i++) {
         tempArr[i] = setAbility();
         std::cout << tempArr[i] << " ";
@@ -30,9 +30,9 @@ Body::Body() {
     string names[] = { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
 
     int choice = -1;
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 6; i++) { //Sets all 6 ability values
         bool goodInput = false;
-        while (!goodInput) {
+        while (!goodInput) { //Loop until valid input is given
             choice = -1;
             std::cout << "What value would you like to give " << names[i] << "?" << std::endl;
             cin >> choice;
@@ -46,7 +46,7 @@ Body::Body() {
                 cout << "You have either entered an invalid number or you have already chosen that value." << endl;
                 goodInput = false;
             }
-            else {
+            else { //Once a value has been selected and entered into the array, it is set to 0 in the temArray so that the value may not be selected again
                 if (choice == tempArr[0]) {
                     cout << "Selection recorded!" << endl;
                     tempArr[0] = 0;
@@ -88,10 +88,9 @@ Body::Body() {
     }
     //fixed size
     skills = new int[26]; //contains the skill bonus
-    fillSkills();
-    //Skill
-    //null array
-    //how many do they get to choose? 5?
+    fillSkills(); //Call the fillSkills method to populate skills array
+    
+    //Skills
     /*Acrobatics(Dex), Appraise (int), Bluff (cha), Climb (str), Craft (int), Diplomacy (cha),
     //Disable Device (dex), Disguise (cha), Escapse Artist (cha), Fly (dex),
     //Handle Animal (cha) Heal (wis), Intimidate (cha), Knowledge (int), Linguistics (int)
@@ -108,7 +107,7 @@ void Body::setSkills(int index, int change) {
 int getRanks(int ranks) {
     return ranks;
 }
-//Fills the skills array with base modifiers
+//Fills the skills array with base modifiers calculated in the method get modifier
 void Body::fillSkills() {
     for (int i = 0; i < 26; i++) {
         if (i == 3 || i == 24) {
@@ -138,6 +137,7 @@ int Body::skillCheck(int skill) {
     return randNum;
 }
 
+//Takes an integer to print out the skill at a specific index, and returns a string to be able to print to a file
 std::string Body::printThisSkill(int skill) {
 	//checks the size of the array
 	if (skill > 5) {
@@ -149,6 +149,7 @@ std::string Body::printThisSkill(int skill) {
 		return output + "\n";
 	}
 }
+//Display values for all skills
 void Body::printAllSkills() {
     for (int i = 0; i < skillSize - 1; i++) {
         std::cout << skills[i] << ", ";
@@ -171,8 +172,8 @@ int Body::generateRandomNum(int min, int max) {
 int Body::setAbility() {
     //sets to the ability score given
     
-    int randNum1 = generateRandomNum(1, 6);
-    int randNum2 = generateRandomNum(1, 6);
+    int randNum1 = generateRandomNum(1, 6); //Simulating 4 6-sided dice rolling
+    int randNum2 = generateRandomNum(1, 6); //Take the lowest value and subtract from total sum
     int randNum3 = generateRandomNum(1, 6);
     int randNum4 = generateRandomNum(1, 6);
     
@@ -193,9 +194,10 @@ int Body::setAbility() {
 }
 //mathematically based on abilities
 int Body::getModifier(int ability) {
-    return ((abilities[ability]) - 10) / 2;
+    return ((abilities[ability]) - 10) / 2; //Formula for calculating each ability modifier
 }
 
+//Prints the ability value at the indicated index
 void Body::printThisAbil(int ability) {
     //checks the size of the array first
     if (sizeof(abilities) / sizeof(int) > ability) {
@@ -206,10 +208,12 @@ void Body::printThisAbil(int ability) {
     }
 }
 
+//returns the entire abilities array
 int* Body::getAbilities() {
     return abilities;
 }
 
+//displays all values for all abilities
 void Body::printAllAbilities() {
     for (int i = 0; i < abilitySize - 1; i++) {
         std::cout << abilities[i] << ", ";
@@ -217,6 +221,7 @@ void Body::printAllAbilities() {
     std::cout << abilities[abilitySize - 1] << std::endl;
 }
 
+//Prints abilities to a string and returns it for printing to a file
 std::string Body::printAbilities()
 {
 	std::string abils = "";
